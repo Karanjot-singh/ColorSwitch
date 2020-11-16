@@ -16,8 +16,8 @@ public class Main extends Application
         window = primaryStage;
         Parent homeDisp = FXMLLoader.load(getClass().getResource("home.fxml"));
         Parent gameDisp = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
-        home = new Scene(homeDisp, 600, 300);
-        gameplay = new Scene(gameDisp, 600, 300);
+        home = new Scene(homeDisp); //, 600, 300
+        gameplay = new Scene(gameDisp);
 
 
         primaryStage.setTitle("Color Switch");

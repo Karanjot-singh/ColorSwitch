@@ -14,7 +14,7 @@ public class GameplayController {
 
     public void msgHover()
     {
-        gameMsg.setText("GAME START!!!");
+        gameMsg.setText("GAME OVER!");
     }
 
 
