@@ -4,7 +4,7 @@
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
       fx:controller="sample.HomeController">
 
-    <Label text="Welcome to homescreen" fx:id="homeLabel" onMouseMoved="#textHover"/>
+    <Label text="Welcome to homescreen!" fx:id="homeLabel" onMouseMoved="#textHover"/>
     <Button text="Go to game!" fx:id="coolButton" onAction="#clicked"/>
 
 </VBox>
