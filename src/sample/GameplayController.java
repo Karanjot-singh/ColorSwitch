@@ -11,6 +11,7 @@ public class GameplayController {
 
     public Button backButton;
     public Label gameMsg;
+
     public void backClicked()
     {
         Main.window.setScene(Main.homeScene);
