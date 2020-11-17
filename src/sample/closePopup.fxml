@@ -1,0 +1,11 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.ClosePopupController"
+			prefHeight="100.0" prefWidth="200.0" alignment="CENTER">
+
+	<Label text="Are you sure you want to exit?" fx:id="confirmMsg" />
+	<Button text="Yes" fx:id="yesButton" onMouseClicked="#yesClicked"/>
+	<Button text="No" fx:id="noButton" onMouseClicked="#noClicked"/>
+
+</VBox>

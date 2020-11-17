@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 
 public class HomeController {
 
-    public Button newGameButton, loadGameButton;
+    public Button newGameButton, loadGameButton, exitButton;
     public Label homeLabel;
 
 
@@ -26,9 +26,14 @@ public class HomeController {
     @FXML
     void loadGameClicked()
     {
-//      coolButton.setText("Hehehe");
-        loadGameController.display();
+        LoadGameController.display();
 //        Main.window.setScene
+    }
+
+    @FXML
+    void exitClicked()
+    {
+        Main.closeProgram();
     }
 
 

@@ -1,11 +1,12 @@
 package sample;
+
 import javafx.fxml.FXML;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.control.*; //rem
 
 
-public class loadGameController {
+public class LoadGameController {
 
     static Stage window;
     static Scene scene;

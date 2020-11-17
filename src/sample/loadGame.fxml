@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.loadGameController"
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.LoadGameController"
             prefHeight="200.0" prefWidth="300.0" alignment="CENTER">
 
     <Label text="You don't have any saved games." fx:id="loadLabel" />
