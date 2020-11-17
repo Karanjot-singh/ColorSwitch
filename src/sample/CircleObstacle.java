@@ -16,6 +16,6 @@ public class CircleObstacle extends Obstacle {
         arc1.setStrokeWidth(10);
         arc1.setFill(Color.TRANSPARENT);
 //        arc1.setStrokeWidth(stroke);
-        Game.playRegion.getChildren().addAll(arc1);
+//        Game.playRegion.getChildren().addAll(arc1);
     }
 }
