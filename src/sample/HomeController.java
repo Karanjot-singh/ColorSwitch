@@ -9,25 +9,26 @@ public class HomeController {
     public Button newGameButton, loadGameButton;
     public Label homeLabel;
 
+
+    @FXML
+    void textHover()
+    {
+        homeLabel.setText("WELCOME TO COLOR SWITCH!");
+    }
+
     @FXML
     void newGameClicked()
     {
 //      coolButton.setText("Hehehe");
-        Main.window.setScene(Main.gameplay);
+        Main.window.setScene(Main.gameplayScene);
     }
 
     @FXML
     void loadGameClicked()
     {
 //      coolButton.setText("Hehehe");
-        loadGameController.display("Load Game Screen", "You have no saved games.");
-
-    }
-
-    @FXML
-    void textHover()
-    {
-        homeLabel.setText("WELCOME TO COLOR SWITCH!");
+        loadGameController.display();
+//        Main.window.setScene
     }
 
 
