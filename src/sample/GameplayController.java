@@ -9,7 +9,7 @@ public class GameplayController {
 
     public void backClicked()
     {
-        Main.window.setScene(Main.home);
+        Main.window.setScene(Main.homeScene);
     }
 
     public void msgHover()
