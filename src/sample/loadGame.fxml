@@ -9,5 +9,4 @@
     <Label text="You don't have any saved games." fx:id="loadLabel" />
     <Button text="Back to home" fx:id="closeButton" onMouseClicked="#closeClicked"/>
 
-
 </VBox>
