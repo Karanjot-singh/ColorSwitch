@@ -9,18 +9,18 @@ import javafx.scene.paint.Color;
 
 public class GameplayController {
 
-    public Button backButton;
-    public Label gameMsg;
+	public Button backButton;
+	public Label gameMsg;
 
-    public void backClicked()
-    {
-        Main.window.setScene(Main.homeScene);
-    }
+	public void backClicked()
+	{
+		Main.window.setScene(Main.homeScene);
+	}
 
-    public void msgHover()
-    {
-        gameMsg.setText("GAME OVER!");
-    }
+	public void msgHover()
+	{
+		gameMsg.setText("GAME OVER!");
+	}
 
 
 }

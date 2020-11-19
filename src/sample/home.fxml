@@ -2,11 +2,11 @@
 <?import javafx.scene.layout.*?>
 
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="sample.HomeController" alignment="CENTER">
+	  fx:controller="sample.HomeController" alignment="CENTER">
 
-    <Label text="Welcome to Color Switch!" fx:id="homeLabel" onMouseMoved="#textHover"/>
-    <Button text="New Game" fx:id="newGameButton" onAction="#newGameClicked"/>
-    <Button text="Load Game" fx:id="loadGameButton" onAction="#loadGameClicked"/>
-    <Button text="Exit" fx:id="exitButton" onAction="#exitClicked"/>
+	<Label text="Welcome to Color Switch!" fx:id="homeLabel" onMouseMoved="#textHover"/>
+	<Button text="New Game" fx:id="newGameButton" onAction="#newGameClicked"/>
+	<Button text="Load Game" fx:id="loadGameButton" onAction="#loadGameClicked"/>
+	<Button text="Exit" fx:id="exitButton" onAction="#exitClicked"/>
 
 </VBox>
