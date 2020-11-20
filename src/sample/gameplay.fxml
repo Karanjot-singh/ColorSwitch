@@ -1,10 +1,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="sample.GameplayController" alignment="CENTER">
+<VBox prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+	  fx:controller="sample.GameplayController" alignment="CENTER" spacing="20" stylesheets="@homeStyle.css">
 
-    <Label text="Lets play a game" fx:id="gameMsg" onMouseMoved="#msgHover"/>
-    <Button text="Go back..." fx:id="backButton" onAction="#backClicked"/>
+	<Label text="Lets play a game" fx:id="gameMsg" onMouseMoved="#msgHover"/>
+
+	<Button text="Go back" fx:id="backButton" onAction="#backClicked"/>
 
 </VBox>
