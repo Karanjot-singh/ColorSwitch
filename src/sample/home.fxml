@@ -1,12 +1,39 @@
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-	  fx:controller="sample.HomeController" alignment="CENTER">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-	<Label text="Welcome to Color Switch!" fx:id="homeLabel" onMouseMoved="#textHover"/>
-	<Button text="New Game" fx:id="newGameButton" onAction="#newGameClicked"/>
-	<Button text="Load Game" fx:id="loadGameButton" onAction="#loadGameClicked"/>
-	<Button text="Exit" fx:id="exitButton" onAction="#exitClicked"/>
+<GridPane alignment="CENTER" gridLinesVisible="false" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@homeStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
 
-</VBox>
+	<Label fx:id="homeLabel" alignment="CENTER" contentDisplay="CENTER" onMouseMoved="#textHover" prefHeight="149.0" prefWidth="191.0" text="COLOR SWITCH" GridPane.columnIndex="1">
+      <font>
+         <Font name="Ubuntu Regular" size="24.0" />
+      </font></Label>
+	<Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" onAction="#newGameClicked" prefHeight="30.0" prefWidth="100.0" text="New Game" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+	<Button fx:id="loadGameButton" onAction="#loadGameClicked" prefHeight="30.0" prefWidth="100.0" text="Load Game" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" onMouseEntered="#mouseHover"/>
+	<Button fx:id="exitButton" alignment="CENTER" onAction="#exitClicked" prefHeight="25.0" prefWidth="100.0" text="Exit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+   <Circle fill="DODGERBLUE" radius="28.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
+   <Circle fill="DODGERBLUE" radius="28.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints valignment="CENTER" />
+      <RowConstraints valignment="CENTER" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <padding>
+      <Insets top="20.0" />
+   </padding>
+
+</GridPane>

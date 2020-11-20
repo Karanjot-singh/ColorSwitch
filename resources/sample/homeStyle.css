@@ -1,0 +1,14 @@
+GridPane {
+    -fx-background-color : Black;
+
+}
+.button {
+    -fx-background-color:Black;
+
+    -fx-font-family:courier_new;
+    -fx-text-fill:White;
+    -fx-border-color: White;
+    -fx-border-radius: 5;
+    -fx-font-size:16;
+    -fx-cursor:hand;
+}

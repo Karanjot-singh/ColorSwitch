@@ -29,10 +29,13 @@ public class Main extends Application
     	//new Game();
     	//gameplayPane = new HBox(30);
 
-    	homeScene = new Scene(homeRoot); //, 600, 300
+
+		homeScene = new Scene(homeRoot); //, 600, 300
 		gameplayScene = new Scene(gameplayRoot);
 		loadGameScene = new Scene(loadGameRoot);
 		closePopupScene = new Scene(closePopupRoot);
+
+//		homeScene.getStylesheets().add(getClass().getResource("homeStyle.css").toExternalForm());
 
 		//Scene gameScreen = new Scene(gameplayPane,200,300,Color.BLACK);
         //primaryStage.setScene(gameScreen);

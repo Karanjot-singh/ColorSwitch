@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Border;
 
 public class HomeController {
 
@@ -35,6 +36,14 @@ public class HomeController {
 	{
 		Main.closeProgram();
 	}
+
+	@FXML
+	void mouseHover()
+	{
+		loadGameButton.setStyle("-fx-text-fill:Aqua; -fx-border-color: Aqua");
+
+	}
+
 
 
 }
