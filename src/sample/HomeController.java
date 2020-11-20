@@ -20,7 +20,6 @@ public class HomeController {
 	@FXML
 	void newGameClicked()
 	{
-//      coolButton.setText("Hehehe");
 		Main.window.setScene(Main.gameplayScene);
 	}
 
@@ -35,13 +34,6 @@ public class HomeController {
 	void exitClicked()
 	{
 		Main.closeProgram();
-	}
-
-	@FXML
-	void mouseHover()
-	{
-		loadGameButton.setStyle("-fx-text-fill:Aqua; -fx-border-color: Aqua");
-
 	}
 
 

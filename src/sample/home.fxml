@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" gridLinesVisible="false" hgap="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@homeStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+<GridPane alignment="CENTER" hgap="20.0" prefHeight="500.0" prefWidth="350.0" stylesheets="@homeStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <image>
+         <Image url="@logo.png" />
+      </image>
+   </ImageView>
+    <Region prefHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-	<Label fx:id="homeLabel" alignment="CENTER" contentDisplay="CENTER" onMouseMoved="#textHover" prefHeight="149.0" prefWidth="191.0" text="COLOR SWITCH" GridPane.columnIndex="1">
-      <font>
-         <Font name="Ubuntu Regular" size="24.0" />
-      </font></Label>
-	<Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" onAction="#newGameClicked" prefHeight="30.0" prefWidth="100.0" text="New Game" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-	<Button fx:id="loadGameButton" onAction="#loadGameClicked" prefHeight="30.0" prefWidth="100.0" text="Load Game" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" onMouseEntered="#mouseHover"/>
-	<Button fx:id="exitButton" alignment="CENTER" onAction="#exitClicked" prefHeight="25.0" prefWidth="100.0" text="Exit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-   <Circle fill="DODGERBLUE" radius="28.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="4" />
-   <Circle fill="DODGERBLUE" radius="28.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+    <Button fx:id="newGameButton" onAction="#newGameClicked" prefHeight="30.0" prefWidth="100.0" text="New Game" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
+    <Button fx:id="loadGameButton" onAction="#loadGameClicked" prefHeight="30.0" prefWidth="100.0" text="Load Game" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
+    <Button fx:id="exitButton" onAction="#exitClicked" prefHeight="25.0" prefWidth="100.0" text="Exit" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BASELINE" />
+
+    <Region prefHeight="5" GridPane.rowIndex="5" />
+
+    <HBox alignment="CENTER" GridPane.rowIndex="6">
+        <Circle fx:id="help" radius="20.0" strokeType="INSIDE" />
+        <Region prefWidth="15" />
+        <Circle fx:id="settings" radius="20.0" strokeType="INSIDE" />
+    </HBox>
    <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints valignment="CENTER" />
-      <RowConstraints valignment="CENTER" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
    </rowConstraints>
-   <padding>
-      <Insets top="20.0" />
-   </padding>
+    <!--   <Circle fx:id="help" radius="28.0"  strokeType="INSIDE" GridPane.rowIndex="4" />-->
+    <!--   <Circle fx:id="settings" radius="28.0" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />-->
 
 </GridPane>

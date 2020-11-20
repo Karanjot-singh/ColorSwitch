@@ -1,14 +1,52 @@
-GridPane {
-    -fx-background-color : Black;
-
+GridPane, VBox, HBox {
+    -fx-background-color : #1a1a1a;
 }
-.button {
-    -fx-background-color:Black;
 
+.label{
+    -fx-text-fill: #bebebe;
+}
+
+#homeLabel{
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+    -fx-font-family: Ubuntu;
+    -fx-text-fill: #bebebe;
+    -fx-font-size: 50;
+    -fx-wrap-text: true;
+}
+
+Circle {
+    -fx-fill: #1a1a1a;
+    -fx-stroke: Yellow;
+}
+
+Circle:hover {
+    -fx-stroke: #ff8c00;
+    -fx-cursor: hand;
+}
+
+.button {
+    -fx-background-color:#1a1a1a;
+    -fx-background-radius: 10;
+    -fx-padding: 5px;
     -fx-font-family:courier_new;
-    -fx-text-fill:White;
-    -fx-border-color: White;
-    -fx-border-radius: 5;
-    -fx-font-size:16;
+    -fx-text-fill:#bebebe;
+    -fx-border-color: #bebebe;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-font-size:12;
     -fx-cursor:hand;
+}
+
+/*.button:pressed{*/
+/*    !*-fx-background-color: Aqua;*!*/
+/*    -fx-text-fill: #006398;*/
+/*    -fx-border-color: #006398;*/
+/*    !*-fx-border-width: 2;*!*/
+/*}*/
+
+.button:hover{
+    -fx-text-fill: #2f84c1;
+    /*-fx-background-color: #006398;*/
+    -fx-border-color: #2f84c1;
 }
