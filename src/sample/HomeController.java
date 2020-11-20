@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Border;
 
 public class HomeController {
 
@@ -19,7 +20,6 @@ public class HomeController {
 	@FXML
 	void newGameClicked()
 	{
-//      coolButton.setText("Hehehe");
 		Main.window.setScene(Main.gameplayScene);
 	}
 
@@ -35,6 +35,7 @@ public class HomeController {
 	{
 		Main.closeProgram();
 	}
+
 
 
 }

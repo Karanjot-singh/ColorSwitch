@@ -44,7 +44,7 @@ public class Game {
 
     }
 
-    public void removeElement(Element element) {
+    public void removeElement(Elements element) {
 
     }
 
