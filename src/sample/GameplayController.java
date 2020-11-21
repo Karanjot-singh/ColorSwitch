@@ -4,6 +4,8 @@ import javafx.animation.RotateTransition;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
+import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -45,14 +47,15 @@ public class GameplayController implements Initializable {
 	public static void rotate(Arc arc) {
 		RotateTransition rotation = new RotateTransition(Duration.seconds(duration), arc);
 
-		rotation.setAutoReverse(direction);
+//		rotation.setAutoReverse(direction);
 		rotation.setDelay(Duration.seconds(0));
+//		rotation.setAxis(new Point3D(100,100,100));
 		rotation.setCycleCount(500);
         rotation.setAxis(Rotate.Z_AXIS);
 		rotation.setByAngle(angle);
 		rotation.setRate(50);
 
-//        rotation.setInterpolator(Interpolator.LINEAR);
+        rotation.setInterpolator(Interpolator.LINEAR);
 		rotation.play();
 
 	}
