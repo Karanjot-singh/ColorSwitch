@@ -1,8 +1,9 @@
 package sample;
 
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-public class Obstacle {
+public class Obstacle implements Rotation {
 	private Color[] currentTheme ={Color.BLUE,Color.YELLOW, Color.RED, Color.GREEN};
 	private int stroke;
 	private int duration;
@@ -57,5 +58,10 @@ public class Obstacle {
 
 	public void setVelocity(int velocity) {
 		this.velocity = velocity;
+	}
+
+	@Override
+	public void rotate(Node selectedGroup) {
+
 	}
 }

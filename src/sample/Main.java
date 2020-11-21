@@ -7,11 +7,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
+import static sample.CircleObstacle.circlePane;
 
 public class Main extends Application
 {
 	static Stage window;
-	static Scene homeScene, gameplayScene, loadGameScene, closePopupScene;  
+	static Scene homeScene, gameplayScene, loadGameScene, closePopupScene;
 
 	//static HBox gameplayPane;
 
@@ -26,9 +27,7 @@ public class Main extends Application
 		Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 
 
-    	//new Game();
-    	//gameplayPane = new HBox(30);
-
+		new Game();
 
 		homeScene = new Scene(homeRoot); //, 600, 300
 		gameplayScene = new Scene(gameplayRoot);
@@ -37,8 +36,8 @@ public class Main extends Application
 
 //		homeScene.getStylesheets().add(getClass().getResource("homeStyle.css").toExternalForm());
 
-		//Scene gameScreen = new Scene(gameplayPane,200,300,Color.BLACK);
-        //primaryStage.setScene(gameScreen);
+//		Scene gameScreen = new Scene(sample.CircleObstacle.circlePane,600,300);
+//		window.setScene(gameScreen);
 
 		window.setOnCloseRequest(e -> {
 			e.consume();

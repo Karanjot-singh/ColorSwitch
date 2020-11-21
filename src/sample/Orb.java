@@ -1,8 +1,16 @@
 package sample;
 
-public class Orb implements Rotate{
+import javafx.scene.Node;
+
+public class Orb implements Rotation{
 	private int color;
 	private String shape;
+
+	@Override
+	public void rotate(Node selectedGroup) {
+
+	}
+
 	private String trail;
 
 	Orb() {
