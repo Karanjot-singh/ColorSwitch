@@ -1,9 +1,13 @@
 GridPane, VBox, HBox {
     -fx-background-color : #1a1a1a;
+    /*-fx-pref-height: 635;*/
+    /*-fx-pref-width: 635;*/
 }
 
 .label{
     -fx-text-fill: #e3e3e3;
+    -fx-font-family:"Ubuntu Light";
+    -fx-font-size: 15;
 }
 
 /*#homeLabel{*/
@@ -18,28 +22,22 @@ GridPane, VBox, HBox {
 /*    -fx-wrap-text: true;*/
 /*}*/
 
-Circle {
-    -fx-fill: #1a1a1a;
-    -fx-stroke: Yellow;
-}
-
-Circle:hover {
-    -fx-stroke: #ff8c00;
-    -fx-cursor: hand;
-}
-
 .button {
     -fx-background-color:#1a1a1a;
     -fx-background-radius: 10;
     /*-fx-padding: 7px;*/
-    -fx-pref-width: 150;
-    -fx-pref-height: 40;
+
+    /*-fx-pref-width: 150;*/
+    /*-fx-pref-height: 40;*/
+
     -fx-font-family:"Ubuntu Light";
     -fx-text-fill:#e3e3e3;
     -fx-border-color: #e3e3e3;
     -fx-border-radius: 10;
     -fx-border-width: 2;
-    -fx-font-size:20;
+
+    /*-fx-font-size:20;*/
+
     -fx-cursor:hand;
 }
 
