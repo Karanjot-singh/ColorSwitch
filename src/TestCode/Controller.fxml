@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane fx:id="circlePane" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TestCode.Controller">
+    <children>
+          <Arc fx:id="arc3" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="#feff00" strokeLineCap="ROUND" strokeWidth="10.0" />
+          <Arc fx:id="arc2" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#3bff00" strokeWidth="10.0" />
+          <Arc fx:id="arc1" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#0f00ff" strokeWidth="10.0" />
+          <Arc fx:id="arc4" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" stroke="RED" strokeWidth="10.0" />
+      <Button fx:id="b1" layoutX="125.0" layoutY="375.0" mnemonicParsing="false" onAction="#play" text="Button" />
+    </children>
+</AnchorPane>

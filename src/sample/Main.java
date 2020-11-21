@@ -36,8 +36,8 @@ public class Main extends Application
 
 //		homeScene.getStylesheets().add(getClass().getResource("homeStyle.css").toExternalForm());
 
-//		Scene gameScreen = new Scene(sample.CircleObstacle.circlePane,600,300);
-//		window.setScene(gameScreen);
+		Scene gameScreen = new Scene(sample.CircleObstacle.test1,600,300);
+		window.setScene(gameScreen);
 
 		window.setOnCloseRequest(e -> {
 			e.consume();
@@ -45,7 +45,7 @@ public class Main extends Application
 		});
 
 		window.setTitle("Color Switch");
-		window.setScene(homeScene);
+//		window.setScene(homeScene);
 		window.show();
 	}
 
