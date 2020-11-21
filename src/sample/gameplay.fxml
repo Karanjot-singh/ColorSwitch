@@ -1,18 +1,45 @@
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
 
-<VBox prefHeight="635.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-	  fx:controller="sample.GameplayController" alignment="CENTER" spacing="20" stylesheets="@homeStyle.css">
+<VBox alignment="CENTER" prefHeight="635.0" prefWidth="635.0" spacing="20" stylesheets="@homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameplayController">
 
-	<Label text="Lets play a game" fx:id="gameMsg" onMouseMoved="#msgHover"/>
+	<Label fx:id="gameMsg" onMouseMoved="#msgHover" text="Lets play a game" />
 	<Group fx:id="arcGrp">
-	<Arc fx:id="arc3" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="#feff00" strokeLineCap="ROUND" strokeWidth="10.0" />
-	<Arc fx:id="arc2" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#3bff00" strokeWidth="10.0" />
-	<Arc fx:id="arc1" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#0f00ff" strokeWidth="10.0" />
-	<Arc fx:id="arc4" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" stroke="RED" strokeWidth="10.0" />
+	<Arc fx:id="arc3" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="#feff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
+	<Arc fx:id="arc2" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#3bff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
+	<Arc fx:id="arc1" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#0f00ff" strokeMiterLimit="0.0" strokeWidth="15.0" />
+	<Arc fx:id="arc4" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" stroke="RED" strokeMiterLimit="0.0" strokeWidth="15.0" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="125.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/star2.png" />
+         </image>
+      </ImageView>
 	</Group>
-	<Button text="Go back" fx:id="backButton" onAction="#backClicked"/>
+   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../assets/colorswitcher.png" />
+      </image>
+   </ImageView>
+   <Group fx:id="arcGrp1">
+      <children>
+         <Arc fx:id="arc31" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="#feff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
+         <Arc fx:id="arc21" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#3bff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
+         <Arc fx:id="arc11" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#0f00ff" strokeMiterLimit="0.0" strokeWidth="15.0" />
+         <Arc fx:id="arc41" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" stroke="RED" strokeMiterLimit="0.0" strokeWidth="15.0" />
+         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="125.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../assets/star2.png" />
+            </image>
+         </ImageView>
+      </children>
+   </Group>
+	<Button fx:id="backButton" onAction="#backClicked" text="Go back" />
 
 </VBox>
