@@ -11,7 +11,7 @@ import javafx.stage.*;
 public class Main extends Application
 {
 	static Stage window;
-	static Scene homeScene, gameplayScene, loadGameScene, closePopupScene;  
+	static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, closePopupScene;
 
 	//static HBox gameplayPane;
 
@@ -23,6 +23,8 @@ public class Main extends Application
 		Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
 		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
 		Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
+		Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
+		Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
 		Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 
 
@@ -33,9 +35,11 @@ public class Main extends Application
 		homeScene = new Scene(homeRoot); //, 600, 300
 		gameplayScene = new Scene(gameplayRoot);
 		loadGameScene = new Scene(loadGameRoot);
+		helpScene = new Scene(helpRoot);
+		settingsScene = new Scene(settingsRoot);
 		closePopupScene = new Scene(closePopupRoot);
 
-//		homeScene.getStylesheets().add(getClass().getResource("homeStyle.css").toExternalForm());
+//		homeScene.getStylesheets().add(getClass().getResource("generalStyle.css").toExternalForm());
 
 		//Scene gameScreen = new Scene(gameplayPane,200,300,Color.BLACK);
         //primaryStage.setScene(gameScreen);
@@ -47,6 +51,7 @@ public class Main extends Application
 
 		window.setTitle("Color Switch");
 		window.setScene(homeScene);
+		window.centerOnScreen();
 		window.show();
 	}
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 
-<GridPane alignment="CENTER"  prefHeight="635.0" prefWidth="635.0" stylesheets="@homeStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+<GridPane alignment="CENTER" prefHeight="635.0" prefWidth="635.0" stylesheets="@homeStyle.css, @generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
    <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <image>
          <Image url="@logo.png" />
@@ -25,9 +25,9 @@
     <Region prefHeight="5" GridPane.rowIndex="5" />
 
     <HBox alignment="CENTER" GridPane.rowIndex="6">
-        <Circle fx:id="help" radius="20.0" strokeType="INSIDE" />
+        <Circle fx:id="help" radius="20.0" strokeType="INSIDE" onMouseClicked="#helpClicked"/>
         <Region prefWidth="15" />
-        <Circle fx:id="settings" radius="20.0" strokeType="INSIDE" />
+        <Circle fx:id="settings" radius="20.0" strokeType="INSIDE" onMouseClicked="#settingsClicked"/>
     </HBox>
 <!--   <columnConstraints>-->
 <!--      <ColumnConstraints />-->

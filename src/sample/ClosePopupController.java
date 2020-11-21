@@ -13,7 +13,7 @@ public class ClosePopupController {
 		public Button yesButton, noButton;
 		public Label confirmMsg;
 
-		static Boolean ans;
+		static Boolean ans = false;
 
 		@FXML
 		void yesClicked()
