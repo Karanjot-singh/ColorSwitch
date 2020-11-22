@@ -1,9 +1,9 @@
 package sample;
 
-public class star {
+public class Star {
 	private int scoreValue;
 
-	star(){
+	Star(){
 
 	}
 

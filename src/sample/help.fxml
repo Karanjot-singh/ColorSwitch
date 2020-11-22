@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 
-<GridPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@homeStyle.css, @generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.helpController">
+<GridPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@homeStyle.css, @generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HelpController">
    <Button fx:id="helpButton" onAction="#backClicked" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BASELINE" />
 
 </GridPane>
