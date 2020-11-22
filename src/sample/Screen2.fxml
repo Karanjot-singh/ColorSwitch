@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<GridPane alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@generalStyle.css, @gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<children>
+    <Label text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+
+    <ImageView fx:id="pauseIcon" fitHeight="66.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+        <image>
+            <Image url="@pauseIcon.png" />
+        </image>
+    </ImageView>
+    <Region prefHeight="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+
+    <Group fx:id="switchGroup" layoutX="150.0" layoutY="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+        <children>
+            <Arc fx:id="arc212" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="270.0" stroke="#e4e42c" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
+            <Arc fx:id="arc222" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="180.0" stroke="#9711ae" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
+            <Arc fx:id="arc232" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="90.0" stroke="#32d0d0" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
+            <Arc fx:id="arc242" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" stroke="#eb0d4c" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
+        </children>
+    </Group>
+    <Region prefHeight="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+
+    <Group fx:id="squareGrp" layoutX="150.0" layoutY="220.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+        <children>
+            <Line fx:id="sq1" endX="25.0" layoutX="337.0" layoutY="308.0" startX="-100.0" stroke="#e4e42c" strokeWidth="12.0" />
+            <Line fx:id="sq2" endX="25.0" layoutX="337.0" layoutY="428.0" startX="-100.0" stroke="#9711ae" strokeWidth="12.0" />
+            <Line fx:id="sq3" endX="-116.0" endY="110.0" layoutX="347.0" layoutY="318.0" startX="-116.0" startY="-10.0" stroke="#32d0d0" strokeWidth="12.0" />
+            <Line fx:id="sq4" endX="-116.0" endY="110.0" layoutX="484.0" layoutY="318.0" startX="-116.0" startY="-10.0" stroke="#eb0d4c" strokeWidth="12.0" />
+        </children>
+    </Group>
+
+    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+        <image>
+            <Image url="@../assets/star2.png" />
+        </image>
+    </ImageView>
+    <Region prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <Circle fill="#9711ae" layoutX="300.0" layoutY="558.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+          <Group fx:id="tringleGroup">
+              <children>
+      
+                  <Line fx:id="tr1" endX="56.0" layoutX="152.0" layoutY="250.0" startX="-105.0" stroke="#9711ae" strokeLineCap="ROUND" strokeWidth="12.0" />
+                  <Line fx:id="tr2" endX="-28.0" endY="-142.0" layoutX="154.0" layoutY="249.0" startX="-108.0" startY="1.0" stroke="#e4e42c" strokeLineCap="ROUND" strokeWidth="12.0" />
+                  <Line fx:id="tr3" endX="-38.0" endY="-152.0" layoutX="164.0" layoutY="259.0" startX="44.0" startY="-9.0" stroke="#eb0d4c" strokeLineCap="ROUND" strokeWidth="12.0" />
+      
+              </children>
+          </Group>
+      
+          <ImageView fitHeight="40.0" fitWidth="40.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@../assets/star2.png" />
+              </image>
+          </ImageView>
+         </children>
+      </StackPane>
+
+
+    <!--      <Button fx:id="backButton" layoutX="485.0" layoutY="27.0" onAction="#backClicked" text="Go back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />-->
+</children>
+<columnConstraints>
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints />
+      <ColumnConstraints />
+</columnConstraints>
+<rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+</rowConstraints>
+</GridPane>
