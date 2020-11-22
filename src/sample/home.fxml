@@ -8,40 +8,62 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Circle?>
 
-<GridPane alignment="CENTER" prefHeight="635.0" prefWidth="635.0" stylesheets="@homeStyle.css, @generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
-   <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
-      <image>
-         <Image url="@logo.png" />
-      </image>
-   </ImageView>
-    <Region prefHeight="20" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+<GridPane alignment="CENTER" prefHeight="640.0" prefWidth="500.0" stylesheets="@homeStyle.css, @generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+	<ImageView fx:id="titleLogo" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+		<Image url="@logo.png" />
+	</ImageView>
+	<Region prefHeight="25" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-    <Button fx:id="newGameButton" onAction="#newGameClicked" text="New Game" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
-    <Button fx:id="loadGameButton" onAction="#loadGameClicked" text="Load Game" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
-    <Button fx:id="exitButton" onAction="#exitClicked" text="Exit" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BASELINE" />
+	<Button fx:id="newGameButton" onAction="#newGameClicked" text="New Game" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BASELINE" />
+	<Button fx:id="loadGameButton" onAction="#loadGameClicked" text="Load Game" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BASELINE" />
+	<Button fx:id="exitButton" onAction="#exitClicked" text="Exit" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BASELINE" />
 
-    <Region prefHeight="5" GridPane.rowIndex="5" />
+	<Region prefHeight="5" GridPane.rowIndex="5" />
 
-    <HBox alignment="CENTER" GridPane.rowIndex="6">
-        <Circle fx:id="help" radius="20.0" strokeType="INSIDE" onMouseClicked="#helpClicked"/>
-        <Region prefWidth="15" />
-        <Circle fx:id="settings" radius="20.0" strokeType="INSIDE" onMouseClicked="#settingsClicked"/>
-    </HBox>
-<!--   <columnConstraints>-->
-<!--      <ColumnConstraints />-->
-<!--   </columnConstraints>-->
-<!--   <rowConstraints>-->
-<!--      <RowConstraints />-->
-<!--      <RowConstraints />-->
-<!--      <RowConstraints />-->
-<!--      <RowConstraints />-->
-<!--      <RowConstraints />-->
-<!--      <RowConstraints />-->
-<!--      <RowConstraints />-->
-<!--   </rowConstraints>-->
-    <!--   <Circle fx:id="help" radius="28.0"  strokeType="INSIDE" GridPane.rowIndex="4" />-->
-    <!--   <Circle fx:id="settings" radius="28.0" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />-->
+	<HBox alignment="CENTER" GridPane.rowIndex="6">
+		<children>
+			<ImageView fx:id="helpIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#helpClicked">
+				<Image url="@helpIcon.png" />
+			</ImageView>
+
+			<Region prefWidth="40" />
+
+			<ImageView fx:id="settingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#settingsClicked">
+				<Image url="@settingsIcon.png" />
+			</ImageView>
+		</children></HBox>
+	<!--   <columnConstraints>-->
+	<!--      <ColumnConstraints />-->
+	<!--   </columnConstraints>-->
+	<!--   <rowConstraints>-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--   </rowConstraints>-->
+
+	<!--    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" image="@settingsIcon.png">-->
+
+	<!--    </ImageView>-->
+	<!--   <columnConstraints>-->
+	<!--      <ColumnConstraints />-->
+	<!--   </columnConstraints>-->
+	<!--   <rowConstraints>-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--      <RowConstraints />-->
+	<!--   </rowConstraints>-->
+	<!--   <Circle fx:id="help" radius="28.0"  strokeType="INSIDE" GridPane.rowIndex="4" />-->
+	<!--   <Circle fx:id="settings" radius="28.0" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="4" />-->
 
 </GridPane>

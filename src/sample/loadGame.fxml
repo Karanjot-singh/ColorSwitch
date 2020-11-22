@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.LoadGameController"
-            prefHeight="300.0" prefWidth="200.0" alignment="CENTER" stylesheets="@generalStyle.css, @loadGameStyle.css">
+	  prefHeight="640.0" prefWidth="500.0" alignment="CENTER" stylesheets="@generalStyle.css, @loadGameStyle.css">
 
-    <Label text="You don't have any saved games." fx:id="loadLabel" />
-    <Region prefHeight="20" />
-    <Button text="Back to home" fx:id="closeButton" onMouseClicked="#closeClicked"/>
+	<Label text="You don't have any saved games." fx:id="loadLabel" />
+	<Region prefHeight="20" />
+	<Button text="Back to home" fx:id="backButton" onMouseClicked="#backClicked"/>
 
 </VBox>

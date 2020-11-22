@@ -2,12 +2,15 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
+import javafx.scene.image.ImageView;
 
 public class HomeController {
 
-    public Button newGameButton, loadGameButton, exitButton;
+    @FXML
+    Button newGameButton, loadGameButton, exitButton;
+
+    @FXML
+    ImageView titleLogo, helpIcon, settingsIcon;
 
     @FXML
     void newGameClicked() {
@@ -16,8 +19,8 @@ public class HomeController {
 
     @FXML
     void loadGameClicked() {
-        LoadGameController.display();
-//        Main.window.setScene
+//        LoadGameController.display();
+        Main.window.setScene(Main.loadGameScene);
     }
 
     @FXML
@@ -27,12 +30,12 @@ public class HomeController {
 
 	@FXML
 	void settingsClicked() {
-		settingsController.display();
+		SettingsController.display();
     }
 
 	@FXML
 	void helpClicked() {
-		helpController.display();
+		HelpController.display();
     }
 
 }

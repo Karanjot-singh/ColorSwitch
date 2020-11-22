@@ -3,7 +3,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.Group?>
 
-<VBox prefHeight="635.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+<VBox prefHeight="640.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
 	  fx:controller="sample.GameplayController" alignment="CENTER" spacing="20" stylesheets="@generalStyle.css, @gameplayStyle.css">
 
 	<Label text="Lets play a game" fx:id="gameMsg" onMouseMoved="#msgHover"/>

@@ -28,8 +28,8 @@ public class Main extends Application
 		Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 
 
-    	//new Game();
-    	//gameplayPane = new HBox(30);
+		//new Game();
+		//gameplayPane = new HBox(30);
 
 
 		homeScene = new Scene(homeRoot); //, 600, 300
@@ -42,7 +42,7 @@ public class Main extends Application
 //		homeScene.getStylesheets().add(getClass().getResource("generalStyle.css").toExternalForm());
 
 		//Scene gameScreen = new Scene(gameplayPane,200,300,Color.BLACK);
-        //primaryStage.setScene(gameScreen);
+		//primaryStage.setScene(gameScreen);
 
 		window.setOnCloseRequest(e -> {
 			e.consume();

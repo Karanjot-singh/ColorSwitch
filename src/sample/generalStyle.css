@@ -1,13 +1,13 @@
 GridPane, VBox, HBox {
-    -fx-background-color : #1a1a1a;
-    /*-fx-pref-height: 635;*/
-    /*-fx-pref-width: 635;*/
+	-fx-background-color : #1a1a1a;
+	/*-fx-pref-height: 635;*/
+	/*-fx-pref-width: 635;*/
 }
 
 .label{
-    -fx-text-fill: #e3e3e3;
-    -fx-font-family:"Ubuntu Light";
-    -fx-font-size: 15;
+	-fx-text-fill: #e3e3e3;
+	-fx-font-family:"Ubuntu Light";
+	-fx-font-size: 15;
 }
 
 /*#homeLabel{*/
@@ -23,22 +23,22 @@ GridPane, VBox, HBox {
 /*}*/
 
 .button {
-    -fx-background-color:#1a1a1a;
-    -fx-background-radius: 10;
-    /*-fx-padding: 7px;*/
+	-fx-background-color:#1a1a1a;
+	-fx-background-radius: 10;
+	/*-fx-padding: 7px;*/
 
-    /*-fx-pref-width: 150;*/
-    /*-fx-pref-height: 40;*/
+	/*-fx-pref-width: 150;*/
+	/*-fx-pref-height: 40;*/
 
-    -fx-font-family:"Ubuntu Light";
-    -fx-text-fill:#e3e3e3;
-    -fx-border-color: #e3e3e3;
-    -fx-border-radius: 10;
-    -fx-border-width: 2;
+	-fx-font-family:"Ubuntu Light";
+	-fx-text-fill:#e3e3e3;
+	-fx-border-color: #e3e3e3;
+	-fx-border-radius: 10;
+	-fx-border-width: 2;
 
-    /*-fx-font-size:20;*/
+	/*-fx-font-size:20;*/
 
-    -fx-cursor:hand;
+	-fx-cursor:hand;
 }
 
 /*.button:pressed{*/
@@ -49,7 +49,9 @@ GridPane, VBox, HBox {
 /*}*/
 
 .button:hover{
-    -fx-text-fill: #2f84c1;
-    /*-fx-background-color: #006398;*/
-    -fx-border-color: #2f84c1;
+	-fx-text-fill: #2f84c1;
+	/*-fx-background-color: #006398;*/
+	-fx-border-color: #2f84c1;
+	/*-fx-effect: dropshadow(gaussian, black, 10, 0.1, 0, 0);*/
+
 }

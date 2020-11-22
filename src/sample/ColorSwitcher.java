@@ -2,10 +2,10 @@ package sample;
 
 import javafx.scene.paint.Color;
 
-public class colorSwitcher implements Rotation {
+public class ColorSwitcher implements Rotation {
 	private Color[] currentTheme;
 
-	colorSwitcher(){
+	ColorSwitcher(){
 
 	}
 
