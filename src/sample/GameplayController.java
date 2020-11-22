@@ -27,9 +27,9 @@ public class GameplayController implements Initializable {
     public Button backButton;
     public Label gameMsg;
     @FXML
-    Arc arc11,arc12,arc13,arc14,arc21,arc22,arc23,arc24;
+    Arc arc11,arc12,arc13,arc14,arc21,arc22,arc23,arc24,arc212,arc222,arc232,arc242;
     @FXML
-    Group arcGrp,arcGrp2;
+    Group arcGrp1,arcGrp2,switchGroup;
 
     public void backClicked() {
         Main.window.setScene(Main.homeScene);
@@ -39,16 +39,15 @@ public class GameplayController implements Initializable {
         gameMsg.setText("GAME OVER!");
     }
 
-    public void rotate(Arc arc) {
-        RotateTransition rotation = new RotateTransition(Duration.seconds(50), arc);
+    public void rotate(Group g) {
+        RotateTransition rotation = new RotateTransition(Duration.seconds(25), g);
 
 //		rotation.setAutoReverse(direction);
         rotation.setDelay(Duration.seconds(0));
 //		rotation.setAxis(new Point3D(100,100,100));
         rotation.setCycleCount(500);
-//        rotation.setAxis(Rotate.Z_AXIS);
-        rotation.setAxis(new Point3D(80,80,80));
-        rotation.setByAngle(90);
+        rotation.setAxis(Rotate.Z_AXIS);
+        rotation.setByAngle(360);
         rotation.setRate(5);
 //        rotation.
 
@@ -59,14 +58,30 @@ public class GameplayController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        rotate(arc11);
-//        rotate(arc12);
-//        rotate(arc13);
-//        rotate(arc14);
-//        rotate(arc21);
-//        rotate(arc22);
-//        rotate(arc23);
-//        rotate(arc24);
+        arc212.setFill(Color.web("#e4e42c"));
+        arc222.setFill(Color.web("#9711ae"));
+        arc232.setFill(Color.web("#32d0d0"));
+        arc242.setFill(Color.web("#eb0d4c"));
+        rotate(arcGrp1);
+
 
     }
 }
+//
+//    public void rotate(Arc arc) {
+//        RotateTransition rotation = new RotateTransition(Duration.seconds(Duration.INDEFINITE.toMinutes()), arc);
+//
+////		rotation.setAutoReverse(direction);
+//        rotation.setDelay(Duration.seconds(0));
+////		rotation.setAxis(new Point3D(100,100,100));
+//        rotation.setCycleCount(500);
+////        rotation.setAxis(Rotate.Z_AXIS);
+//        rotation.setAxis(new Point3D(80,80,80));
+//        rotation.setByAngle(90);
+//        rotation.setRate(30);
+////        rotation.
+//
+//        rotation.setInterpolator(Interpolator.LINEAR);
+//        rotation.play();
+//
+//    }

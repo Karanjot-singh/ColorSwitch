@@ -1,4 +1,4 @@
-GridPane, VBox, HBox {
+GridPane, VBox, HBox, Pane {
 	-fx-background-color : #1a1a1a;
 	/*-fx-pref-height: 635;*/
 	/*-fx-pref-width: 635;*/
