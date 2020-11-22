@@ -39,18 +39,16 @@ public class GameplayController implements Initializable {
         gameMsg.setText("GAME OVER!");
     }
 
-    public void rotate(Group g) {
+    public void rotate(Group g, double delay) {
         RotateTransition rotation = new RotateTransition(Duration.seconds(25), g);
 
 //		rotation.setAutoReverse(direction);
-        rotation.setDelay(Duration.seconds(0));
+        rotation.setDelay(Duration.seconds(delay));
 //		rotation.setAxis(new Point3D(100,100,100));
         rotation.setCycleCount(500);
         rotation.setAxis(Rotate.Z_AXIS);
         rotation.setByAngle(360);
         rotation.setRate(5);
-//        rotation.
-
         rotation.setInterpolator(Interpolator.LINEAR);
         rotation.play();
 
@@ -62,7 +60,9 @@ public class GameplayController implements Initializable {
         arc222.setFill(Color.web("#9711ae"));
         arc232.setFill(Color.web("#32d0d0"));
         arc242.setFill(Color.web("#eb0d4c"));
-        rotate(arcGrp1);
+        rotate(arcGrp1,0);
+        rotate(arcGrp2,0.3);
+        rotate(switchGroup,0);
 
 
     }
