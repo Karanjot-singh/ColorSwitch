@@ -4,3 +4,12 @@
 	/*-fx-pref-height: 40;*/
 	-fx-font-size:18;
 }
+
+.label {
+	-fx-font-family: Ubuntu;
+	-fx-font-size: 50;
+}
+
+#pauseIcon:hover {
+	-fx-cursor: hand;
+}

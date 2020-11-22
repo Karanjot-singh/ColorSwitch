@@ -1,0 +1,15 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.PausePopupController"
+			prefHeight="500.0" prefWidth="200.0" alignment="CENTER" spacing="20" stylesheets="@generalStyle.css, @pausePopupStyle.css">
+
+	<Label text="Game Paused" fx:id="pauseMsg" />
+
+	<Button text="Resume" fx:id="resumeButton" onMouseClicked="#resumeClicked" />
+	<Button text="Save and quit" fx:id="saveButton" onMouseClicked="#saveClicked" />
+	<Button text="Quit" fx:id="quitButton" onMouseClicked="#quitClicked"/>
+
+
+
+</VBox>

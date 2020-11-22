@@ -12,6 +12,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -24,19 +26,24 @@ import java.util.ResourceBundle;
 
 public class GameplayController implements Initializable {
 
-    public Button backButton;
-    public Label gameMsg;
+//    @FXML
+//    Button backButton;
+
+    @FXML
+    ImageView pauseIcon;
+
     @FXML
     Arc arc11,arc12,arc13,arc14,arc21,arc22,arc23,arc24,arc212,arc222,arc232,arc242;
     @FXML
     Group arcGrp1,arcGrp2,switchGroup;
 
-    public void backClicked() {
-        Main.window.setScene(Main.homeScene);
+    @FXML
+    void pauseClicked(MouseEvent mouseEvent) {
+        PausePopupController.display();
     }
 
-    public void msgHover() {
-        gameMsg.setText("GAME OVER!");
+    public void backClicked() {
+        Main.window.setScene(Main.homeScene);
     }
 
     public void rotate(Group g, double delay) {
@@ -61,7 +68,7 @@ public class GameplayController implements Initializable {
         arc232.setFill(Color.web("#32d0d0"));
         arc242.setFill(Color.web("#eb0d4c"));
         rotate(arcGrp1,0);
-        rotate(arcGrp2,0.3);
+        rotate(arcGrp2,0.7);
         rotate(switchGroup,0);
 
 

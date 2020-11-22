@@ -11,7 +11,7 @@ import javafx.stage.*;
 public class Main extends Application
 {
 	static Stage window;
-	static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, closePopupScene;
+	static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene;
 
 	//static HBox gameplayPane;
 
@@ -25,6 +25,7 @@ public class Main extends Application
 		Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
 		Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
 		Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
+		Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
 		Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 
 
@@ -38,6 +39,7 @@ public class Main extends Application
 		helpScene = new Scene(helpRoot);
 		settingsScene = new Scene(settingsRoot);
 		closePopupScene = new Scene(closePopupRoot);
+		pausePopupScene = new Scene(pausePopupRoot);
 
 //		homeScene.getStylesheets().add(getClass().getResource("generalStyle.css").toExternalForm());
 
