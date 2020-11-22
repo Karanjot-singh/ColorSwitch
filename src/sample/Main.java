@@ -25,7 +25,6 @@ public class Main extends Application {
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
-//        startGameMusic();
         homeScene = new Scene(homeRoot); //, 600, 300
         gameplayScene = new Scene(gameplayRoot);
         loadGameScene = new Scene(loadGameRoot);
@@ -39,7 +38,7 @@ public class Main extends Application {
             e.consume();
             closeProgram();
         });
-        startGameMusic();
+//        startGameMusic();
         window.setTitle("Color Switch");
         window.setScene(homeScene);
         window.centerOnScreen();
