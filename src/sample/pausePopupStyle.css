@@ -1,0 +1,14 @@
+/*.button {*/
+/*	 -fx-padding: 7px 15px;*/
+/*	 -fx-pref-width: 150;*/
+/*	 !*-fx-pref-height: 40;*!*/
+/*	 -fx-font-size:18;*/
+/* }*/
+
+.button {
+	-fx-padding: 7px 15px;
+	-fx-pref-width: 130;
+	-fx-pref-height: 30;
+	-fx-font-size:15;
+}
+
