@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class SettingsController {
 
 	@FXML
-	Button orbButton, trailButton, backButton;
+	Button orbButton, trailButton, backButton, themeButton;
 
 	@FXML
 	Label title;
