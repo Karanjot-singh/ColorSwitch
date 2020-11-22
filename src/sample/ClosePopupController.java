@@ -13,7 +13,7 @@ public class ClosePopupController {
 		public Button yesButton, noButton;
 		public Label confirmMsg;
 
-		static Boolean ans= false;
+		static Boolean ans = false;
 
 		@FXML
 		void yesClicked()
@@ -34,9 +34,12 @@ public class ClosePopupController {
 
 			//Block events to other windows
 			window.initModality(Modality.APPLICATION_MODAL);
+			window.initOwner(Main.window);
 			window.setTitle("Exit program");
-			window.setMinWidth(250);
-			window.setMinHeight(100);
+			window.setWidth(270);
+			window.setHeight(150);
+			window.centerOnScreen();
+			window.setResizable(false);
 
 			//Display window and wait for it to be closed before returning
 			scene = Main.closePopupScene;
