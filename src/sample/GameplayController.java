@@ -1,4 +1,5 @@
 package sample;
+
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.collections.ObservableList;
@@ -23,49 +24,49 @@ import java.util.ResourceBundle;
 
 public class GameplayController implements Initializable {
 
-	public Button backButton;
-	public Label gameMsg;
-	@FXML
-	Arc arc1, arc2, arc3, arc4;
-	@FXML
-	Group arcGrp;
+    public Button backButton;
+    public Label gameMsg;
+    @FXML
+    Arc arc11,arc12,arc13,arc14,arc21,arc22,arc23,arc24;
+    @FXML
+    Group arcGrp,arcGrp2;
 
-	static boolean direction = true;
-	static int angle = 360;
-	static int duration = 50;
+    public void backClicked() {
+        Main.window.setScene(Main.homeScene);
+    }
 
-	public void backClicked()
-	{
-		Main.window.setScene(Main.homeScene);
-	}
+    public void msgHover() {
+        gameMsg.setText("GAME OVER!");
+    }
 
-	public void msgHover()
-	{
-		gameMsg.setText("GAME OVER!");
-	}
-
-	public static void rotate(Arc arc) {
-		RotateTransition rotation = new RotateTransition(Duration.seconds(duration), arc);
+    public void rotate(Arc arc) {
+        RotateTransition rotation = new RotateTransition(Duration.seconds(50), arc);
 
 //		rotation.setAutoReverse(direction);
-		rotation.setDelay(Duration.seconds(0));
+        rotation.setDelay(Duration.seconds(0));
 //		rotation.setAxis(new Point3D(100,100,100));
-		rotation.setCycleCount(500);
-        rotation.setAxis(Rotate.Z_AXIS);
-		rotation.setByAngle(angle);
-		rotation.setRate(50);
+        rotation.setCycleCount(500);
+//        rotation.setAxis(Rotate.Z_AXIS);
+        rotation.setAxis(new Point3D(80,80,80));
+        rotation.setByAngle(90);
+        rotation.setRate(5);
+//        rotation.
 
         rotation.setInterpolator(Interpolator.LINEAR);
-		rotation.play();
+        rotation.play();
 
-	}
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-//		rotate(arcGrp);
-		rotate(arc1);
-		rotate(arc2);
-		rotate(arc3);
-		rotate(arc4);
-	}
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        rotate(arc11);
+//        rotate(arc12);
+//        rotate(arc13);
+//        rotate(arc14);
+//        rotate(arc21);
+//        rotate(arc22);
+//        rotate(arc23);
+//        rotate(arc24);
+
+    }
 }

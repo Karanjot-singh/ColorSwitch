@@ -37,9 +37,6 @@ public class Main extends Application
 
 //		homeScene.getStylesheets().add(getClass().getResource("homeStyle.css").toExternalForm());
 
-		//Scene gameScreen = new Scene(gameplayPane,200,300,Color.BLACK);
-        //primaryStage.setScene(gameScreen);
-
 		window.setOnCloseRequest(e -> {
 			e.consume();
 			closeProgram();

@@ -8,32 +8,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Arc?>
 
-<VBox alignment="CENTER" prefHeight="635.0" prefWidth="635.0" spacing="20" stylesheets="@homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameplayController">
+<VBox alignment="CENTER" prefHeight="635.0" prefWidth="635.0" spacing="40" stylesheets="@homeStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameplayController">
 
 	<Label fx:id="gameMsg" onMouseMoved="#msgHover" text="Lets play a game" />
-	<Group fx:id="arcGrp">
-	<Arc fx:id="arc3" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="#feff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
-	<Arc fx:id="arc2" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#3bff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
-	<Arc fx:id="arc1" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#0f00ff" strokeMiterLimit="0.0" strokeWidth="15.0" />
-	<Arc fx:id="arc4" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" stroke="RED" strokeMiterLimit="0.0" strokeWidth="15.0" />
-      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="125.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/star2.png" />
-         </image>
-      </ImageView>
-	</Group>
+   <Group fx:id="arcGrp">
+      <children>
+         <Arc fx:id="arc11" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="270.0" stroke="#feff00" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <Arc fx:id="arc12" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="180.0" stroke="#3bff00" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <Arc fx:id="arc13" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="90.0" stroke="#0f00ff" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <Arc fx:id="arc14" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" stroke="RED" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../assets/star2.png" />
+            </image>
+         </ImageView>
+      </children>
+   </Group>
    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../assets/colorswitcher.png" />
       </image>
    </ImageView>
-   <Group fx:id="arcGrp1">
+   <Group fx:id="arcGrp2" layoutX="178.0" layoutY="190.0">
       <children>
-         <Arc fx:id="arc31" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="270.0" stroke="#feff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
-         <Arc fx:id="arc21" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="#3bff00" strokeMiterLimit="0.0" strokeWidth="15.0" />
-         <Arc fx:id="arc11" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" startAngle="90.0" stroke="#0f00ff" strokeMiterLimit="0.0" strokeWidth="15.0" />
-         <Arc fx:id="arc41" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="85.0" radiusX="100.0" radiusY="100.0" stroke="RED" strokeMiterLimit="0.0" strokeWidth="15.0" />
-         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="125.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <Arc fx:id="arc21" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="270.0" stroke="#feff00" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <Arc fx:id="arc22" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="180.0" stroke="#3bff00" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <Arc fx:id="arc23" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="90.0" stroke="#0f00ff" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <Arc fx:id="arc24" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" stroke="RED" strokeMiterLimit="0.0" strokeWidth="12.0" />
+         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="130.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../assets/star2.png" />
             </image>
