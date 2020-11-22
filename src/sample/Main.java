@@ -25,7 +25,7 @@ public class Main extends Application {
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
-        startGameMusic();
+//        startGameMusic();
         homeScene = new Scene(homeRoot); //, 600, 300
         gameplayScene = new Scene(gameplayRoot);
         loadGameScene = new Scene(loadGameRoot);
@@ -47,12 +47,12 @@ public class Main extends Application {
     }
 
     void startGameMusic() {
-        Media backgroundMusic = new Media(getClass().getResource("/assets/music.mp3").toString());
+        Media backgroundMusic = new Media(getClass().getResource("/assets/music.wav").toString());
         mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setStartTime(Duration.seconds(0));
-        mediaPlayer.setStopTime(Duration.seconds(183));
+        mediaPlayer.setStopTime(Duration.seconds(30));
         mediaPlayer.play();
     }
 
