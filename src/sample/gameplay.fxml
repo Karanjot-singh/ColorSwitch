@@ -19,7 +19,7 @@
 
       <ImageView fx:id="pauseIcon" fitHeight="66.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" onMouseClicked="#pauseClicked">
          <image>
-            <Image url="@pauseIcon.png" />
+            <Image url="@../assets/pauseIcon.png" />
          </image>
       </ImageView>
 
@@ -33,7 +33,7 @@
       </Group>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="280.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <image>
-            <Image url="@../assets/star2.png" />
+            <Image url="@../assets/starIcon.png" />
          </image>
       </ImageView>
       <Region prefHeight="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
@@ -60,7 +60,7 @@
 
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
          <image>
-            <Image url="@../assets/star2.png" />
+            <Image url="@../assets/starIcon.png" />
          </image>
       </ImageView>
       <Region prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />

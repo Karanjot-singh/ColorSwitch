@@ -24,13 +24,13 @@
 	<HBox alignment="CENTER" GridPane.rowIndex="6">
 		<children>
 			<ImageView fx:id="helpIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#helpClicked">
-				<Image url="@helpIcon.png" />
+				<Image url="@../assets/helpIcon.png" />
 			</ImageView>
 
 			<Region prefWidth="40" />
 
 			<ImageView fx:id="settingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#settingsClicked">
-				<Image url="@settingsIcon.png" />
+				<Image url="@../assets/settingsIcon.png" />
 			</ImageView>
 		</children></HBox>
 	<!--   <columnConstraints>-->
