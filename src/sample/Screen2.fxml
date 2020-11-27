@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<GridPane alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@generalStyle.css, @gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@../stylesheets/generalStyle.css, @../stylesheets/gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 <children>
     <Label text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
 

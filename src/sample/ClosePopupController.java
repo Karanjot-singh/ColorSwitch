@@ -35,6 +35,7 @@ public class ClosePopupController {
 			//Block events to other windows
 			window.initModality(Modality.APPLICATION_MODAL);
 			window.initOwner(Main.window);
+			window.initStyle(StageStyle.TRANSPARENT);
 			window.setTitle("Exit program");
 			window.setWidth(270);
 			window.setHeight(150);

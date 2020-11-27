@@ -19,6 +19,11 @@ public class SettingsController {
 	static Stage window;
 	static Scene scene;
 
+	@FXML
+	void backClicked(MouseEvent mouseEvent) {
+		window.close();
+	}
+
 	public static void display() {
 		window = new Stage();
 
@@ -34,9 +39,5 @@ public class SettingsController {
 		scene = Main.settingsScene;
 		window.setScene(scene);
 		window.showAndWait();
-	}
-
-	public void backClicked(MouseEvent mouseEvent) {
-		window.close();
 	}
 }

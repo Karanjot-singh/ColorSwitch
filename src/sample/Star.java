@@ -1,11 +1,21 @@
 package sample;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.image.ImageView;
+
+import java.io.IOException;
+
 public class Star {
+	@FXML
+	ImageView starIcon;
+
 	private int scoreValue;
 
-	Star(){
-
-	}
+//	Star(){
+//
+//	}
 
 	public int getScoreValue() {
 		return scoreValue;
@@ -17,5 +27,9 @@ public class Star {
 
 	void explodeAnimation(){
 
+	}
+
+	public static ImageView get() throws IOException {
+		return FXMLLoader.load(Star.class.getResource("star.fxml"));
 	}
 }
