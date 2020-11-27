@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" prefHeight="640.0" prefWidth="500.0" stylesheets="@homeStyle.css, @generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+<GridPane alignment="CENTER" prefHeight="640.0" prefWidth="500.0" stylesheets="@/stylesheets/homeStyle.css, @/stylesheets/generalStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
 	<ImageView fx:id="titleLogo" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
-		<Image url="@logo.png" />
+		<Image url="@../assets/logo.png" />
 	</ImageView>
 	<Region prefHeight="25" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 

@@ -1,79 +1,59 @@
 package sample;
 
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
-import javafx.geometry.Point3D;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
-
+import javafx.scene.layout.GridPane;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameplayController implements Initializable {
 
-//    @FXML
-//    Button backButton;
+	@FXML
+	GridPane grid;
 
-    @FXML
-    ImageView pauseIcon;
+	@FXML
+	ImageView pauseIcon;
 
-    @FXML
-    Arc arc11,arc12,arc13,arc14,arc21,arc22,arc23,arc24,arc212,arc222,arc232,arc242;
-    @FXML
-    Group arcGrp1,arcGrp2,switchGroup;
+	@FXML
+	Label score;
 
-    @FXML
-    void pauseClicked(MouseEvent mouseEvent) {
-        PausePopupController.display();
-    }
+	@FXML
+	void pauseClicked(MouseEvent mouseEvent) {
+	    PausePopupController.display();
+	}
 
-    public void backClicked() {
-        Main.window.setScene(Main.homeScene);
-    }
+	@FXML
+	void backClicked(MouseEvent mouseEvent) {
+	    Main.window.setScene(Main.homeScene);
+	}
 
-    public void rotate(Group g, double delay) {
-        RotateTransition rotation = new RotateTransition(Duration.seconds(25), g);
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//		rotation.setAutoReverse(direction);
-        rotation.setDelay(Duration.seconds(delay));
-//		rotation.setAxis(new Point3D(100,100,100));
-        rotation.setCycleCount(500);
-        rotation.setAxis(Rotate.Z_AXIS);
-        rotation.setByAngle(360);
-        rotation.setRate(5);
-        rotation.setInterpolator(Interpolator.LINEAR);
-        rotation.play();
+		try {
+			addObstacles();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-    }
+	}
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        arc212.setFill(Color.web("#e4e42c"));
-        arc222.setFill(Color.web("#9711ae"));
-        arc232.setFill(Color.web("#32d0d0"));
-        arc242.setFill(Color.web("#eb0d4c"));
-        rotate(arcGrp1,0);
-        rotate(arcGrp2,0.7);
-        rotate(switchGroup,0);
-
-
-    }
+	public void addObstacles() throws IOException {
+//		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
+		grid.add(CircleObstacle.get(), 1, 1);
+		grid.add(CircleObstacle.get(), 1, 5);
+		grid.add(ColorSwitcher.get(), 1, 3);
+		grid.add(Star.get(), 1,1);
+		grid.add(Star.get(), 1,5);
+	}
 }
+
+
+
 //
 //    public void rotate(Arc arc) {
 //        RotateTransition rotation = new RotateTransition(Duration.seconds(Duration.INDEFINITE.toMinutes()), arc);

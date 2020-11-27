@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 
 <?import javafx.scene.control.Label?>
-<GridPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@generalStyle.css, @helpStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HelpController">
+<GridPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/helpStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HelpController">
 
    <Label text="HOW TO PLAY?" fx:id="helpTitle" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
    <Label text="Made by:" fx:id="credit1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />

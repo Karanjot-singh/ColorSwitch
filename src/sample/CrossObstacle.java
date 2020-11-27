@@ -1,16 +1,28 @@
 package sample;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 
-public class CrossObstacle extends Obstacle {
+import java.io.IOException;
 
+public class CrossObstacle {
 
-    public CrossObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-        super(currentTheme, stroke, duration, angle, velocity);
+    @FXML
+    Group crossGrp;
+
+    public static Group get() throws IOException {
+        return FXMLLoader.load(CrossObstacle.class.getResource("crossObstacle.fxml"));
     }
 
-    @Override
-    public void scaleSize(int scale){
 
-    }
+//    public CrossObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
+//        super(currentTheme, stroke, duration, angle, velocity);
+//    }
+
+//    @Override
+//    public void scaleSize(int scale){
+//
+//    }
 }
