@@ -1,5 +1,6 @@
 GridPane, VBox, HBox, AnchorPane {
 	-fx-background-color : #1a1a1a;
+	/*-fx-border-color: Green;*/
 	/*-fx-pref-height: 635;*/
 	/*-fx-pref-width: 635;*/
 }

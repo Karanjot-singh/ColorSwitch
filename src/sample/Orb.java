@@ -1,6 +1,6 @@
 package sample;
 
-public class Orb implements Rotation {
+public class Orb {
 	private int color;
 	private String shape;
 	private String trail;

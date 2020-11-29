@@ -17,7 +17,7 @@ public class Game {
     Game() {
 
         currentTheme = new Color[]{Color.BLUE, Color.YELLOW, Color.RED, Color.GREEN};
-        CircleObstacle obs = new CircleObstacle(currentTheme, 5, 600, 90, 10);
+//        CircleObstacle obs = new CircleObstacle(currentTheme, 5, 600, 90, 10);
 //        Main.gameplayPane.getChildren().add(playRegion);
     }
 

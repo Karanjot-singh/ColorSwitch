@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -18,20 +19,20 @@ public class PausePopupController {
 		static Boolean ans = false;
 
 		@FXML
-		void resumeClicked()
+		void resumeClicked(MouseEvent mouseEvent)
 		{
 			window.close();
 		}
 
 		@FXML
-		void saveClicked()
+		void saveClicked(MouseEvent mouseEvent)
 		{
 			Main.window.setScene(Main.homeScene);
 			window.close();
 		}
 
 		@FXML
-		void quitClicked()
+		void quitClicked(MouseEvent mouseEvent)
 		{
 			Main.window.setScene(Main.homeScene);
 			window.close();
