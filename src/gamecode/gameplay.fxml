@@ -13,6 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.VBox?>
 <GridPane fx:id="grid" alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.GameplayController">
 	<children>
 		<Label fx:id="score" text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
@@ -22,6 +23,10 @@
 				<Image url="@../assets/pauseIcon.png" />
 			</image>
 		</ImageView>
+
+<!--		<VBox fx:id="gameColumn" alignment="CENTER" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="7">-->
+
+<!--		</VBox>-->
 
 		<!--      <Group fx:id="arcGrp1" layoutX="150.0" layoutY="-60.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">-->
 		<!--         <children>-->
