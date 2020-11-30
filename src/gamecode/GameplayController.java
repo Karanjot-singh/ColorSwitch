@@ -15,6 +15,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
@@ -93,6 +95,10 @@ public class GameplayController implements Initializable {
 		gameColumn.setAlignment(Pos.CENTER);
 
 		grid.add(gameColumn, 1, 0, 1, 6);
+
+		Circle c1 = new Circle(10);
+		c1.setFill(Color.BLUEVIOLET);
+		grid.add(c1,1,7);
 
 //		grid.add(g1, 1, 1);
 //		grid.add(CircleObstacle.get(), 1, 5);
