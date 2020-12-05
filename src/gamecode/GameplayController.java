@@ -26,8 +26,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameplayController implements Initializable {
-
-//	static Scene gameplayScene;
+//	Orb player = null;
+	//	static Scene gameplayScene;
 	@FXML
 	GridPane grid;
 
@@ -53,7 +53,7 @@ public class GameplayController implements Initializable {
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
 //		gameplayScene = new Scene(Main.gameplayRoot);
-
+//		player = new Orb();
 		try {
 			addObstacles();
 		} catch (IOException e) {
@@ -73,7 +73,7 @@ public class GameplayController implements Initializable {
 
 	public void addObstacles() throws IOException {
 //		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
-		CircleObstacle circle = new CircleObstacle();
+//		CircleObstacle circle = new CircleObstacle();
 		ColorSwitcher colorSwitcher = new ColorSwitcher();
 		/*
 		GAME LOOP
@@ -92,7 +92,7 @@ public class GameplayController implements Initializable {
 		root[ orb,sub=[children]]
 		 */
 		gameColumn = new VBox();
-		gameColumn.getChildren().addAll(circle.getFXML(),colorSwitcher.getFXML(),colorSwitcher.getFXML());
+//		gameColumn.getChildren().addAll(circle.getFXML(),colorSwitcher.getFXML(),colorSwitcher.getFXML());
 		gameColumn.setSpacing(40);
 		gameColumn.setAlignment(Pos.CENTER);
 
@@ -150,6 +150,7 @@ public class GameplayController implements Initializable {
 		timeline.setAutoReverse(false);
 		timeline.play();
 	}
+
 
 }
 
