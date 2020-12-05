@@ -46,11 +46,6 @@ public class Objects extends Application {
             colorSwitcher.getChildren().add(arc);
         }
         //Orb
-//        public Circle( double centerX, double centerY, double radius, Paint fill)
-//                <Circle fill = "#9711ae" layoutX = "300.0" layoutY = "558.0" radius = "10.0" stroke = "BLACK"
-//        strokeType = "INSIDE"
-//        GridPane.columnIndex = "1" GridPane.halignment = "CENTER" GridPane.rowIndex = "7"
-//        GridPane.valignment = "CENTER" / >
         Group orb = new Group();
         Circle player = new Circle(300, 560, 10);
         Random ran = new Random();
@@ -62,14 +57,32 @@ public class Objects extends Application {
 
         //Square Obstacle
 //        Line(double startX, double startY, double endX, double endY)
-//        for (int i = 1; i <= 4; i++) {
-//            Line line = new Line(150, 150, 75, 75, 90 * i, 90);
-//            arc.setFill(Color.TRANSPARENT);
-//            arc.setStroke(colorTheme[i - 1]);
-//            arc.setType(ArcType.OPEN);
-//            arc.setStrokeWidth(12);
-//            circle.getChildren().add(arc);
-//        }
+        Group square = new Group();
+        Line line = new Line(-100, 0, 25, 0);
+        line.setStroke(colorTheme[0]);
+        line.setLayoutX(337);
+        line.setLayoutY(308);
+        line.setStrokeWidth(12);
+        square.getChildren().add(line);
+        line = new Line(-100, 0,25,0);
+        line.setStroke(colorTheme[1]);
+        line.setLayoutX(337);
+        line.setLayoutY(428);
+        line.setStrokeWidth(12);
+        square.getChildren().add(line);
+        line = new Line(-116,-10,-116, 110);
+        line.setStroke(colorTheme[2]);
+        line.setLayoutX(347);
+        line.setLayoutY(318);
+        line.setStrokeWidth(12);
+        square.getChildren().add(line);
+        line = new Line(-116,-10,-116, 110);
+        line.setStroke(colorTheme[3]);
+        line.setLayoutX(484);
+        line.setLayoutY(318);
+        line.setStrokeWidth(12);
+        square.getChildren().add(line);
+
 //        <Group fx:id="squareGrp" layoutX="150.0" layoutY="220.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
 //        <children>
 //            <Line fx:id="sq1" endX="25.0" layoutX="337.0" layoutY="308.0" startX="-100.0" stroke="#e4e42c" strokeWidth="12.0" />
@@ -80,7 +93,7 @@ public class Objects extends Application {
 //    </Group>
 
 
-        Scene scene = new Scene(orb, 1024, 768);
+        Scene scene = new Scene(square, 1024, 768);
 //        scene.setFill(Color.BLACK);
         primaryStage.setTitle("SamarthTraitor XD");
         primaryStage.setScene(scene);
