@@ -11,25 +11,15 @@ import java.util.ResourceBundle;
 
 public class TriangleObstacle extends Obstacle {
 
-    @FXML
     Group triangleGroup;
 
-    public TriangleObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-        super(currentTheme, stroke, duration, angle, velocity);
+    public TriangleObstacle(int stroke, int duration, int angle, int velocity) {
+        super(stroke, duration, angle, velocity);
+        Rotation.rotate(triangleGroup,0);
     }
 
     @Override
     public void scaleSize(int scale){
 
-    }
-
-    @Override
-    public Group getFXML() throws IOException {
-        return FXMLLoader.load(TriangleObstacle.class.getResource("triangleObstacle.fxml"));
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Rotation.rotate(triangleGroup,0);
     }
 }
