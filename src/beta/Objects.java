@@ -54,46 +54,60 @@ public class Objects extends Application {
         player.setStrokeType(StrokeType.INSIDE);
         orb.getChildren().add(player);
         //Triangle obstacle
+        //        Line(double startX, double startY, double endX, double endY)
+
+        Group triangle = new Group();
+        Line line = new Line(-105, 0, 25, 0);
+        line.setStroke(colorTheme[0]);
+        line.setLayoutX(152);
+        line.setLayoutY(250);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        triangle.getChildren().add(line);
+        line = new Line(-108, 1, -28, -142);
+        line.setStroke(colorTheme[1]);
+        line.setLayoutX(154);
+        line.setLayoutY(250);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        triangle.getChildren().add(line);
+        line = new Line(44, -9, -38, -152);
+        line.setStroke(colorTheme[3]);
+        line.setLayoutX(164);
+        line.setLayoutY(259);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        triangle.getChildren().add(line);
 
         //Square Obstacle
 //        Line(double startX, double startY, double endX, double endY)
         Group square = new Group();
-        Line line = new Line(-100, 0, 25, 0);
+//        Line line = new Line(-100, 0, 25, 0);
         line.setStroke(colorTheme[0]);
         line.setLayoutX(337);
         line.setLayoutY(308);
         line.setStrokeWidth(12);
         square.getChildren().add(line);
-        line = new Line(-100, 0,25,0);
+        line = new Line(-100, 0, 25, 0);
         line.setStroke(colorTheme[1]);
         line.setLayoutX(337);
         line.setLayoutY(428);
         line.setStrokeWidth(12);
         square.getChildren().add(line);
-        line = new Line(-116,-10,-116, 110);
+        line = new Line(-116, -10, -116, 110);
         line.setStroke(colorTheme[2]);
         line.setLayoutX(347);
         line.setLayoutY(318);
         line.setStrokeWidth(12);
         square.getChildren().add(line);
-        line = new Line(-116,-10,-116, 110);
+        line = new Line(-116, -10, -116, 110);
         line.setStroke(colorTheme[3]);
         line.setLayoutX(484);
         line.setLayoutY(318);
         line.setStrokeWidth(12);
         square.getChildren().add(line);
 
-//        <Group fx:id="squareGrp" layoutX="150.0" layoutY="220.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-//        <children>
-//            <Line fx:id="sq1" endX="25.0" layoutX="337.0" layoutY="308.0" startX="-100.0" stroke="#e4e42c" strokeWidth="12.0" />
-//            <Line fx:id="sq2" endX="25.0" layoutX="337.0" layoutY="428.0" startX="-100.0" stroke="#9711ae" strokeWidth="12.0" />
-//            <Line fx:id="sq3" endX="-116.0" endY="110.0" layoutX="347.0" layoutY="318.0" startX="-116.0" startY="-10.0" stroke="#32d0d0" strokeWidth="12.0" />
-//            <Line fx:id="sq4" endX="-116.0" endY="110.0" layoutX="484.0" layoutY="318.0" startX="-116.0" startY="-10.0" stroke="#eb0d4c" strokeWidth="12.0" />
-//        </children>
-//    </Group>
-
-
-        Scene scene = new Scene(square, 1024, 768);
+        Scene scene = new Scene(triangle, 1024, 768);
 //        scene.setFill(Color.BLACK);
         primaryStage.setTitle("SamarthTraitor XD");
         primaryStage.setScene(scene);
