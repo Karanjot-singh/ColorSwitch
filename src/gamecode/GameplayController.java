@@ -15,6 +15,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
@@ -70,7 +72,9 @@ public class GameplayController implements Initializable {
 	}
 
 	public void addObstacles() throws IOException {
-		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
+//		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
+		CircleObstacle circle = new CircleObstacle();
+		ColorSwitcher colorSwitcher = new ColorSwitcher();
 		/*
 		GAME LOOP
 		dynamic, one object per FXML
@@ -88,11 +92,15 @@ public class GameplayController implements Initializable {
 		root[ orb,sub=[children]]
 		 */
 		gameColumn = new VBox();
-		gameColumn.getChildren().addAll(g1,ColorSwitcher.get(),CircleObstacle.get());
+		gameColumn.getChildren().addAll(circle.getFXML(),colorSwitcher.getFXML(),colorSwitcher.getFXML());
 		gameColumn.setSpacing(40);
 		gameColumn.setAlignment(Pos.CENTER);
 
 		grid.add(gameColumn, 1, 0, 1, 6);
+
+		Circle c1 = new Circle(10);
+		c1.setFill(Color.BLUEVIOLET);
+		grid.add(c1,1,7);
 
 //		grid.add(g1, 1, 1);
 //		grid.add(CircleObstacle.get(), 1, 5);

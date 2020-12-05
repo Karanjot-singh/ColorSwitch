@@ -2,7 +2,6 @@ package gamecode;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -11,18 +10,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class CircleObstacle implements Initializable, Rotation {
+public class CircleObstacle extends Obstacle {
 
 	@FXML
 	Arc arc11,arc12,arc13,arc14;
 	@FXML
-	Group arcGrp1;
+	Group arcGroup;
 
-//	public CircleObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-//		super(currentTheme, stroke, duration, angle, velocity);
-//	}
 
-	public static Group get() throws IOException {
+	public CircleObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
+		super(currentTheme, stroke, duration, angle, velocity);
+	}
+
+	@Override
+	public Group getFXML() throws IOException {
 		return FXMLLoader.load(CircleObstacle.class.getResource("circleObstacle.fxml"));
 	}
 
@@ -33,7 +34,7 @@ public class CircleObstacle implements Initializable, Rotation {
 		arc13.setFill(Color.TRANSPARENT);
 		arc14.setFill(Color.TRANSPARENT);
 
-		Rotation.rotate(arcGrp1,0);
+		Rotation.rotate(arcGroup,0);
 	}
 
 }

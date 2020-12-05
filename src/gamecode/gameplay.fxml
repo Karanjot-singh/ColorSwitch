@@ -69,7 +69,7 @@
 		<!--         </image>-->
 		<!--      </ImageView>-->
 		<Region prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-		<Circle fill="#9711ae" layoutX="300.0" layoutY="558.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+<!--		<Circle fill="#9711ae" layoutX="300.0" layoutY="558.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />-->
 
 	</children>
 	<columnConstraints>
