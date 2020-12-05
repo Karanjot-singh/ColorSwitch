@@ -11,25 +11,19 @@ import java.util.ResourceBundle;
 
 public class CrossObstacle extends Obstacle {
 
-    @FXML
     Group crossGroup;
 
-    public CrossObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-        super(currentTheme, stroke, duration, angle, velocity);
-    }
-
-    @Override
-    public Group getFXML() throws IOException {
-        return FXMLLoader.load(CrossObstacle.class.getResource("crossObstacle.fxml"));
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public CrossObstacle(int stroke, int duration, int angle, int velocity) {
+        super(stroke, duration, angle, velocity);
         Rotation.rotate(crossGroup,0);
     }
 
-//    @Override
-//    public void scaleSize(int scale){
-//
-//    }
+    public Group getCrossGroup() {
+        return crossGroup;
+    }
+
+    @Override
+    public void scaleSize(int scale){
+
+    }
 }

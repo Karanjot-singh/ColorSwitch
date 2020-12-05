@@ -12,12 +12,11 @@ import java.util.ResourceBundle;
 public class LineObstacle extends Obstacle {
 
     int numLines;
-
-    @FXML
     Group lineGroup;
 
-    public LineObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-        super(currentTheme, stroke, duration, angle, velocity);
+    public LineObstacle(int stroke, int duration, int angle, int velocity) {
+        super(stroke, duration, angle, velocity);
+        Rotation.rotate(lineGroup,0);
     }
 
     @Override
@@ -33,14 +32,8 @@ public class LineObstacle extends Obstacle {
         this.numLines = numLines;
     }
 
-
-    @Override
-    public Group getFXML() throws IOException {
-        return FXMLLoader.load(LineObstacle.class.getResource("lineObstacle.fxml"));
+    public Group getLineGroup() {
+        return lineGroup;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Rotation.rotate(lineGroup,0);
-    }
 }

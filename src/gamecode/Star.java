@@ -7,19 +7,22 @@ import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
-public class Star extends Elements implements FXMLLoading{
+public class Star extends Elements {
 	//TODO Replace image with shape
-	@FXML
 	ImageView starIcon;
 
 	private int scoreValue;
 
-//	Star(){
-//
-//	}
+	Star(){
+		starIcon = new ImageView("/assets/starIcon.png");
+	}
 
 	public int getScoreValue() {
 		return scoreValue;
+	}
+
+	public ImageView getStarIcon() {
+		return starIcon;
 	}
 
 	public void setScoreValue(int scoreValue) {
@@ -30,8 +33,4 @@ public class Star extends Elements implements FXMLLoading{
 
 	}
 
-	@Override
-	public Group getFXML() throws IOException {
-		return FXMLLoader.load(Star.class.getResource("star.fxml"));
-	}
 }
