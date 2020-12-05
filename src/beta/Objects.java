@@ -3,6 +3,7 @@ package beta;
 import javafx.animation.*;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.application.Application;
@@ -13,17 +14,74 @@ import javafx.event.ActionEvent;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 
+import java.util.Random;
+
 public class Objects extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
-    public void start(Stage primaryStage) {
 
-        Rectangle screen = new Rectangle(20, 20, 986, 500);
-        Group root = new Group(screen);
-        Scene scene = new Scene(root, 1024, 768);
-        scene.setFill(Color.BLACK);
+    public void start(Stage primaryStage) {
+        Group circle = new Group();
+//        Arc( double centerX, double centerY, double radiusX, double radiusY, double startAngle, double length)
+        Color colorTheme[] = {Color.web("#9711ae"), Color.web("#32d0d0"), Color.web("#eb0d4c"), Color.web("#e4e42c")};
+        for (int i = 1; i <= 4; i++) {
+            Arc arc = new Arc(150, 150, 75, 75, 90 * i, 90);
+            arc.setFill(Color.TRANSPARENT);
+            arc.setStroke(colorTheme[i - 1]);
+            arc.setType(ArcType.OPEN);
+            arc.setStrokeWidth(12);
+            circle.getChildren().add(arc);
+        }
+
+        //Color Switcher
+        Group colorSwitcher = new Group();
+//        Arc( double centerX, double centerY, double radiusX, double radiusY, double startAngle, double length)
+        for (int i = 1; i <= 3; i++) {
+            Arc arc = new Arc(150, 150, 10, 10, 90 * i, 90);
+            arc.setFill(colorTheme[i - 1]);
+            arc.setStroke(colorTheme[i - 1]);
+            arc.setType(ArcType.ROUND);
+            colorSwitcher.getChildren().add(arc);
+        }
+        //Orb
+//        public Circle( double centerX, double centerY, double radius, Paint fill)
+//                <Circle fill = "#9711ae" layoutX = "300.0" layoutY = "558.0" radius = "10.0" stroke = "BLACK"
+//        strokeType = "INSIDE"
+//        GridPane.columnIndex = "1" GridPane.halignment = "CENTER" GridPane.rowIndex = "7"
+//        GridPane.valignment = "CENTER" / >
+        Group orb = new Group();
+        Circle player = new Circle(300, 560, 10);
+        Random ran = new Random();
+        int x = ran.nextInt(4);
+        player.setFill(colorTheme[x]);
+        player.setStrokeType(StrokeType.INSIDE);
+        orb.getChildren().add(player);
+        //Triangle obstacle
+
+        //Square Obstacle
+//        Line(double startX, double startY, double endX, double endY)
+//        for (int i = 1; i <= 4; i++) {
+//            Line line = new Line(150, 150, 75, 75, 90 * i, 90);
+//            arc.setFill(Color.TRANSPARENT);
+//            arc.setStroke(colorTheme[i - 1]);
+//            arc.setType(ArcType.OPEN);
+//            arc.setStrokeWidth(12);
+//            circle.getChildren().add(arc);
+//        }
+//        <Group fx:id="squareGrp" layoutX="150.0" layoutY="220.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+//        <children>
+//            <Line fx:id="sq1" endX="25.0" layoutX="337.0" layoutY="308.0" startX="-100.0" stroke="#e4e42c" strokeWidth="12.0" />
+//            <Line fx:id="sq2" endX="25.0" layoutX="337.0" layoutY="428.0" startX="-100.0" stroke="#9711ae" strokeWidth="12.0" />
+//            <Line fx:id="sq3" endX="-116.0" endY="110.0" layoutX="347.0" layoutY="318.0" startX="-116.0" startY="-10.0" stroke="#32d0d0" strokeWidth="12.0" />
+//            <Line fx:id="sq4" endX="-116.0" endY="110.0" layoutX="484.0" layoutY="318.0" startX="-116.0" startY="-10.0" stroke="#eb0d4c" strokeWidth="12.0" />
+//        </children>
+//    </Group>
+
+
+        Scene scene = new Scene(orb, 1024, 768);
+//        scene.setFill(Color.BLACK);
         primaryStage.setTitle("SamarthTraitor XD");
         primaryStage.setScene(scene);
         primaryStage.show();
