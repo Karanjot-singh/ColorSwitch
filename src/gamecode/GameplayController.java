@@ -72,7 +72,9 @@ public class GameplayController implements Initializable {
 	}
 
 	public void addObstacles() throws IOException {
-		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
+//		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
+		CircleObstacle circle = new CircleObstacle();
+		ColorSwitcher colorSwitcher = new ColorSwitcher();
 		/*
 		GAME LOOP
 		dynamic, one object per FXML
@@ -90,7 +92,7 @@ public class GameplayController implements Initializable {
 		root[ orb,sub=[children]]
 		 */
 		gameColumn = new VBox();
-		gameColumn.getChildren().addAll(g1,ColorSwitcher.get(),CircleObstacle.get());
+		gameColumn.getChildren().addAll(circle.getFXML(),colorSwitcher.getFXML(),colorSwitcher.getFXML());
 		gameColumn.setSpacing(40);
 		gameColumn.setAlignment(Pos.CENTER);
 

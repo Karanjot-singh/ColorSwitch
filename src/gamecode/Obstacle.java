@@ -1,8 +1,9 @@
 package gamecode;
 
+import javafx.fxml.Initializable;
 import javafx.scene.paint.Color;
 
-public class Obstacle {
+public abstract class Obstacle extends Elements implements Rotation, FXMLLoading, Initializable {
 	private Color[] currentTheme ={Color.BLUE,Color.YELLOW, Color.RED, Color.GREEN};
 	private int stroke;
 	private int duration;

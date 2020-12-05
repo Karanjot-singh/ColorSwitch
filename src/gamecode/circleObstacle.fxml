@@ -3,7 +3,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.shape.Arc?>
 
-<Group fx:id="arcGrp1" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.CircleObstacle">
+<Group fx:id="arcGroup" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.CircleObstacle">
 	<children>
 		<Arc fx:id="arc11" centerX="150.0" centerY="150.0" length="81.0" radiusX="75.0" radiusY="75.0"  strokeWidth="12.0" startAngle="270.0" stroke="#e4e42c"  />
 		<Arc fx:id="arc12" centerX="150.0" centerY="150.0" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="180.0" stroke="#9711ae" strokeWidth="12.0" />

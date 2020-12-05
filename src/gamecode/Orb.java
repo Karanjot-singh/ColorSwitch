@@ -1,6 +1,6 @@
 package gamecode;
 
-public class Orb {
+public class Orb extends Elements{
 	private int color;
 	private String shape;
 	private String trail;
