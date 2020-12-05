@@ -1,16 +1,15 @@
 package gamecode;
 
+import javafx.fxml.Initializable;
 import javafx.scene.paint.Color;
 
-public class Obstacle {
-	private Color[] currentTheme ={Color.BLUE,Color.YELLOW, Color.RED, Color.GREEN};
+public abstract class Obstacle extends Elements implements Rotation{
 	private int stroke;
 	private int duration;
 	private int angle;
 	private int velocity;
 
-	public Obstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-		this.setCurrentTheme(currentTheme);
+	public Obstacle( int stroke, int duration, int angle, int velocity) {
 		this.setStroke(stroke);
 		this.setDuration(duration);
 		this.setAngle(angle);
@@ -18,13 +17,6 @@ public class Obstacle {
 	}
 	public void scaleSize(int scale){
 
-	}
-	public Color[] getCurrentTheme() {
-		return currentTheme;
-	}
-
-	public void setCurrentTheme(Color[] currentTheme) {
-		this.currentTheme = currentTheme;
 	}
 
 	public int getStroke() {

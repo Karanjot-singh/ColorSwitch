@@ -1,12 +1,31 @@
 package gamecode;
 
-public class Orb {
+import javafx.scene.Group;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.StrokeType;
+
+import java.util.Random;
+
+public class Orb extends Elements implements Rotation{
 	private int color;
 	private String shape;
 	private String trail;
 
-	Orb() {
+	Group orbGroup = new Group();
 
+	Orb() {
+		Circle orb = new Circle(300, 560, 10);
+		Random ran = new Random();
+		int x = ran.nextInt(4);
+		orb.setFill(Settings.currentTheme[x]);
+		orb.setStrokeType(StrokeType.INSIDE);
+		orbGroup.getChildren().add(orb);
+
+		Rotation.rotate(orbGroup,0);
+	}
+
+	public Group getOrbGroup() {
+		return orbGroup;
 	}
 
 	public int getColor() {

@@ -1,12 +1,22 @@
 package gamecode;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 
-public class LineObstacle extends Obstacle {
-    int numLines;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    public LineObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-        super(currentTheme, stroke, duration, angle, velocity);
+public class LineObstacle extends Obstacle {
+
+    int numLines;
+    Group lineGroup;
+
+    public LineObstacle(int stroke, int duration, int angle, int velocity) {
+        super(stroke, duration, angle, velocity);
+        Rotation.rotate(lineGroup,0);
     }
 
     @Override
@@ -22,5 +32,8 @@ public class LineObstacle extends Obstacle {
         this.numLines = numLines;
     }
 
+    public Group getLineGroup() {
+        return lineGroup;
+    }
 
 }

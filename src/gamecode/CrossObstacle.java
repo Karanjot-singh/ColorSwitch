@@ -3,25 +3,27 @@ package gamecode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CrossObstacle {
+public class CrossObstacle extends Obstacle {
 
-    @FXML
-    Group crossGrp;
+    Group crossGroup;
 
-    public static Group get() throws IOException {
-        return FXMLLoader.load(CrossObstacle.class.getResource("crossObstacle.fxml"));
+    public CrossObstacle(int stroke, int duration, int angle, int velocity) {
+        super(stroke, duration, angle, velocity);
+        Rotation.rotate(crossGroup,0);
     }
 
+    public Group getCrossGroup() {
+        return crossGroup;
+    }
 
-//    public CrossObstacle(Color[] currentTheme, int stroke, int duration, int angle, int velocity) {
-//        super(currentTheme, stroke, duration, angle, velocity);
-//    }
+    @Override
+    public void scaleSize(int scale){
 
-//    @Override
-//    public void scaleSize(int scale){
-//
-//    }
+    }
 }

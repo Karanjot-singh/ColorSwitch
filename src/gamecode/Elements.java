@@ -1,6 +1,6 @@
 package gamecode;
 
-public class Elements {
+public abstract class Elements {
 	protected int posX;
 	protected int posY;
 

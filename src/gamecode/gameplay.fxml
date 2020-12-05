@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <GridPane fx:id="grid" alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.GameplayController">
 	<children>
-		<Label fx:id="score" text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+		<Label fx:id="scoreLabel" text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
 
 		<ImageView fx:id="pauseIcon" fitHeight="66.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" onMouseClicked="#pauseClicked">
 			<image>
@@ -69,7 +69,7 @@
 		<!--         </image>-->
 		<!--      </ImageView>-->
 		<Region prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-		<Circle fill="#9711ae" layoutX="300.0" layoutY="558.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+<!--		<Circle fill="#9711ae" layoutX="300.0" layoutY="558.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />-->
 
 	</children>
 	<columnConstraints>

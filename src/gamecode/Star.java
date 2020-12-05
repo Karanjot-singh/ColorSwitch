@@ -2,22 +2,27 @@ package gamecode;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
-public class Star {
-	@FXML
+public class Star extends Elements {
+	//TODO Replace image with shape
 	ImageView starIcon;
 
 	private int scoreValue;
 
-//	Star(){
-//
-//	}
+	Star(){
+		starIcon = new ImageView("/assets/starIcon.png");
+	}
 
 	public int getScoreValue() {
 		return scoreValue;
+	}
+
+	public ImageView getStarIcon() {
+		return starIcon;
 	}
 
 	public void setScoreValue(int scoreValue) {
@@ -28,7 +33,4 @@ public class Star {
 
 	}
 
-	public static ImageView get() throws IOException {
-		return FXMLLoader.load(Star.class.getResource("star.fxml"));
-	}
 }
