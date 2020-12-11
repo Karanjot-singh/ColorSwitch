@@ -4,9 +4,16 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -16,8 +23,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Game{
-//    static VBox gameColumn;
-//    static StackPane gameScreen;
+    static VBox gameColumn;
+    static StackPane gameScreen;
+
+    Scene gameplayScene;
+
+    GridPane grid;
+    ImageView pauseIcon;
+    Label scoreLabel;
 
     int score;
     float height;
@@ -26,26 +39,51 @@ public class Game{
     Color[] currentTheme;
 
 
-    Game() {
+    Game() throws IOException {
 
 //        currentTheme = new Color[]{Color.BLUE, Color.YELLOW, Color.RED, Color.GREEN};
 //        CircleObstacle obs = new CircleObstacle(currentTheme, 5, 600, 90, 10);
 //        Main.gameplayPane.getChildren().add(playRegion);
+//        Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
+//        Scene gameplayScene = new Scene(gameplayRoot);
+
+        grid = new GridPane();
+        gameScreen = new StackPane();
+        gameColumn = new VBox();
+
 
         playerOrb = new Orb();
         double initPos = playerOrb.getOrbGroup().getTranslateY();
+
+
         try {
             addObstacles();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Main.gameplayScene.setOnKeyPressed(e -> {
+
+        gameplayScene = new Scene(grid);
+
+
+        gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
 //                System.out.println("A key was pressed");
                 moveDown();
                 playerOrb.jump(initPos);
             }
         });
+
+
+    }
+
+    Scene getGameplayScene()
+    {
+        return gameplayScene;
+    }
+
+    void setGameScene()
+    {
+        Main.window.setScene(gameplayScene);
     }
 
     public void addObstacles() throws IOException {
@@ -72,13 +110,13 @@ public class Game{
 		 */
 //        GameplayController.gameScreen = new StackPane();
 //        GameplayController.gameColumn = new VBox();
-        GameplayController.gameColumn.getChildren().addAll(circle1.getArcGroup(), colorSwitcher.getSwitchGroup(),circle2.getArcGroup());
-        GameplayController.gameColumn.setSpacing(40);
-        GameplayController.gameColumn.setAlignment(Pos.CENTER);
+        gameColumn.getChildren().addAll(circle1.getArcGroup(), colorSwitcher.getSwitchGroup(),circle2.getArcGroup());
+        gameColumn.setSpacing(40);
+        gameColumn.setAlignment(Pos.CENTER);
 
-        GameplayController.gameScreen.getChildren().addAll(GameplayController.gameColumn,  playerOrb.getOrbGroup()); //star.getStarIcon(),
-        GameplayController.gameScreen.getChildren().get(1).setTranslateY(100);
-        GameplayController.gameScreen.setAlignment(Pos.BOTTOM_CENTER);
+        gameScreen.getChildren().addAll(gameColumn,  playerOrb.getOrbGroup()); //star.getStarIcon(),
+        gameScreen.getChildren().get(1).setTranslateY(100);
+        gameScreen.setAlignment(Pos.BOTTOM_CENTER);
 
 //        GameplayController.grid.add(gameScreen,1,0,1,6);
 //        GameplayController.addElement(gameScreen,1,0,1,6);
@@ -134,6 +172,13 @@ public class Game{
 //		timeline.setCycleCount(1);
         timeline.setAutoReverse(false);
         timeline.play();
+    }
+
+    void pauseClicked(MouseEvent mouseEvent) {
+        PausePopupController.display();
+    }
+    void backClicked(MouseEvent mouseEvent) {
+        Main.window.setScene(Main.homeScene);
     }
 
     void gameplay() {

@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
+
 public class HomeController {
+	Game currentGame;
 
     @FXML
     Button newGameButton, loadGameButton, exitButton;
@@ -14,7 +17,13 @@ public class HomeController {
 
     @FXML
     void newGameClicked() {
-        Main.window.setScene(Main.gameplayScene);
+//		try {
+//			currentGame = new Game();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		Main.window.setScene(Main.gameplayScene);
+//		Main.currentGame.setGameScene();
     }
 
     @FXML

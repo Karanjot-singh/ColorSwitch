@@ -12,15 +12,17 @@ import javafx.util.Duration;
 public class Main extends Application {
 	static Stage window;
 	static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene;
-	static Parent gameplayRoot;
+//	static Parent gameplayRoot;
 	static MediaPlayer mediaPlayer;
+//	static Game currentGame;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
 
+//		currentGame = new Game();
 		Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
-		gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
+		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
 		Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
 		Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
 		Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
@@ -28,20 +30,29 @@ public class Main extends Application {
 		Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 
 		homeScene = new Scene(homeRoot); //, 600, 300
-		gameplayScene = new Scene(Main.gameplayRoot);
+		gameplayScene = new Scene(gameplayRoot);
 		loadGameScene = new Scene(loadGameRoot);
 		helpScene = new Scene(helpRoot);
 		settingsScene = new Scene(settingsRoot);
 		closePopupScene = new Scene(closePopupRoot);
 		pausePopupScene = new Scene(pausePopupRoot);
 
+
+
 		window.setOnCloseRequest(e -> {
 			e.consume();
 			closeProgram();
 		});
 
-		//TODO move to gameplay
+
 		GameplayController g = new GameplayController();
+
+		gameplayScene.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.SPACE) {
+//                System.out.println("A key was pressed");
+				g.moveDown();
+			}
+		});
 
 
 
@@ -72,13 +83,6 @@ public class Main extends Application {
 			window.close();
 		}
 
-	}
-
-	static Scene getGameScene(){
-		if(gameplayScene==null){
-			gameplayScene = new Scene(Main.gameplayRoot);
-		}
-		return gameplayScene;
 	}
 
 	public static void main(String[] args) {
