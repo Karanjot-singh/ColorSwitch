@@ -1,11 +1,7 @@
 package gamecode;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
 
 public class Star extends Elements {
 	//TODO Replace image with shape
