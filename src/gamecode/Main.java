@@ -14,15 +14,19 @@ public class Main extends Application {
 	static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene;
 //	static Parent gameplayRoot;
 	static MediaPlayer mediaPlayer;
-//	static Game currentGame;
+	static GameplayController g;
+	static Game currentGame;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
 
-//		currentGame = new Game();
 		Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
-		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
+//		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
+		Parent gameplayRoot = fxmlLoader.load();
+//		this.controller = fxmlLoader.getController();
+
 		Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
 		Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
 		Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
@@ -37,7 +41,7 @@ public class Main extends Application {
 		closePopupScene = new Scene(closePopupRoot);
 		pausePopupScene = new Scene(pausePopupRoot);
 
-
+		currentGame = new Game(fxmlLoader);
 
 		window.setOnCloseRequest(e -> {
 			e.consume();
@@ -45,14 +49,14 @@ public class Main extends Application {
 		});
 
 
-		GameplayController g = new GameplayController();
-
-		gameplayScene.setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.SPACE) {
-//                System.out.println("A key was pressed");
-				g.moveDown();
-			}
-		});
+//		g = new GameplayController();
+//
+//		gameplayScene.setOnKeyPressed(e -> {
+//			if (e.getCode() == KeyCode.SPACE) {
+////                System.out.println("A key was pressed");
+//				g.moveDown();
+//			}
+//		});
 
 
 
@@ -61,7 +65,7 @@ public class Main extends Application {
 //        startGameMusic();
 //		window.initStyle(StageStyle.TRANSPARENT);
 		window.setTitle("Color Switch");
-		window.setScene(homeScene);
+		window.setScene(gameplayScene);
 		window.centerOnScreen();
 		window.show();
 	}

@@ -26,11 +26,11 @@ public class Game{
     static VBox gameColumn;
     static StackPane gameScreen;
 
-    Scene gameplayScene;
+    GameplayController g;
 
-    GridPane grid;
-    ImageView pauseIcon;
-    Label scoreLabel;
+//    GridPane grid;
+//    ImageView pauseIcon;
+//    Label scoreLabel;
 
     int score;
     float height;
@@ -39,7 +39,7 @@ public class Game{
     Color[] currentTheme;
 
 
-    Game() throws IOException {
+    Game(FXMLLoader fxmlLoader) throws IOException {
 
 //        currentTheme = new Color[]{Color.BLUE, Color.YELLOW, Color.RED, Color.GREEN};
 //        CircleObstacle obs = new CircleObstacle(currentTheme, 5, 600, 90, 10);
@@ -47,7 +47,8 @@ public class Game{
 //        Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
 //        Scene gameplayScene = new Scene(gameplayRoot);
 
-        grid = new GridPane();
+//        grid = new GridPane();
+//        g = new GameplayController();
         gameScreen = new StackPane();
         gameColumn = new VBox();
 
@@ -61,11 +62,14 @@ public class Game{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        GridPane testGrid = (GridPane) fxmlLoader.getRoot() ;
+                testGrid.add(gameScreen, 1, 0, 1, 6);
 
-        gameplayScene = new Scene(grid);
+
+//        gameplayScene = new Scene(grid);
 
 
-        gameplayScene.setOnKeyPressed(e -> {
+        Main.gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
 //                System.out.println("A key was pressed");
                 moveDown();
@@ -76,15 +80,15 @@ public class Game{
 
     }
 
-    Scene getGameplayScene()
-    {
-        return gameplayScene;
-    }
+//    Scene getGameplayScene()
+//    {
+//        return gameplayScene;
+//    }
 
-    void setGameScene()
-    {
-        Main.window.setScene(gameplayScene);
-    }
+//    void setGameScene()
+//    {
+//        Main.window.setScene(gameplayScene);
+//    }
 
     public void addObstacles() throws IOException {
 //		Group g1 = FXMLLoader.load(getClass().getResource("circleObstacle.fxml"));
@@ -117,6 +121,7 @@ public class Game{
         gameScreen.getChildren().addAll(gameColumn,  playerOrb.getOrbGroup()); //star.getStarIcon(),
         gameScreen.getChildren().get(1).setTranslateY(100);
         gameScreen.setAlignment(Pos.BOTTOM_CENTER);
+//        g.grid.add(gameScreen, 1, 0, 1, 6);
 
 //        GameplayController.grid.add(gameScreen,1,0,1,6);
 //        GameplayController.addElement(gameScreen,1,0,1,6);
@@ -152,7 +157,7 @@ public class Game{
 
 //		t.setToY(10);
 //		v.setTranslateY(700);
-        double ty = GameplayController.gameColumn.getTranslateY();
+        double ty = gameColumn.getTranslateY();
 
 
         Interpolator interpolator = new Interpolator() {
@@ -165,9 +170,9 @@ public class Game{
         };
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO,
-                new KeyValue(GameplayController.gameColumn.translateYProperty(),ty, interpolator)),
+                new KeyValue(gameColumn.translateYProperty(),ty, interpolator)),
                 new KeyFrame(Duration.millis(60),
-                        new KeyValue(GameplayController.gameColumn.translateYProperty(), ty + 30, interpolator)));
+                        new KeyValue(gameColumn.translateYProperty(), ty + 30, interpolator)));
 
 //		timeline.setCycleCount(1);
         timeline.setAutoReverse(false);
