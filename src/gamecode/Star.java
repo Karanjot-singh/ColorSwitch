@@ -4,11 +4,11 @@ import javafx.scene.image.ImageView;
 
 
 public class Star extends Elements {
-	//TODO Replace image with shape
 	ImageView starIcon;
 
 	private int scoreValue;
 
+	//TODO Specify height and width for star image
 	Star(){
 		starIcon = new ImageView("/assets/starIcon.png");
 	}

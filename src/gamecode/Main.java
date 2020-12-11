@@ -40,14 +40,11 @@ public class Main extends Application {
 			closeProgram();
 		});
 
+		//TODO move to gameplay
 		GameplayController g = new GameplayController();
 
-		gameplayScene.setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.SPACE) {
-//                System.out.println("A key was pressed");
-				g.moveDown();
-			}
-		});
+
+
 
 
 //        startGameMusic();
