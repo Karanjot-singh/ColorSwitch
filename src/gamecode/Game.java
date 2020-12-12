@@ -45,15 +45,14 @@ public class Game{
         Main.gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
 
-                moveDown();
-                playerOrb.jump(initPos);
+//                moveDown();
+//                playerOrb.jump(initPos);
 
-//                if (playerOrb.getOrbGroup().getTranslateY() <= initPos - 180){
-//                    moveDown();
-//                }
-//                else{
-//                    playerOrb.jump(initPos);
-//                }
+                playerOrb.jump(initPos);
+                if (playerOrb.getOrbGroup().getTranslateY() <= -40){
+                    moveDown();
+                }
+
             }
         });
     }
@@ -67,7 +66,7 @@ public class Game{
 
         obstacleColumn.getChildren().addAll(circle1.getArcGroup(), colorSwitcher.getSwitchGroup(),circle2.getArcGroup());
         obstacleColumn.setSpacing(40);
-        obstacleColumn.setAlignment(Pos.CENTER);
+        obstacleColumn.setAlignment(Pos.TOP_CENTER);
 
         gameColumn.getChildren().addAll(obstacleColumn,  playerOrb.getOrbGroup()); //star.getStarIcon(),
         gameColumn.getChildren().get(1).setTranslateY(100);

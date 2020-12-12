@@ -64,8 +64,8 @@ public class Orb extends Elements implements Rotation{
 	void jump(double pos) {
 
 			double ty = orbGroup.getTranslateY();
-			double mid = pos-180;
-			double bound = Math.min(mid,ty-40);
+			double mid = -100;
+			double bound = Math.max(mid,ty-40);
 			// quadratic interpolation to simulate gravity
 			Interpolator interpolator = new Interpolator() {
 				@Override
@@ -92,7 +92,7 @@ public class Orb extends Elements implements Rotation{
 					new KeyFrame(Duration.seconds(0.3),
 							new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
 					new KeyFrame(Duration.seconds(0.75),
-							new KeyValue(orbGroup.translateYProperty(), pos, linear)));
+							new KeyValue(orbGroup.translateYProperty(), 100, interpolator)));
 
 			timeline.play();
 	}
