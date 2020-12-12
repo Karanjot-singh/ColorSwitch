@@ -65,7 +65,7 @@ public class Orb extends Elements implements Rotation{
 
 			double ty = orbGroup.getTranslateY();
 			double mid = pos-180;
-			double bound = Math.max(mid,ty-40);
+			double bound = Math.min(mid,ty-40);
 			// quadratic interpolation to simulate gravity
 			Interpolator interpolator = new Interpolator() {
 				@Override
@@ -83,8 +83,12 @@ public class Orb extends Elements implements Rotation{
 				}
 
 			};
-			Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO,
-					new KeyValue(orbGroup.translateYProperty(), ty, interpolator)),
+
+			System.out.println("ty=" + ty + " bound=" + bound + " pos="+ pos + " mid=" +mid);
+
+			Timeline timeline = new Timeline(
+					new KeyFrame(Duration.ZERO,
+							new KeyValue(orbGroup.translateYProperty(), ty, interpolator)),
 					new KeyFrame(Duration.seconds(0.3),
 							new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
 					new KeyFrame(Duration.seconds(0.75),

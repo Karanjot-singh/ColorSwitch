@@ -3,7 +3,6 @@ package gamecode;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.*;
@@ -14,8 +13,8 @@ public class Main extends Application {
 	static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene;
 //	static Parent gameplayRoot;
 	static MediaPlayer mediaPlayer;
-	static GameplayController g;
 	static Game currentGame;
+	static FXMLLoader fxmlLoader;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -23,10 +22,11 @@ public class Main extends Application {
 
 		Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
 //		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
-		Parent gameplayRoot = fxmlLoader.load();
+		fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
+
 //		this.controller = fxmlLoader.getController();
 
+		Parent gameplayRoot = fxmlLoader.load();
 		Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
 		Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
 		Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
@@ -41,31 +41,15 @@ public class Main extends Application {
 		closePopupScene = new Scene(closePopupRoot);
 		pausePopupScene = new Scene(pausePopupRoot);
 
-		currentGame = new Game(fxmlLoader);
-
 		window.setOnCloseRequest(e -> {
 			e.consume();
 			closeProgram();
 		});
 
-
-//		g = new GameplayController();
-//
-//		gameplayScene.setOnKeyPressed(e -> {
-//			if (e.getCode() == KeyCode.SPACE) {
-////                System.out.println("A key was pressed");
-//				g.moveDown();
-//			}
-//		});
-
-
-
-
-
-//        startGameMusic();
+//      startGameMusic();
 //		window.initStyle(StageStyle.TRANSPARENT);
 		window.setTitle("Color Switch");
-		window.setScene(gameplayScene);
+		window.setScene(homeScene);
 		window.centerOnScreen();
 		window.show();
 	}
@@ -87,6 +71,10 @@ public class Main extends Application {
 			window.close();
 		}
 
+	}
+
+	static void startNewGame(){
+		currentGame = new Game(fxmlLoader);
 	}
 
 	public static void main(String[] args) {

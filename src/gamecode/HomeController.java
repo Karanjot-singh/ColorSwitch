@@ -17,13 +17,8 @@ public class HomeController {
 
     @FXML
     void newGameClicked() {
-//		try {
-//			currentGame = new Game();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Main.startNewGame();
 		Main.window.setScene(Main.gameplayScene);
-//		Main.currentGame.setGameScene();
     }
 
     @FXML
