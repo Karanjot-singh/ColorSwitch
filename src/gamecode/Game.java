@@ -34,6 +34,7 @@ public class Game {
 
     Orb playerOrb;
     Color[] currentTheme;
+    final double spacing = 70;
 
 
 	Game(FXMLLoader fxmlLoader) {
@@ -46,10 +47,15 @@ public class Game {
 		playerOrb = new Orb();
 		double initPos = playerOrb.getOrbGroup().getTranslateY();
 
+		//TODO Generalise using spacing variable
+		createElement(290,20);
 
-		createElement(1,1 );
-		createSwitcher();
-		createElement(1,1);
+		createSwitcher(220,90);
+		createElement(0.0,20);
+
+		createSwitcher(-70,90);
+		createElement(-290,20);
+
 
 		gameColumn.getChildren().addAll(obstacleColumn, playerOrb.getOrbGroup());
 		gameColumn.getChildren().get(1).setTranslateY(100);
@@ -74,23 +80,32 @@ public class Game {
 //					}
 					for (Node node : obstacleColumn.getChildren()) {
 						moveDown(node);
-
 					}
-					removeElement(obstacleColumn.getChildren().get(0));
+					//TODO Fix incoming object positions
+					if (obstacleColumn.getChildren().get(0).getTranslateY() > 400) {
+						System.out.println(obstacleColumn.getChildren().get(0).getClass().getName() + " " + obstacleColumn.getChildren().get(0).getTranslateY());
+						if (obstacleColumn.getChildren().get(0).getClass().getName() == "javafx.scene.layout.StackPane") {
+							createSwitcher(-70,80);
+							createElement(-290,20);
+						}
+						obstacleColumn.getChildren().remove(0);
+					}
+
 				}
-}});
 			}
+		});
+	}
 
 
-	public void createElement(int PosX, int PosY) {
+	public void createElement(double Top, double Left) {
 
 		StackPane e1 = addObstacles();
 //		Group e2 = createSwitcher();
 
-		obstacleColumn.getChildren().addAll(e1);
-		obstacleColumn.setTopAnchor(e1, 0.0);
-		obstacleColumn.setLeftAnchor(e1, 50.0);
-		obstacleColumn.setRightAnchor(e1, 50.0);
+		obstacleColumn.getChildren().add(e1);
+		obstacleColumn.setTopAnchor(e1, Top);
+		obstacleColumn.setLeftAnchor(e1, Left);
+//		obstacleColumn.setRightAnchor(e1, 50.0);
 
 //		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
 //		obstacleColumn.setTopAnchor(e2, 200.0);
@@ -104,10 +119,6 @@ public class Game {
 		System.out.println(e.getClass().getName() + " " + e.getTranslateY());
 
 		if (e.getTranslateY() > 600) {
-			if (e.getClass().getName() == "javafx.scene.layout.StackPane") {
-				createElement(1, 1);
-				createSwitcher();
-			}
 			obstacleColumn.getChildren().remove(e);
 //			createSwitcher();
 		}
@@ -117,25 +128,25 @@ public class Game {
 
 	}
 
-	void createSwitcher() {
+	void createSwitcher(double Top, double Left) {
 //		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
 		Group e2 = new ColorSwitcher().getSwitchGroup();
 		obstacleColumn.getChildren().addAll(e2);
-		obstacleColumn.setTopAnchor(e2, 200.0);
-		obstacleColumn.setLeftAnchor(e2, 122.0);
+		obstacleColumn.setTopAnchor(e2, Top);
+		obstacleColumn.setLeftAnchor(e2, Left);
 
 //		return new ColorSwitcher().getSwitchGroup();
 	}
 
 	public StackPane addObstacles() {
 
-//		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
-		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
+		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
+//		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
 //		ColorSwitcher colorSwitcher = new ColorSwitcher();
 		Star star = new Star();
-    	obstacles.add(square.getSquareGroup());
+    	obstacles.add(circle1.getArcGroup());
 
-		return new StackPane(square.getSquareGroup(), star.getStarIcon());
+		return new StackPane(circle1.getArcGroup(), star.getStarIcon());
 	}
 
 	void moveDown(Node x) {
@@ -185,11 +196,11 @@ public class Game {
                 Shape shape = (Shape) iterator;
                 Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
                 if((orb.getFill()).equals(shape.getStroke())){
-                    System.out.println("same"+shape.getStroke());
+//                    System.out.println("same"+shape.getStroke());
                     collisionSafe=true;
                 }
                 else{
-                    System.out.println("diff"+shape.getStroke());
+//                    System.out.println("diff"+shape.getStroke());
                 }
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)){
