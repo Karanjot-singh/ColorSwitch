@@ -6,9 +6,11 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -17,77 +19,97 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-public class Game{
+public class Game {
 
-    GridPane gameGrid;
-    VBox obstacleColumn;
-    StackPane gameColumn;
+	GridPane gameGrid;
+	AnchorPane obstacleColumn;
+	StackPane gameColumn;
 
-    int score;
-    float height;
-    ArrayList<Obstacle> obstacles;
-    Orb playerOrb;
-    Color[] currentTheme;
-
-
-    Game(FXMLLoader fxmlLoader) {
-
-        gameGrid = fxmlLoader.getRoot() ;
-        gameColumn = new StackPane();
-        obstacleColumn = new VBox();
+	int score;
+	float height;
+	ArrayList<Obstacle> obstacles;
+	Orb playerOrb;
+	Color[] currentTheme;
 
 
-        playerOrb = new Orb();
-        double initPos = playerOrb.getOrbGroup().getTranslateY();
+	Game(FXMLLoader fxmlLoader) {
 
-//        addObstacles();
-		createElement(1,1);
+		gameGrid = fxmlLoader.getRoot();
+		gameColumn = new StackPane();
+		obstacleColumn = new AnchorPane();
+
+
+		playerOrb = new Orb();
+		double initPos = playerOrb.getOrbGroup().getTranslateY();
+
+
+		createElement(1,1 );
+		createSwitcher();
+//		createElement(1,1);
 
 		gameColumn.getChildren().addAll(obstacleColumn, playerOrb.getOrbGroup());
 		gameColumn.getChildren().get(1).setTranslateY(100);
 		gameColumn.setAlignment(Pos.BOTTOM_CENTER);
-//		gameGrid.add(gameColumn, 1, 0, 1, 6);
-		gameGrid.setGridLinesVisible(true);
-        gameGrid.add(gameColumn, 1, 0, 1, 6);
+		gameColumn.setMinHeight(500);
 
-        Main.gameplayScene.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.SPACE) {
+		gameGrid.setGridLinesVisible(true);
+		gameGrid.add(gameColumn, 1, 0, 1, 6);
+
+		Main.gameplayScene.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.SPACE) {
 
 //                moveDown();
 //                playerOrb.jump(initPos);
 
-                playerOrb.jump(initPos);
-                if (playerOrb.getOrbGroup().getTranslateY() <= -40){
-					createElement(1,1);
-					createSwitcher();
+				playerOrb.jump(initPos);
+				if (playerOrb.getOrbGroup().getTranslateY() <= -40) {
+//					createElement(1,1);
+//					createSwitcher();
 //					if(obstacleColumn.getChildren().get(0).getTranslateY()>0)
 //					{
 //						obstacleColumn.getChildren().remove(0);
 //					}
-					for (Node node: obstacleColumn.getChildren()) {
+					for (Node node : obstacleColumn.getChildren()) {
 						moveDown(node);
-//						removeElement(node);
-					}
-                }
 
-            }
-        });
-    }
+					}
+					removeElement(obstacleColumn.getChildren().get(0));
+				}
+
+			}
+		});
+	}
 
 	public void createElement(int PosX, int PosY) {
+
 		StackPane e1 = addObstacles();
-		obstacleColumn.getChildren().add(e1);
-		obstacleColumn.setAlignment(Pos.TOP_CENTER);
-		obstacleColumn.setSpacing(40);
+//		Group e2 = createSwitcher();
+
+		obstacleColumn.getChildren().addAll(e1);
+		obstacleColumn.setTopAnchor(e1, 0.0);
+		obstacleColumn.setLeftAnchor(e1, 50.0);
+		obstacleColumn.setRightAnchor(e1, 50.0);
+
+//		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
+//		obstacleColumn.setTopAnchor(e2, 200.0);
+//		obstacleColumn.setLeftAnchor(e2, 122.0);
+//		obstacleColumn.setRightAnchor(e2, 40.0);
+//		obstacleColumn.setAlignment(Pos.TOP_CENTER);
+//		obstacleColumn.setSpacing(40);
 
 
 	}
 
 	public void removeElement(Node e) {
-		System.out.println(e.getClass().getName()+" " +e.getTranslateY());
-		if(e.getTranslateY()>0)
-		{
+		System.out.println(e.getClass().getName() + " " + e.getTranslateY());
+
+		if (e.getTranslateY() > 600) {
+			if (e.getClass().getName() == "javafx.scene.layout.StackPane") {
+				createElement(1, 1);
+				createSwitcher();
+			}
 			obstacleColumn.getChildren().remove(e);
+//			createSwitcher();
 		}
 
 	}
@@ -97,10 +119,17 @@ public class Game{
 	}
 
 	void createSwitcher() {
-		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
+//		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
+		Group e2 = new ColorSwitcher().getSwitchGroup();
+		obstacleColumn.getChildren().addAll(e2);
+		obstacleColumn.setTopAnchor(e2, 200.0);
+		obstacleColumn.setLeftAnchor(e2, 122.0);
+
+//		return new ColorSwitcher().getSwitchGroup();
 	}
 
-    public StackPane addObstacles() {
+
+	public StackPane addObstacles() {
 
 		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
 //		CircleObstacle circle2 = new CircleObstacle(1, 1, 1, 1);
@@ -108,7 +137,7 @@ public class Game{
 		Star star = new Star();
 
 		return new StackPane(circle1.getArcGroup(), star.getStarIcon());
-    }
+	}
 
 	void moveDown(Node x) {
 
@@ -136,66 +165,65 @@ public class Game{
 	}
 
 
+	void gameplay() {
 
-    void gameplay() {
+	}
 
-    }
+	public void pauseGame() {
 
-    public void pauseGame() {
+	}
 
-    }
+	public void gameOver() {
 
-    public void gameOver() {
+	}
 
-    }
+	public void revive() {
+	}
 
-    public void revive() {
-    }
-
-    public Boolean checkCollision() {
-        return true;
-    }
+	public Boolean checkCollision() {
+		return true;
+	}
 
 
-    public int getScore() {
-        return score;
-    }
+	public int getScore() {
+		return score;
+	}
 
-    public void addScore(int score) {
-        this.score += score;
-    }
+	public void addScore(int score) {
+		this.score += score;
+	}
 
-    public float getHeight() {
-        return height;
-    }
+	public float getHeight() {
+		return height;
+	}
 
-    public void setHeight(float height) {
-        this.height = height;
-    }
+	public void setHeight(float height) {
+		this.height = height;
+	}
 
-    public ArrayList<Obstacle> getObstacles() {
-        return obstacles;
-    }
+	public ArrayList<Obstacle> getObstacles() {
+		return obstacles;
+	}
 
-    public void setObstacles(ArrayList<Obstacle> obstacles) {
-        this.obstacles = obstacles;
-    }
+	public void setObstacles(ArrayList<Obstacle> obstacles) {
+		this.obstacles = obstacles;
+	}
 
-    public Orb getOrb() {
-        return playerOrb;
-    }
+	public Orb getOrb() {
+		return playerOrb;
+	}
 
-    public void setOrb(Orb orb) {
-        this.playerOrb = orb;
-    }
+	public void setOrb(Orb orb) {
+		this.playerOrb = orb;
+	}
 
-    public Color[] getCurrentTheme() {
-        return currentTheme;
-    }
+	public Color[] getCurrentTheme() {
+		return currentTheme;
+	}
 
-    public void setCurrentTheme(Color[] currentTheme) {
-        this.currentTheme = currentTheme;
-    }
+	public void setCurrentTheme(Color[] currentTheme) {
+		this.currentTheme = currentTheme;
+	}
 }
 
 
