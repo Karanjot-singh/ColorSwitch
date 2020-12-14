@@ -65,7 +65,8 @@ public class Orb extends Elements implements Rotation{
 
 			double ty = orbGroup.getTranslateY();
 			double mid = -100;
-			double bound = Math.max(mid,ty-40);
+//			double bound = Math.max(mid,ty-40);
+			double bound = (ty-40)<-100 ? mid:ty-40;
 			// quadratic interpolation to simulate gravity
 			Interpolator interpolator = new Interpolator() {
 				@Override

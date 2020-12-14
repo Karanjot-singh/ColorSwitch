@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Game{
 
-     GridPane gameGrid;
+    GridPane gameGrid;
     VBox obstacleColumn;
     StackPane gameColumn;
 
