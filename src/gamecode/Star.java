@@ -1,19 +1,20 @@
 package gamecode;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
 
 public class Star extends Elements {
-	//TODO Replace image with shape
 	ImageView starIcon;
 
 	private int scoreValue;
 
-	Star(){
+	//TODO Specify height and width for star image
+//	<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="280.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+//		         <image>
+//		            <Image url="@../assets/starIcon.png" />
+//		         </image>
+//  </ImageView>
+	Star() {
 		starIcon = new ImageView("/assets/starIcon.png");
 	}
 
@@ -29,7 +30,7 @@ public class Star extends Elements {
 		this.scoreValue = scoreValue;
 	}
 
-	void explodeAnimation(){
+	void explodeAnimation() {
 
 	}
 
