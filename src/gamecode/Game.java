@@ -6,6 +6,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -13,11 +14,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-public class Game{
+public class Game {
 
     GridPane gameGrid;
     VBox obstacleColumn;
@@ -25,14 +27,17 @@ public class Game{
 
     int score;
     float height;
-    ArrayList<Obstacle> obstacles;
+    ArrayList<Group> obstacles= new ArrayList<>();
+    ArrayList<Shape> stars= new ArrayList<>();
+    ArrayList<Group> colorSwitchers = new ArrayList<>();
+
     Orb playerOrb;
     Color[] currentTheme;
 
 
     Game(FXMLLoader fxmlLoader) {
 
-        gameGrid = fxmlLoader.getRoot() ;
+        gameGrid = fxmlLoader.getRoot();
         gameColumn = new StackPane();
         obstacleColumn = new VBox();
 
@@ -52,11 +57,10 @@ public class Game{
 
         Main.gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
-
 //                moveDown();
 //                playerOrb.jump(initPos);
-
                 playerOrb.jump(initPos);
+                checkCollision(obstacles);
                 if (playerOrb.getOrbGroup().getTranslateY() <= -40){
 					createElement(1,1);
 					createSwitcher();
@@ -68,6 +72,8 @@ public class Game{
 						moveDown(node);
 //						removeElement(node);
 					}
+                if (playerOrb.getOrbGroup().getTranslateY() <= -40) {
+                    moveDown();
                 }
 
             }
@@ -79,8 +85,6 @@ public class Game{
 		obstacleColumn.getChildren().add(e1);
 		obstacleColumn.setAlignment(Pos.TOP_CENTER);
 		obstacleColumn.setSpacing(40);
-
-
 	}
 
 	public void removeElement(Node e) {
@@ -89,7 +93,6 @@ public class Game{
 		{
 			obstacleColumn.getChildren().remove(e);
 		}
-
 	}
 
 	void createOrb() {
@@ -106,15 +109,14 @@ public class Game{
 //		CircleObstacle circle2 = new CircleObstacle(1, 1, 1, 1);
 //		ColorSwitcher colorSwitcher = new ColorSwitcher();
 		Star star = new Star();
-
+    obstacles.add(circle1.getArcGroup());
+    
 		return new StackPane(circle1.getArcGroup(), star.getStarIcon());
     }
 
 	void moveDown(Node x) {
 
 		double ty = x.getTranslateY();
-
-
 		Interpolator interpolator = new Interpolator() {
 			@Override
 			protected double curve(double t) {
@@ -136,7 +138,6 @@ public class Game{
 	}
 
 
-
     void gameplay() {
 
     }
@@ -152,10 +153,29 @@ public class Game{
     public void revive() {
     }
 
-    public Boolean checkCollision() {
-        return true;
+    public <T> Boolean checkCollision(ArrayList<T> list) {
+        boolean collisionSafe =false;
+        for (T element : list) {
+            Group elementGroup = (Group) element;
+            for ( Node iterator : elementGroup.getChildren()) {
+                Shape shape = (Shape) iterator;
+                Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
+                if((orb.getFill()).equals(shape.getStroke())){
+//                    System.out.println("same"+shape.getStroke());
+                    collisionSafe=true;
+                }
+                else{
+//                    System.out.println("diff"+shape.getStroke());
+                }
+                Shape intersect = Shape.intersect(orb, shape);
+                if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)){
+                    System.out.println("Collision");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-
 
     public int getScore() {
         return score;
@@ -173,11 +193,11 @@ public class Game{
         this.height = height;
     }
 
-    public ArrayList<Obstacle> getObstacles() {
+    public ArrayList<Group> getObstacles() {
         return obstacles;
     }
 
-    public void setObstacles(ArrayList<Obstacle> obstacles) {
+    public void setObstacles(ArrayList<Group> obstacles) {
         this.obstacles = obstacles;
     }
 
