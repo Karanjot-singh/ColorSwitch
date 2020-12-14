@@ -72,12 +72,8 @@ public class Game {
 						moveDown(node);
 //						removeElement(node);
 					}
-                if (playerOrb.getOrbGroup().getTranslateY() <= -40) {
-                    moveDown();
-                }
-
             }
-        });
+        }});
     }
 
 	public void createElement(int PosX, int PosY) {
@@ -161,11 +157,11 @@ public class Game {
                 Shape shape = (Shape) iterator;
                 Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
                 if((orb.getFill()).equals(shape.getStroke())){
-//                    System.out.println("same"+shape.getStroke());
+                    System.out.println("same"+shape.getStroke());
                     collisionSafe=true;
                 }
                 else{
-//                    System.out.println("diff"+shape.getStroke());
+                    System.out.println("diff"+shape.getStroke());
                 }
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)){
