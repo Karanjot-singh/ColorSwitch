@@ -1,9 +1,4 @@
 package beta;
-
-public class Collision {
-}
-/*
-package sample;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.*;
@@ -18,7 +13,7 @@ import java.util.ArrayList;
 import javafx.scene.shape.*;
 import javafx.util.Duration;
 
-public class Main extends Application {
+public class Collision extends Application {
 
     private ArrayList<Shape> nodes;
 
@@ -32,63 +27,12 @@ public class Main extends Application {
         nodes = new ArrayList<>();
         nodes.add(new Circle(15, 15, 30));
         nodes.add(new Circle(90, 60, 30));
-        nodes.add(new Circle(40, 200, 30));
-        for (Shape block : nodes) {
-            setDragListeners(block);
-        }
-
-       double ty = player.getTranslateY();
-
-// quadratic interpolation to simulate gravity
-        Interpolator interpolator = new Interpolator() {
-            @Override
-            protected double curve(double v) {
-                return t * (2 - t);
-            }
-        };
-        Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO,
-                new KeyValue(player.translateYProperty(), ty, interpolator)),
-                new KeyFrame(Duration.seconds(1),
-                        new KeyValue(player.translateYProperty(), ty-40, interpolator)));
-
-// play forward once, then play backward once
-        timeline.setCycleCount(2);
-        timeline.setAutoReverse(true);
-
-        JumpBtn.setDisable(true);
-        timeline.setOnFinished(evt -> JumpBtn.setDisable(false));
-
-        timeline.play();
+        nodes.add(new Circle(40, 60, 30));
         root.getChildren().addAll(nodes);
         checkShapeIntersection(nodes.get(nodes.size() - 1));
 
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    public void setDragListeners(final Shape block) {
-        final Delta dragDelta = new Delta();
-
-        block.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent mouseEvent) {
-                // record a delta distance for the drag and drop operation.
-                dragDelta.x = block.getLayoutX() - mouseEvent.getSceneX();
-                dragDelta.y = block.getLayoutY() - mouseEvent.getSceneY();
-                block.setCursor(Cursor.NONE);
-            }
-        });
-        block.setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent mouseEvent) {
-                block.setCursor(Cursor.HAND);
-            }
-        });
-        block.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent mouseEvent) {
-                block.setLayoutX(mouseEvent.getSceneX() + dragDelta.x);
-                block.setLayoutY(mouseEvent.getSceneY() + dragDelta.y);
-                checkShapeIntersection(block);
-            }
-        });
     }
 
     private void checkShapeIntersection(Shape block) {
@@ -103,6 +47,21 @@ public class Main extends Application {
                 }
             }
         }
+//        public Boolean checkCollision() {
+//            for (Node element : obstacleColumn.getChildren()) {
+//                Group elementGroup = (Group) element;
+//                for (Node iterator : elementGroup.getChildren()) {
+//                    Shape shape = (Shape) iterator;
+//                    Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
+//                    Shape intersect = Shape.intersect(orb, shape);
+//                    if (intersect.getBoundsInLocal().getWidth() != -1) {
+//                        System.out.println("Collision");
+//                        return true;
+//                    }
+//                }
+//            }
+//            return false;
+//        }
 
         if (collisionDetected) {
             block.setFill(Color.BLUE);
@@ -112,7 +71,7 @@ public class Main extends Application {
     }
 
     class Delta { double x, y; }
+
+
 }
 
-
- */
