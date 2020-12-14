@@ -23,6 +23,7 @@ public class Orb extends Elements implements Rotation{
 		Random ran = new Random();
 		int x = ran.nextInt(4);
 		orb.setFill(Settings.currentTheme[x]);
+		orb.setStroke(Settings.currentTheme[x]);
 		orb.setStrokeType(StrokeType.INSIDE);
 		orbGroup.getChildren().add(orb);
 
@@ -85,7 +86,7 @@ public class Orb extends Elements implements Rotation{
 
 			};
 
-			System.out.println("ty=" + ty + " bound=" + bound + " pos="+ pos + " mid=" +mid);
+//			System.out.println("ty=" + ty + " bound=" + bound + " pos="+ pos + " mid=" +mid);
 
 			Timeline timeline = new Timeline(
 					new KeyFrame(Duration.ZERO,
