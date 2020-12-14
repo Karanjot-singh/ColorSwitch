@@ -15,7 +15,7 @@
 
 <?import javafx.scene.layout.VBox?>
 
-<GridPane fx:id="grid" alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.GameplayController">
+<GridPane fx:id="grid" alignment="TOP_CENTER" hgap="20.0" minHeight="640.0" prefWidth="500.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.GameplayController">
 	<children>
 		<Label fx:id="scoreLabel" text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
 
