@@ -14,6 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.layout.VBox?>
+
 <GridPane fx:id="grid" alignment="CENTER" hgap="20.0" prefHeight="640.0" prefWidth="500.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/gameplayStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.GameplayController">
 	<children>
 		<Label fx:id="scoreLabel" text="012" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
@@ -24,52 +25,10 @@
 			</image>
 		</ImageView>
 
-<!--		<VBox fx:id="gameColumn" alignment="CENTER" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="7">-->
-
-<!--		</VBox>-->
-
-		<!--      <Group fx:id="arcGrp1" layoutX="150.0" layoutY="-60.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">-->
-		<!--         <children>-->
-		<!--            <Arc fx:id="arc11" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="270.0" stroke="#e4e42c" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--            <Arc fx:id="arc12" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="180.0" stroke="#9711ae" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--            <Arc fx:id="arc13" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="90.0" stroke="#32d0d0" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--            <Arc fx:id="arc14" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" stroke="#eb0d4c" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--         </children>-->
-		<!--      </Group>-->
-		<!--      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="280.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">-->
-		<!--         <image>-->
-		<!--            <Image url="@../assets/starIcon.png" />-->
-		<!--         </image>-->
-		<!--      </ImageView>-->
-		<Region prefHeight="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-
-		<!--      <Group fx:id="switchGroup" layoutX="150.0" layoutY="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">-->
-		<!--         <children>-->
-		<!--            <Arc fx:id="arc212" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="270.0" stroke="#e4e42c" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />-->
-		<!--            <Arc fx:id="arc222" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="180.0" stroke="#9711ae" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />-->
-		<!--            <Arc fx:id="arc232" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="90.0" stroke="#32d0d0" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />-->
-		<!--            <Arc fx:id="arc242" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" stroke="#eb0d4c" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />-->
-		<!--         </children>-->
-		<!--      </Group>-->
 		<Region prefHeight="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
 		<Region prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-		<!--      <Group fx:id="arcGrp2" layoutX="150.0" layoutY="220.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">-->
-		<!--         <children>-->
-		<!--            <Arc fx:id="arc21" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="270.0" stroke="#e4e42c" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--            <Arc fx:id="arc22" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="180.0" stroke="#9711ae" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--            <Arc fx:id="arc23" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" startAngle="90.0" stroke="#32d0d0" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--            <Arc fx:id="arc24" centerX="150.0" centerY="150.0" fill="#1f93ff00" length="81.0" radiusX="75.0" radiusY="75.0" stroke="#eb0d4c" strokeMiterLimit="0.0" strokeWidth="12.0" />-->
-		<!--         </children>-->
-		<!--      </Group>-->
-
-		<!--            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">-->
-		<!--         <image>-->
-		<!--            <Image url="@../assets/starIcon.png" />-->
-		<!--         </image>-->
-		<!--      </ImageView>-->
 		<Region prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-<!--		<Circle fill="#9711ae" layoutX="300.0" layoutY="558.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />-->
 
 	</children>
 	<columnConstraints>

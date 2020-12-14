@@ -1,7 +1,5 @@
 package gamecode;
 
-import javafx.fxml.Initializable;
-import javafx.scene.paint.Color;
 
 public abstract class Obstacle extends Elements implements Rotation{
 	private int stroke;
