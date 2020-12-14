@@ -49,7 +49,7 @@ public class Game {
 
 		createElement(1,1 );
 		createSwitcher();
-//		createElement(1,1);
+		createElement(1,1);
 
 		gameColumn.getChildren().addAll(obstacleColumn, playerOrb.getOrbGroup());
 		gameColumn.getChildren().get(1).setTranslateY(100);
@@ -129,13 +129,13 @@ public class Game {
 
 	public StackPane addObstacles() {
 
-		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
-//		CircleObstacle circle2 = new CircleObstacle(1, 1, 1, 1);
+//		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
+		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
 //		ColorSwitcher colorSwitcher = new ColorSwitcher();
 		Star star = new Star();
-    obstacles.add(circle1.getArcGroup());
+    	obstacles.add(square.getSquareGroup());
 
-		return new StackPane(circle1.getArcGroup(), star.getStarIcon());
+		return new StackPane(square.getSquareGroup(), star.getStarIcon());
 	}
 
 	void moveDown(Node x) {
