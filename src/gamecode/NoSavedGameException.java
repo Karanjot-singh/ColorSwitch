@@ -1,7 +1,7 @@
 package gamecode;
 
-public class NoSavedGameException {
-	public NoSavedGameException(){
-
+public class NoSavedGameException extends Exception{
+	public NoSavedGameException(String message){
+		super(message);
 	}
 }
