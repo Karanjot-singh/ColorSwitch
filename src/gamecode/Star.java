@@ -16,6 +16,10 @@ public class Star extends Elements {
 //  </ImageView>
 	Star() {
 		starIcon = new ImageView("/assets/starIcon.png");
+		starIcon.setFitWidth(40);
+		starIcon.setFitHeight(40);
+		starIcon.setPreserveRatio(true);
+		starIcon.setPickOnBounds(true);
 	}
 
 	public int getScoreValue() {
