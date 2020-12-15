@@ -10,10 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -23,7 +20,7 @@ import java.util.ArrayList;
 public class Game {
 
 	GridPane gameGrid;
-	AnchorPane obstacleColumn;
+	Pane obstacleColumn;
 	StackPane gameColumn;
 
     int score;
@@ -41,20 +38,23 @@ public class Game {
 
 		gameGrid = fxmlLoader.getRoot();
 		gameColumn = new StackPane();
-		obstacleColumn = new AnchorPane();
+		obstacleColumn = new Pane();
 
+
+		obstacleColumn.setCenterShape(true);
+		obstacleColumn.setPrefSize(200,  500);
 
 		playerOrb = new Orb();
 		double initPos = playerOrb.getOrbGroup().getTranslateY();
 
 		//TODO Generalise using spacing variable
-		createElement(290,20);
+		createElement(20,300);
 
-		createSwitcher(220,90);
-		createElement(0.0,20);
+		createSwitcher(90,228);
+		createElement(20,20);
 
-		createSwitcher(-70,90);
-		createElement(-290,20);
+//		createSwitcher(90,-90);
+//		createElement(20,-20);
 
 
 		gameColumn.getChildren().addAll(obstacleColumn, playerOrb.getOrbGroup());
@@ -82,11 +82,12 @@ public class Game {
 						moveDown(node);
 					}
 					//TODO Fix incoming object positions
-					if (obstacleColumn.getChildren().get(0).getTranslateY() > 400) {
+					System.out.println(obstacleColumn.getChildren().get(0).getLayoutY());
+					if (obstacleColumn.getChildren().get(0).getTranslateY() > 350) {
 						System.out.println(obstacleColumn.getChildren().get(0).getClass().getName() + " " + obstacleColumn.getChildren().get(0).getTranslateY());
 						if (obstacleColumn.getChildren().get(0).getClass().getName() == "javafx.scene.layout.StackPane") {
-							createSwitcher(-70,80);
-							createElement(-290,20);
+							createSwitcher(90,228);
+							createElement(20,20);
 						}
 						obstacleColumn.getChildren().remove(0);
 					}
@@ -97,14 +98,15 @@ public class Game {
 	}
 
 
-	public void createElement(double Top, double Left) {
+	public void createElement(double PosX, double PosY) {
 
 		StackPane e1 = addObstacles();
 //		Group e2 = createSwitcher();
 
 		obstacleColumn.getChildren().add(e1);
-		obstacleColumn.setTopAnchor(e1, Top);
-		obstacleColumn.setLeftAnchor(e1, Left);
+		e1.relocate(PosX, PosY);
+//		obstacleColumn.setTopAnchor(e1, Top);
+//		obstacleColumn.setLeftAnchor(e1, Left);
 //		obstacleColumn.setRightAnchor(e1, 50.0);
 
 //		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
@@ -128,12 +130,14 @@ public class Game {
 
 	}
 
-	void createSwitcher(double Top, double Left) {
+	void createSwitcher(double PosX, double PosY) {
 //		obstacleColumn.getChildren().add( new ColorSwitcher().getSwitchGroup());
 		Group e2 = new ColorSwitcher().getSwitchGroup();
 		obstacleColumn.getChildren().addAll(e2);
-		obstacleColumn.setTopAnchor(e2, Top);
-		obstacleColumn.setLeftAnchor(e2, Left);
+		obstacleColumn.setCenterShape(true);
+		e2.relocate(PosX, PosY);
+//		obstacleColumn.setTopAnchor(e2, Top);
+//		obstacleColumn.setLeftAnchor(e2, Left);
 
 //		return new ColorSwitcher().getSwitchGroup();
 	}
