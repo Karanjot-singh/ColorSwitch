@@ -40,6 +40,7 @@ public class Game {
     Color[] currentTheme;
     final double spacing = 70;
     boolean gameStart = false;
+    boolean gameStop=false;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -240,6 +241,10 @@ public class Game {
 
     }
 
+    public boolean isGameStop() {
+        return gameStop;
+    }
+
     public void gameOver() {
         Main.player.addTotalStars(this.score);
         if(this.getScore()>Main.player.getHighscore()){
@@ -310,26 +315,12 @@ public class Game {
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
 //                    System.out.print("Collision "+shape.getStroke()+ " ");
+                    gameStop=true;
                     return true;
                 }
             }
         }
         return false;
-    }
-
-    public void checkStarCollision() {
-        Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
-//        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
-        for (Rectangle shape : stars) {
-            Shape intersect = Shape.intersect(orb, shape);
-            if (intersect.getBoundsInLocal().getWidth() != -1) {
-                System.out.println("Star ");
-            } else if (!intersect.getBoundsInLocal().isEmpty()) {
-                System.out.println("Star2 ");
-            } else {
-//                System.out.println(shape.getTranslateX() + " " + shape.getTranslateY());
-            }
-        }
     }
 
     public void checkSwitchCollision() {

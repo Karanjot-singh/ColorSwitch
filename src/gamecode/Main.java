@@ -79,7 +79,7 @@ public class Main extends Application {
     }
     static void gameLoop(Game currentGame){
         Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 60);
+        final Duration fps = Duration.millis(1000 / 90);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -87,7 +87,7 @@ public class Main extends Application {
 //                currentGame.checkStarCollision();
                 currentGame.otherCollisions();
 
-                if(currentGame.playerOrb.getOrbGroup().getTranslateY()>150){
+                if(currentGame.playerOrb.getOrbGroup().getTranslateY()>150 || currentGame.isGameStop()){
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
                     currentGame.gameOver();
