@@ -77,35 +77,7 @@ public class Main extends Application {
         mediaPlayer.setStopTime(Duration.seconds(30));
         mediaPlayer.play();
     }
-    static void gameLoop(Game currentGame){
-        Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 90);
-        final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                currentGame.checkObstacleCollision();
-//                currentGame.checkStarCollision();
-                currentGame.otherCollisions();
 
-                if(currentGame.playerOrb.getOrbGroup().getTranslateY()>150 || currentGame.isGameStop()){
-                    System.out.println("GAME OVER");
-                    gameTimeline.stop();
-                    currentGame.gameOver();
-                }
-            }
-        });
-
-        //// sets the game world's game loop (Timeline)
-//        TimelineBuilder.create()
-//                .cycleCount(Animation.INDEFINITE)
-//                .keyFrames(gameFrame)
-//                .build()
-//                .play();
-        gameTimeline.setCycleCount(Animation.INDEFINITE);
-        gameTimeline.getKeyFrames().addAll(gameFrame);
-        gameTimeline.play();
-
-    }
     static void closeProgram() {
         Boolean ans = ClosePopupController.display();
 
@@ -124,7 +96,7 @@ public class Main extends Application {
         }
         gameplayScene = new Scene(gameplayRoot);
         currentGame = new Game(fxmlLoader);
-        gameLoop(currentGame);
+        Game.gameLoop(currentGame);
     }
 
     public static void main(String[] args) {

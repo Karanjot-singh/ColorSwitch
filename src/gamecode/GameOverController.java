@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -14,59 +15,71 @@ import javafx.stage.StageStyle;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GameOverController implements Initializable{
+public class GameOverController implements Initializable {
 
-		static Stage window;
-		static Scene scene;
+	static Stage window;
+	static Scene scene;
 
-		@FXML
-		Label gameOverMsg, scoreMsg, highscoreMsg, score, highscore;
+	@FXML
+	VBox vbox;
 
-		@FXML
-		ImageView backIcon, replayIcon;
+	@FXML
+	Label gameOverMsg, scoreMsg, highscoreMsg, score, highscore;
 
-		@FXML
-		Button backButton, replayButton;
+	@FXML
+	ImageView backIcon, replayIcon;
 
-		@FXML
-		void replayClicked(MouseEvent mouseEvent)
-		{
-			Main.startNewGame();
-			Main.window.setScene(Main.gameplayScene);
-			window.close();
-		}
+	@FXML
+	Button backButton, replayButton, reviveButton;
 
-		@FXML
-		void backClicked(MouseEvent mouseEvent)
-		{
-			Main.window.setScene(Main.homeScene);
-			window.close();
-		}
+	@FXML
+	void replayClicked(MouseEvent mouseEvent) {
+		Main.startNewGame();
+		Main.window.setScene(Main.gameplayScene);
+		window.close();
+	}
 
-		public static void display() {
-			window = new Stage();
+	@FXML
+	void backClicked(MouseEvent mouseEvent) {
+		Main.window.setScene(Main.homeScene);
+		window.close();
+	}
 
-			//Block events to other windows
-			window.initModality(Modality.APPLICATION_MODAL);
-			window.initStyle(StageStyle.TRANSPARENT);
-			window.initOwner(Main.window);
-			window.setTitle("Game Over");
-			window.setWidth(350);
-			window.setHeight(300);
-			window.centerOnScreen();
+	@FXML
+	void reviveClicked(MouseEvent mouseEvent) {
+		Main.currentGame.revive();
+		window.close();
+	}
+
+	public static void display() {
+		window = new Stage();
+
+		//Block events to other windows
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.initStyle(StageStyle.TRANSPARENT);
+		window.initOwner(Main.window);
+		window.setTitle("Game Over");
+		window.setWidth(350);
+		window.setHeight(250);
+		window.centerOnScreen();
 
 
-			//Display window and wait for it to be closed before returning
-			scene = Main.gameOverScene;
-			window.setScene(scene);
-			window.show();
+		//Display window and wait for it to be closed before returning
+		scene = Main.gameOverScene;
+		window.setScene(scene);
+		window.show();
 //			window.showAndWait();
-		}
+	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		score.setText(Main.currentGame.getScore() +"");
+		score.setText(Main.currentGame.getScore() + "");
 		highscore.setText(Main.player.getHighscore() + "");
+		reviveButton.setText("Revive     " + (char) 9734 + "5");
 
+		if(Main.currentGame.isRevived()){
+			vbox.getChildren().remove(reviveButton);
+//			reviveButton.setVisible(false);
+		}
 	}
 }

@@ -1,10 +1,9 @@
 package gamecode;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -41,6 +40,7 @@ public class Game {
     final double spacing = 70;
     boolean gameStart = false;
     boolean gameStop=false;
+    boolean revived=false;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -259,6 +259,12 @@ public class Game {
     }
 
     public void revive() {
+        gameStop = false;
+        revived = true;
+        //TODO Reduce stars from player
+        //TODO throw insufficient stars exception
+        gameColumn.getChildren().get(1).setTranslateY(0);
+        gameLoop(Main.currentGame);
     }
 
     public void otherCollisions() {
@@ -345,6 +351,37 @@ public class Game {
         }
     }
 
+    static void gameLoop(Game currentGame){
+        Timeline gameTimeline = new Timeline();
+        final Duration fps = Duration.millis(1000 / 90);
+        final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                Main.currentGame.checkObstacleCollision();
+//                currentGame.checkStarCollision();
+                Main.currentGame.otherCollisions();
+
+                if(Main.currentGame.playerOrb.getOrbGroup().getTranslateY()>150 || Main.currentGame.isGameStop()){
+                    System.out.println("GAME OVER");
+                    gameTimeline.stop();
+                    Main.currentGame.gameOver();
+                }
+            }
+        });
+
+
+        //// sets the game world's game loop (Timeline)
+//        TimelineBuilder.create()
+//                .cycleCount(Animation.INDEFINITE)
+//                .keyFrames(gameFrame)
+//                .build()
+//                .play();
+        gameTimeline.setCycleCount(Animation.INDEFINITE);
+        gameTimeline.getKeyFrames().addAll(gameFrame);
+        gameTimeline.play();
+
+    }
+
     public int getScore() {
         return score;
     }
@@ -383,6 +420,10 @@ public class Game {
 
     public void setCurrentTheme(Color[] currentTheme) {
         this.currentTheme = currentTheme;
+    }
+
+    public boolean isRevived() {
+        return revived;
     }
 }
 
