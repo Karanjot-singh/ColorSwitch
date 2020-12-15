@@ -29,6 +29,12 @@
 
 			<Region prefWidth="40" />
 
+			<ImageView fx:id="userIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#userClicked">
+				<Image url="@../assets/user2.png" />
+			</ImageView>
+
+			<Region prefWidth="40" />
+
 			<ImageView fx:id="settingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#settingsClicked">
 				<Image url="@../assets/settingsIcon.png" />
 			</ImageView>
