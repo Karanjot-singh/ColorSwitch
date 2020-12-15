@@ -50,9 +50,11 @@ GridPane, VBox, HBox, AnchorPane {
 /*}*/
 
 .button:hover{
-	-fx-text-fill: #2f84c1;
-	/*-fx-background-color: #006398;*/
+	/*-fx-text-fill: #2f84c1;*/
+	/*-fx-border-color: #2f84c1;*/
+
+	-fx-text-fill: #1a1a1a;
+	-fx-background-color: #2f84c1;
 	-fx-border-color: #2f84c1;
-	/*-fx-effect: dropshadow(gaussian, black, 10, 0.1, 0, 0);*/
 
 }

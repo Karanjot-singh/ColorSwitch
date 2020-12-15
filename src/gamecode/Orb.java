@@ -94,7 +94,7 @@ public class Orb extends Elements implements Rotation{
 					new KeyFrame(Duration.seconds(0.3),
 							new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
 					new KeyFrame(Duration.seconds(0.75),
-							new KeyValue(orbGroup.translateYProperty(), 100, interpolator)));
+							new KeyValue(orbGroup.translateYProperty(), 200, interpolator)));
 
 			timeline.play();
 	}

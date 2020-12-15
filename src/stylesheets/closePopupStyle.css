@@ -5,6 +5,18 @@
 	-fx-font-size:15;
 }
 
+#yesButton:hover {
+	-fx-text-fill: #1a1a1a;
+	-fx-background-color: #1cb094;
+	-fx-border-color: #1cb094;
+}
+
+#noButton:hover {
+	-fx-text-fill: #1a1a1a;
+	-fx-background-color: #c1732f;
+	-fx-border-color: #c1732f;
+}
+
 VBox {
 	-fx-border-width: 2;
 	-fx-border-color: #e3e3e3;

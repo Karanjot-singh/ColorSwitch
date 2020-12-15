@@ -264,7 +264,7 @@ public class Game {
                         stars.get(0).setVisible(false);
 
                     }
-                    System.out.println(stars.size());
+//                    System.out.println(stars.size());
                 }
             }
         }
@@ -281,7 +281,7 @@ public class Game {
             } else if (!intersect.getBoundsInLocal().isEmpty()) {
                 System.out.println("Star2 ");
             } else {
-                System.out.println(shape.getTranslateX() + " " + shape.getTranslateY());
+//                System.out.println(shape.getTranslateX() + " " + shape.getTranslateY());
             }
         }
     }
