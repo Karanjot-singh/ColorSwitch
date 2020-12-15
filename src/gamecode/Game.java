@@ -66,7 +66,7 @@ public class Game {
         gameGrid.setGridLinesVisible(true);
         gameGrid.add(gameColumn, 1, 0, 1, 6);
 
-        //	Timeline timeline2 = new Timeline();
+        	Timeline timeline2 = new Timeline();
 //	KeyValue end = new KeyValue(bullet.translateYProperty(), -800, new Interpolator() {
 //		@Override
 //		protected double curve(double t) {
@@ -74,7 +74,6 @@ public class Game {
 //		}
 //	});
 //	KeyFrame endF = new KeyFrame(Duration.seconds(10), end);
-//
 //    timeline2.getKeyFrames().addAll(endF);
 
         Main.gameplayScene.setOnKeyPressed(e -> {
