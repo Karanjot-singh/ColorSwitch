@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     static Stage window;
-    static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene, gameOverScene;
+    static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, playerInfoScene, pausePopupScene, closePopupScene, gameOverScene;
     static Parent gameplayRoot;
     static MediaPlayer mediaPlayer;
     static Game currentGame;
@@ -28,6 +28,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
 
+        player = new Player();
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
 //		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
 //        fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
@@ -38,6 +39,7 @@ public class Main extends Application {
         Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
         Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
+//        Parent playerInfoRoot = FXMLLoader.load(getClass().getResource("playerInfo.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 //        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
@@ -48,11 +50,12 @@ public class Main extends Application {
         loadGameScene = new Scene(loadGameRoot);
         helpScene = new Scene(helpRoot);
         settingsScene = new Scene(settingsRoot);
+//        playerInfoScene = new Scene(playerInfoRoot);
         closePopupScene = new Scene(closePopupRoot);
         pausePopupScene = new Scene(pausePopupRoot);
 //        gameOverScene = new Scene(gameOverRoot);
 
-        player = new Player();
+
 
         window.setOnCloseRequest(e -> {
             e.consume();
