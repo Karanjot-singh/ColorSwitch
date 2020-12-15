@@ -34,9 +34,9 @@ public class Star extends Elements {
         Rectangle container = new Rectangle();
         container.setWidth(40);
         container.setHeight(40);
-//        container.setFill(new ImagePattern(starIcon.getImage()));
-        container.setStroke(Color.WHITE);
-        container.setStrokeWidth(5);
+        container.setFill(new ImagePattern(starIcon.getImage()));
+//        container.setStroke(Color.WHITE);
+//        container.setStrokeWidth(5);
         return container;
     }
 
