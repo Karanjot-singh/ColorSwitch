@@ -41,7 +41,8 @@ public class SquareObstacle extends Obstacle {
         Rotation.rotate(squareGroup,0);
     }
 
-    public Group getSquareGroup() {
+    @Override
+    public Group getGroup() {
         return squareGroup;
     }
 

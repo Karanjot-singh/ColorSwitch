@@ -12,7 +12,8 @@ public class CrossObstacle extends Obstacle {
         Rotation.rotate(crossGroup,0);
     }
 
-    public Group getCrossGroup() {
+    @Override
+    public Group getGroup() {
         return crossGroup;
     }
 

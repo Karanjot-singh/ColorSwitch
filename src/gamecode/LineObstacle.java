@@ -14,6 +14,11 @@ public class LineObstacle extends Obstacle {
     }
 
     @Override
+    public Group getGroup() {
+        return lineGroup;
+    }
+
+    @Override
     public void scaleSize(int scale) {
 
     }

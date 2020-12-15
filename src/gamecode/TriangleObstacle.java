@@ -39,6 +39,11 @@ public class TriangleObstacle extends Obstacle {
     }
 
     @Override
+    public Group getGroup() {
+        return triangleGroup;
+    }
+
+    @Override
     public void scaleSize(int scale){
 
     }

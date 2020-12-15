@@ -17,29 +17,33 @@ import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
 
 	GridPane gameGrid;
 	Pane obstacleColumn;
 	StackPane gameColumn;
+	ArrayList<Group> obstacles;
+	ArrayList<Shape> stars;
+	ArrayList<Group> colorSwitchers;
+	ObservableList<Node> list;
 
 	int score;
 	float height;
-	ArrayList<Group> obstacles = new ArrayList<>();
-	ArrayList<Shape> stars = new ArrayList<>();
-	ArrayList<Group> colorSwitchers = new ArrayList<>();
-	ObservableList<Node> list;
-
 	Orb playerOrb;
 	Color[] currentTheme;
 	final double spacing = 70;
+	boolean gameStart = false;
 
 	Game(FXMLLoader fxmlLoader) {
 
 		gameGrid = fxmlLoader.getRoot();
 		gameColumn = new StackPane();
 		obstacleColumn = new Pane();
+		obstacles = new ArrayList<>();
+		stars = new ArrayList<>();
+		colorSwitchers = new ArrayList<>();
 		list = obstacleColumn.getChildren();
 
 		obstacleColumn.setCenterShape(true);
@@ -93,6 +97,7 @@ public class Game {
 		createSwitcher(90, 230);
 		createElement(20, 20);
 
+		gameStart = true;
 		createSwitcher(90, -40);
 		createElement(20, -250);
 	}
@@ -120,12 +125,29 @@ public class Game {
 
 	public StackPane addObstacles() {
 
-		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
-//		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
+		Random ran = new Random();
 		Star star = new Star();
-		obstacles.add(circle1.getArcGroup());
+		Obstacle obstacle = new CircleObstacle(1, 1, 1, 1);
 
-		return new StackPane(circle1.getArcGroup(), star.getStarIcon());
+		if(gameStart){
+			switch (ran.nextInt(3)){
+				case 0:
+					obstacle = new CircleObstacle(1, 1, 1, 1);
+					break;
+				case 1:
+					obstacle = new SquareObstacle(1, 1, 1, 1);
+					break;
+				case 2:
+					obstacle = new TriangleObstacle(1, 1, 1, 1);
+					break;
+			}
+		}
+//		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
+//		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
+
+		obstacles.add(obstacle.getGroup());
+
+		return new StackPane(obstacle.getGroup(), star.getStarIcon());
 	}
 
 	void moveDown(Node x) {
