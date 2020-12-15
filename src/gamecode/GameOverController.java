@@ -1,6 +1,7 @@
 package gamecode;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,29 +11,28 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class GameOverController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class GameOverController implements Initializable{
 
 		static Stage window;
 		static Scene scene;
 
 		@FXML
-		Label pauseMsg;
+		Label gameOverMsg, scoreMsg, highscoreMsg, score, highscore;
+
 		@FXML
 		ImageView backIcon, replayIcon;
 
 		@FXML
-		void replayClicked(MouseEvent mouseEvent)
-		{
-			
-			Main.startNewGame();
-			Main.window.setScene(Main.gameplayScene);
-			window.close();
-		}
+		Button backButton, replayButton;
 
 		@FXML
-		void saveClicked(MouseEvent mouseEvent)
+		void replayClicked(MouseEvent mouseEvent)
 		{
-			Main.window.setScene(Main.homeScene);
+			Main.startNewGame();
+			Main.window.setScene(Main.gameplayScene);
 			window.close();
 		}
 
@@ -50,10 +50,11 @@ public class GameOverController {
 			window.initModality(Modality.APPLICATION_MODAL);
 			window.initStyle(StageStyle.TRANSPARENT);
 			window.initOwner(Main.window);
-			window.setTitle("Pause game");
+			window.setTitle("Game Over");
 			window.setWidth(350);
 			window.setHeight(300);
 			window.centerOnScreen();
+
 
 			//Display window and wait for it to be closed before returning
 			scene = Main.gameOverScene;
@@ -62,4 +63,10 @@ public class GameOverController {
 //			window.showAndWait();
 		}
 
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		score.setText(Main.currentGame.getScore() +"");
+		highscore.setText(Main.player.getHighscore() + "");
+
+	}
 }
