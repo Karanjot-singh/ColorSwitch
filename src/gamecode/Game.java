@@ -36,10 +36,11 @@ public class Game {
     float height;
     Orb playerOrb;
     Color[] currentTheme;
+    Color colorFlag;
     final double spacing = 70;
     boolean gameStart = false;
     boolean gameStop = false;
-    boolean revived=false;
+    boolean revived = false;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -54,6 +55,7 @@ public class Game {
         obstacleColumn.setPrefSize(200, 500);
 
         playerOrb = new Orb();
+        colorFlag = playerOrb.getColor();
         double initPos = playerOrb.getOrbGroup().getTranslateY();
 
         initialiseObstacles();
@@ -237,6 +239,7 @@ public class Game {
                     if (intersect.getBoundsInLocal().getWidth() != -1) {
                         starShape.setVisible(false);
                         incrementScore();
+                        colorFlag = playerOrb.getColor();
                         tempPane.getChildren().remove(1);
                     }
                 }
@@ -247,7 +250,8 @@ public class Game {
                 Shape intersect = Shape.intersect(orb, elementGroup);
                 if (intersect.getBoundsInLocal().getWidth() != -1) {
                     elementGroup.setVisible(false);
-                    playerOrb.switchColor();
+                    if (colorFlag.equals(orb.getFill()))
+                        playerOrb.switchColor();
                     delete = 1;
                 }
             }
@@ -302,7 +306,7 @@ public class Game {
         }
     }
 
-    static void gameLoop(Game currentGame){
+    static void gameLoop(Game currentGame) {
         Timeline gameTimeline = new Timeline();
         final Duration fps = Duration.millis(1000 / 90);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
@@ -312,7 +316,7 @@ public class Game {
 //                currentGame.checkStarCollision();
                 Main.currentGame.otherCollisions();
 
-                if(Main.currentGame.playerOrb.getOrbGroup().getTranslateY()>150 || Main.currentGame.isGameStop()){
+                if (Main.currentGame.playerOrb.getOrbGroup().getTranslateY() > 150 || Main.currentGame.isGameStop()) {
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
                     Main.currentGame.gameOver();

@@ -37,16 +37,11 @@ public class Orb extends Elements implements Rotation {
     }
 
     public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
+        return Color.web(String.valueOf(orb.getFill()));
     }
 
     public void switchColor() {
         Color[] currentTheme = Settings.currentTheme;
-        System.out.println("work");
         Random ran = new Random();
         int index = ran.nextInt(4);
         Color newColor = currentTheme[index];
