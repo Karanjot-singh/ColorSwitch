@@ -1,0 +1,23 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+	  fx:controller="gamecode.PlayerInfoController" alignment="CENTER" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/settingsStyle.css">
+
+	<Label text="PLAYER INFO" fx:id="title" />
+	<HBox alignment="CENTER" >
+		<Label text="Name: " fx:id="nameMsg" />
+		<Label text="" fx:id="name" />
+	</HBox>
+	<HBox alignment="CENTER" >
+		<Label text="Stars: " fx:id="starsMsg" />
+		<Label text="" fx:id="stars" />
+	</HBox>
+	<HBox alignment="CENTER" >
+		<Label text="Highscore:" fx:id="highscoreMsg" />
+		<Label text="" fx:id="highscore" />
+	</HBox>
+
+	<Button text="Back" fx:id="backButton" onMouseClicked="#backClicked"/>
+
+</VBox>

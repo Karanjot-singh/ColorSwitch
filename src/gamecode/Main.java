@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     static Stage window;
-    static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene, gameOverScene;
+    static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, playerInfoScene, pausePopupScene, closePopupScene, gameOverScene;
     static Parent gameplayRoot;
     static MediaPlayer mediaPlayer;
     static Game currentGame;
@@ -28,6 +28,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
 
+        player = new Player();
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
 //		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
 //        fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
@@ -38,6 +39,7 @@ public class Main extends Application {
         Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
         Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
+//        Parent playerInfoRoot = FXMLLoader.load(getClass().getResource("playerInfo.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
 //        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
@@ -48,11 +50,12 @@ public class Main extends Application {
         loadGameScene = new Scene(loadGameRoot);
         helpScene = new Scene(helpRoot);
         settingsScene = new Scene(settingsRoot);
+//        playerInfoScene = new Scene(playerInfoRoot);
         closePopupScene = new Scene(closePopupRoot);
         pausePopupScene = new Scene(pausePopupRoot);
 //        gameOverScene = new Scene(gameOverRoot);
 
-        player = new Player();
+
 
         window.setOnCloseRequest(e -> {
             e.consume();
@@ -77,35 +80,7 @@ public class Main extends Application {
         mediaPlayer.setStopTime(Duration.seconds(30));
         mediaPlayer.play();
     }
-    static void gameLoop(Game currentGame){
-        Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 90);
-        final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                currentGame.checkObstacleCollision();
-//                currentGame.checkStarCollision();
-                currentGame.otherCollisions();
 
-                if(currentGame.playerOrb.getOrbGroup().getTranslateY()>150 || currentGame.isGameStop()){
-                    System.out.println("GAME OVER");
-                    gameTimeline.stop();
-                    currentGame.gameOver();
-                }
-            }
-        });
-
-        //// sets the game world's game loop (Timeline)
-//        TimelineBuilder.create()
-//                .cycleCount(Animation.INDEFINITE)
-//                .keyFrames(gameFrame)
-//                .build()
-//                .play();
-        gameTimeline.setCycleCount(Animation.INDEFINITE);
-        gameTimeline.getKeyFrames().addAll(gameFrame);
-        gameTimeline.play();
-
-    }
     static void closeProgram() {
         Boolean ans = ClosePopupController.display();
 
@@ -124,7 +99,7 @@ public class Main extends Application {
         }
         gameplayScene = new Scene(gameplayRoot);
         currentGame = new Game(fxmlLoader);
-        gameLoop(currentGame);
+        Game.gameLoop(currentGame);
     }
 
     public static void main(String[] args) {

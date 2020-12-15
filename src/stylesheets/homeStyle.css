@@ -1,13 +1,3 @@
-Circle {
-	-fx-fill: #1a1a1a;
-	-fx-stroke: Yellow;
-}
-
-Circle:hover {
-	-fx-stroke: #ff8c00;
-	-fx-cursor: hand;
-}
-
 .button {
 	-fx-padding: 7px 15px;
 	-fx-pref-width: 140;
@@ -16,7 +6,7 @@ Circle:hover {
 }
 
 
-#settingsIcon:hover, #helpIcon:hover {
+#settingsIcon:hover, #helpIcon:hover , #userIcon:hover{
 	-fx-effect: dropshadow(gaussian, black, 20, 0.3, 0, 0);
 	-fx-cursor: hand;
 	/*-fx-pref-width: 12px;*/

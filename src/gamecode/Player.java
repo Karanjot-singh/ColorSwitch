@@ -2,12 +2,14 @@ package gamecode;
 
 public class Player {
 	private String name;
-	private int totalStars = 0;
+	private int totalStars;
 	//private Game currentGame;
 	private int highscore;
 
 	Player() {
-
+		name="ProGamer";
+		totalStars = 0;
+		highscore = 0;
 	}
 
 	public String getName() {
@@ -34,6 +36,10 @@ public class Player {
 
 	public void addTotalStars(int totalStars) {
 		this.totalStars += totalStars;
+	}
+
+	public void subtractStars(int num){
+		this.totalStars-=num;
 	}
 
 	//public void playGame(Game G1){}
