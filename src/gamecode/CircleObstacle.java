@@ -23,7 +23,6 @@ public class CircleObstacle extends Obstacle {
 			arc.setStrokeWidth(12);
 			arcGroup.getChildren().add(arc);
 		}
-
 		Rotation.rotate(arcGroup,0);
 	}
 
