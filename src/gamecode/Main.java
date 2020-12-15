@@ -13,13 +13,16 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.*;
 import javafx.util.Duration;
 
+import java.io.IOException;
+
 public class Main extends Application {
     static Stage window;
-    static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene;
-    //	static Parent gameplayRoot;
+    static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene, gameOverScene;
+    static Parent gameplayRoot;
     static MediaPlayer mediaPlayer;
     static Game currentGame;
     static FXMLLoader fxmlLoader;
+    static Player player;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -27,24 +30,29 @@ public class Main extends Application {
 
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
 //		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
-        fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
+//        fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
 
 //		this.controller = fxmlLoader.getController();
 
-        Parent gameplayRoot = fxmlLoader.load();
+//        gameplayRoot = fxmlLoader.load();
         Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
         Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
+//        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+
 
         homeScene = new Scene(homeRoot); //, 600, 300
-        gameplayScene = new Scene(gameplayRoot);
+//        gameplayScene = new Scene(gameplayRoot);
         loadGameScene = new Scene(loadGameRoot);
         helpScene = new Scene(helpRoot);
         settingsScene = new Scene(settingsRoot);
         closePopupScene = new Scene(closePopupRoot);
         pausePopupScene = new Scene(pausePopupRoot);
+//        gameOverScene = new Scene(gameOverRoot);
+
+        player = new Player();
 
         window.setOnCloseRequest(e -> {
             e.consume();
@@ -78,6 +86,12 @@ public class Main extends Application {
                 currentGame.checkObstacleCollision();
 //                currentGame.checkStarCollision();
                 currentGame.otherCollisions();
+
+                if(currentGame.playerOrb.getOrbGroup().getTranslateY()>150){
+                    System.out.println("GAME OVER");
+                    gameTimeline.stop();
+                    currentGame.gameOver();
+                }
             }
         });
 
@@ -90,6 +104,7 @@ public class Main extends Application {
         gameTimeline.setCycleCount(Animation.INDEFINITE);
         gameTimeline.getKeyFrames().addAll(gameFrame);
         gameTimeline.play();
+
     }
     static void closeProgram() {
         Boolean ans = ClosePopupController.display();
@@ -101,6 +116,13 @@ public class Main extends Application {
     }
 
     static void startNewGame() {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("gameplay.fxml"));
+        try {
+            gameplayRoot = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gameplayScene = new Scene(gameplayRoot);
         currentGame = new Game(fxmlLoader);
         gameLoop(currentGame);
     }

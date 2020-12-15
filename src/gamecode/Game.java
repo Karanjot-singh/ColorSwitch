@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -17,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -239,7 +241,16 @@ public class Game {
     }
 
     public void gameOver() {
-
+        Main.player.addTotalStars(this.score);
+        if(this.getScore()>Main.player.getHighscore()){
+            Main.player.setHighscore(this.getScore());
+        }
+        try {
+            Main.gameOverScene = new Scene(FXMLLoader.load(getClass().getResource("gameOver.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GameOverController.display();
     }
 
     public void revive() {
@@ -316,7 +327,7 @@ public class Game {
             } else if (!intersect.getBoundsInLocal().isEmpty()) {
                 System.out.println("Star2 ");
             } else {
-                System.out.println(shape.getTranslateX() + " " + shape.getTranslateY());
+//                System.out.println(shape.getTranslateX() + " " + shape.getTranslateY());
             }
         }
     }
