@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -28,8 +29,6 @@ public class Game {
     Pane obstacleColumn;
     StackPane gameColumn;
     ArrayList<Group> obstacles;
-    ArrayList<Rectangle> stars;
-    ArrayList<Group> colorSwitchers;
     ArrayList<Node> temp;
 
     ObservableList<Node> list;
@@ -40,7 +39,7 @@ public class Game {
     Color[] currentTheme;
     final double spacing = 70;
     boolean gameStart = false;
-    boolean gameStop=false;
+    boolean gameStop = false;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -48,9 +47,7 @@ public class Game {
         gameColumn = new StackPane();
         obstacleColumn = new Pane();
         obstacles = new ArrayList<>();
-        stars = new ArrayList<>();
         temp = new ArrayList<Node>();
-        colorSwitchers = new ArrayList<>();
         list = obstacleColumn.getChildren();
 
         obstacleColumn.setCenterShape(true);
@@ -68,16 +65,6 @@ public class Game {
 
         gameGrid.setGridLinesVisible(true);
         gameGrid.add(gameColumn, 1, 0, 1, 6);
-
-        Timeline timeline2 = new Timeline();
-//	KeyValue end = new KeyValue(bullet.translateYProperty(), -800, new Interpolator() {
-//		@Override
-//		protected double curve(double t) {
-//			return t;
-//		}
-//	});
-//	KeyFrame endF = new KeyFrame(Duration.seconds(10), end);
-//    timeline2.getKeyFrames().addAll(endF);
 
         Main.gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
@@ -138,9 +125,8 @@ public class Game {
     }
 
     void createSwitcher(double PosX, double PosY) {
-        Group e2 = new ColorSwitcher().getSwitchGroup();
+        Circle e2 = new ColorSwitcher().getSwitchGroup();
         list.addAll(e2);
-        colorSwitchers.add(e2);
         obstacleColumn.setCenterShape(true);
         e2.relocate(PosX, PosY);
     }
@@ -168,7 +154,6 @@ public class Game {
 //		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
 
         obstacles.add(obstacle.getGroup());
-        stars.add(star.getStarShape());
         return new StackPane(obstacle.getGroup(), star.getStarShape());
     }
 
@@ -202,36 +187,6 @@ public class Game {
         score.setText("" + newScore);
 
     }
-//    public void collisionCheck(){
-//        boolean collisionSafe = false;
-//        Group obs = obstacles.get(0);
-//        for (Node iterator : obs.getChildren()) {
-//            Shape shape = (Shape) iterator;
-//            Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
-//            if ((orb.getFill()).equals(shape.getStroke())) {
-////                    System.out.println("same"+shape.getStroke());
-//                collisionSafe = true;
-//            } else {
-////                    System.out.println("diff"+shape.getStroke());
-//            }
-//            Shape intersect = Shape.intersect(orb, shape);
-//            if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-//                System.out.println("Collision");
-//                return true;
-//            }
-//        }
-//        KeyValue end = new KeyValue(bullet.translateYProperty(), -800, new Interpolator() {
-//            @Override
-//            protected double curve(double t) {
-//                if (!Shape.intersect(bullet, other).getBoundsInLocal().isEmpty()) {
-//                    System.out.println("Intersection");
-//                }
-//                return t;
-//            }
-//        });
-//        KeyFrame endF = new KeyFrame(Duration.seconds(10), end);
-//        timeline.getKeyFrames().addAll(endF);
-//    }
 
     void gameplay() {
 
@@ -247,7 +202,7 @@ public class Game {
 
     public void gameOver() {
         Main.player.addTotalStars(this.score);
-        if(this.getScore()>Main.player.getHighscore()){
+        if (this.getScore() > Main.player.getHighscore()) {
             Main.player.setHighscore(this.getScore());
         }
         try {
@@ -263,15 +218,14 @@ public class Game {
 
     public void otherCollisions() {
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
-        Shape starShape = orb; //dummy
-        Group elementGroup = new Group();
+        Shape starShape;
         int delete = 0;
 //        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
         for (Node element : list) {
             // Collision for Stars
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
-                if(tempPane.getChildren().size()>1) {
+                if (tempPane.getChildren().size() > 1) {
                     starShape = (Shape) tempPane.getChildren().get(1);
                     Shape intersect = Shape.intersect(orb, starShape);
                     if (intersect.getBoundsInLocal().getWidth() != -1) {
@@ -282,20 +236,17 @@ public class Game {
                 }
             }
             //Collision with ColorSwitcher
-            else if (element.getClass().getName().equals("javafx.scene.layout.Group")) {
-                elementGroup = (Group) element;
-                for (Node iterator : elementGroup.getChildren()) {
-                    Shape shape = (Shape) iterator;
-                    Shape intersect = Shape.intersect(orb, shape);
-                    if (intersect.getBoundsInLocal().getWidth() != -1) {
-                        System.out.println("cs");
-                        elementGroup.setVisible(false);
-                        delete = 1;
-                    }
+            else if (element.getClass().getName().equals("javafx.scene.shape.Circle")) {
+                Circle elementGroup = (Circle) element;
+                Shape intersect = Shape.intersect(orb, elementGroup);
+                if (intersect.getBoundsInLocal().getWidth() != -1) {
+                    elementGroup.setVisible(false);
+                    playerOrb.switchColor();
+                    delete = 1;
                 }
             }
         }
-        if (delete == 1 && list.get(0).getClass().getName().equals("javafx.scene.layout.StackPane")) {
+        if (delete == 1 && list.get(0).getClass().getName().equals("javafx.scene.shape.Circle")) {
             removeElement(list.get(0));
         }
     }
@@ -315,7 +266,7 @@ public class Game {
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
 //                    System.out.print("Collision "+shape.getStroke()+ " ");
-                    gameStop=true;
+                    gameStop = true;
                     return true;
                 }
             }

@@ -16,11 +16,6 @@ public class Settings {
 			Color.web("#e4e42c")};
 
 	Settings(){
-
-//		currentTheme = new Color[]{Color.rgb(1, 1, 255),
-//									Color.rgb(1, 1, 255),
-//									Color.rgb(1, 1, 255),
-//									Color.rgb(1, 1, 255)};
 		currentTheme = new Color[]{Color.web("#9711ae"),
 				Color.web("#32d0d0"),
 				Color.web("#eb0d4c"),

@@ -11,7 +11,6 @@ public class Star extends Elements {
 
     private int scoreValue;
 
-    //TODO Specify height and width for star image
 //	<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="280.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
 //		         <image>
 //		            <Image url="@../assets/starIcon.png" />
