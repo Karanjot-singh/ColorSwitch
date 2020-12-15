@@ -22,7 +22,7 @@ public class ColorSwitcher extends Elements implements Rotation {
 			switchGroup.getChildren().add(arc);
 		}
 
-		Rotation.rotate(switchGroup, 0);
+//		Rotation.rotate(switchGroup, 0);
 	}
 
 	public void switchColor() {

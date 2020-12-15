@@ -76,10 +76,11 @@ public class Main extends Application {
             @Override
             public void handle(Event event) {
                 currentGame.checkObstacleCollision();
+                currentGame.checkStarCollision();
             }
         });
 
-//// sets the game world's game loop (Timeline)
+        //// sets the game world's game loop (Timeline)
 //        TimelineBuilder.create()
 //                .cycleCount(Animation.INDEFINITE)
 //                .keyFrames(gameFrame)

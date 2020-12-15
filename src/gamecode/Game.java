@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
@@ -26,7 +27,7 @@ public class Game {
     Pane obstacleColumn;
     StackPane gameColumn;
     ArrayList<Group> obstacles;
-    ArrayList<Shape> stars;
+    ArrayList<Rectangle> stars;
     ArrayList<Group> colorSwitchers;
     ObservableList<Node> list;
 
@@ -161,7 +162,7 @@ public class Game {
 
         obstacles.add(obstacle.getGroup());
 
-        return new StackPane(obstacle.getGroup(), star.getStarIcon());
+        return new StackPane(obstacle.getGroup(), star.getStarShape());
     }
 
     void moveDown(Node x) {
@@ -244,7 +245,7 @@ public class Game {
         boolean collisionSafe = false;
 
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
-        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
+//        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
         for (Group elementGroup : obstacles) {
             for (Node iterator : elementGroup.getChildren()) {
                 Shape shape = (Shape) iterator;
@@ -263,7 +264,41 @@ public class Game {
         }
         return false;
     }
-
+    public void checkStarCollision() {
+        boolean collisionSafe = false;
+        Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
+//        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
+        for ( Rectangle shape : stars) {
+                Shape intersect = Shape.intersect(orb, shape);
+                if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
+                    System.out.print("Star ");
+                    shape.setHeight(0);
+                    shape.setWidth(0);
+                    return ;
+                }
+        }
+    }
+    public void checkSwitchCollision() {
+        boolean collisionSafe = false;
+        Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
+        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
+        for (Group elementGroup : obstacles) {
+            for (Node iterator : elementGroup.getChildren()) {
+                Shape shape = (Shape) iterator;
+                if ((orb.getStroke()).equals(shape.getStroke())) {
+//                    System.out.println("same"+shape.getStroke());
+                    collisionSafe = true;
+                } else {
+//                    System.out.println("diff"+shape.getStroke());
+                }
+                Shape intersect = Shape.intersect(orb, shape);
+                if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
+//                    System.out.print("Collision "+shape.getStroke()+ " ");
+                    return ;
+                }
+            }
+        }
+    }
     public int getScore() {
         return score;
     }
