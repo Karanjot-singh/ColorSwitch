@@ -7,8 +7,6 @@ import javafx.scene.image.ImageView;
 import java.io.IOException;
 
 public class HomeController {
-	Game currentGame;
-
     @FXML
     Button newGameButton, loadGameButton, exitButton;
 
