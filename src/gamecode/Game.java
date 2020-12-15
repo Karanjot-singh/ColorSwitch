@@ -134,6 +134,7 @@ public class Game {
     void createSwitcher(double PosX, double PosY) {
         Group e2 = new ColorSwitcher().getSwitchGroup();
         list.addAll(e2);
+        colorSwitchers.add(e2);
         obstacleColumn.setCenterShape(true);
         e2.relocate(PosX, PosY);
     }
@@ -161,7 +162,7 @@ public class Game {
 //		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
 
         obstacles.add(obstacle.getGroup());
-
+        stars.add(star.getStarShape());
         return new StackPane(obstacle.getGroup(), star.getStarShape());
     }
 
@@ -252,36 +253,43 @@ public class Game {
                 if ((orb.getStroke()).equals(shape.getStroke())) {
 //                    System.out.println("same"+shape.getStroke());
                     collisionSafe = true;
-                } else {
-//                    System.out.println("diff"+shape.getStroke());
                 }
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-                    System.out.print("Collision "+shape.getStroke()+ " ");
+//                    System.out.print("Collision "+shape.getStroke()+ " ");
                     return true;
+                } else {
+                    if (gameStart) {
+
+                        stars.get(0).setVisible(false);
+
+                    }
+                    System.out.println(stars.size());
                 }
             }
         }
         return false;
     }
+
     public void checkStarCollision() {
-        boolean collisionSafe = false;
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
 //        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
-        for ( Rectangle shape : stars) {
-                Shape intersect = Shape.intersect(orb, shape);
-                if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-                    System.out.print("Star ");
-                    shape.setHeight(0);
-                    shape.setWidth(0);
-                    return ;
-                }
+        for (Rectangle shape : stars) {
+            Shape intersect = Shape.intersect(orb, shape);
+            if (intersect.getBoundsInLocal().getWidth() != -1) {
+                System.out.println("Star ");
+            } else if (!intersect.getBoundsInLocal().isEmpty()) {
+                System.out.println("Star2 ");
+            } else {
+                System.out.println(shape.getTranslateX() + " " + shape.getTranslateY());
+            }
         }
     }
+
     public void checkSwitchCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
-        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
+        System.out.println("Orb: " + orb.getStroke() + " " + orb.getFill());
         for (Group elementGroup : obstacles) {
             for (Node iterator : elementGroup.getChildren()) {
                 Shape shape = (Shape) iterator;
@@ -294,11 +302,12 @@ public class Game {
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
 //                    System.out.print("Collision "+shape.getStroke()+ " ");
-                    return ;
+                    return;
                 }
             }
         }
     }
+
     public int getScore() {
         return score;
     }
