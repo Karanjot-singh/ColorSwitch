@@ -48,4 +48,6 @@ public class GameplayController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-	}}
+	}
+
+}
