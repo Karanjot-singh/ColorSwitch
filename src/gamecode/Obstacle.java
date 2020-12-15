@@ -1,6 +1,8 @@
 package gamecode;
 
 
+import javafx.scene.Group;
+
 public abstract class Obstacle extends Elements implements Rotation{
 	private int stroke;
 	private int duration;
@@ -13,6 +15,9 @@ public abstract class Obstacle extends Elements implements Rotation{
 		this.setAngle(angle);
 		this.setVelocity(velocity);
 	}
+
+	abstract public Group getGroup();
+
 	public void scaleSize(int scale){
 
 	}

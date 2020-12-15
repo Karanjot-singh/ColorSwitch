@@ -26,7 +26,8 @@ public class CircleObstacle extends Obstacle {
 		Rotation.rotate(arcGroup,0);
 	}
 
-	public Group getArcGroup() {
+	@Override
+	public Group getGroup() {
 		return arcGroup;
 	}
 }

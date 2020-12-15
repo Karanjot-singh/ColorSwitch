@@ -1,0 +1,31 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox fx:id="vbox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="gamecode.GameOverController"
+	  prefHeight="500.0" prefWidth="200.0" alignment="CENTER" spacing="20" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/gameOverStyle.css">
+
+	<Label text="GAME OVER" fx:id="gameOverMsg" />
+	<HBox alignment="CENTER" spacing="20">
+		<Label text="SCORE:" fx:id="scoreMsg" />
+		<Label text="" fx:id="score" />
+		<Label text="HIGHSCORE:" fx:id="highscoreMsg" />
+		<Label text="" fx:id="highscore" />
+	</HBox>
+
+	<Button text="" fx:id="reviveButton" onMouseClicked="#reviveClicked"/>
+	<HBox alignment="CENTER" spacing="20">
+		<Button text="Back" fx:id="backButton" onMouseClicked="#backClicked" />
+		<Button text="Play Again" fx:id="replayButton" onMouseClicked="#replayClicked" />
+<!--		<ImageView fx:id="backIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#backClicked">-->
+<!--			<Image url="@../assets/back.png" />-->
+<!--		</ImageView>-->
+<!--		<ImageView fx:id="replayIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#replayClicked">-->
+<!--			<Image url="@../assets/replay3.png" />-->
+<!--		</ImageView>-->
+	</HBox>
+
+
+
+</VBox>
