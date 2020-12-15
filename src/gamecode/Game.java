@@ -88,7 +88,7 @@ public class Game {
 					}
 
 					if (list.get(list.size() - 1).getClass().getName() == "javafx.scene.layout.StackPane") {
-						System.out.println(list.get(list.size() - 1).getLayoutY());
+//						System.out.println(list.get(list.size() - 1).getLayoutY());
 						if (list.get(list.size() - 1).getTranslateY() > 180) {
 							createSwitcher(90, -90);
 						}
@@ -123,7 +123,7 @@ public class Game {
 	}
 
     public void removeElement(Node e) {
-        System.out.println(e.getClass().getName() + " " + e.getTranslateY());
+//        System.out.println(e.getClass().getName() + " " + e.getTranslateY());
 
         if (e.getTranslateY() > 1000) {
             list.remove(e);
