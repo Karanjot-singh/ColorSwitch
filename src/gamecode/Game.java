@@ -11,7 +11,6 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -29,6 +28,8 @@ public class Game {
     ArrayList<Group> obstacles;
     ArrayList<Rectangle> stars;
     ArrayList<Group> colorSwitchers;
+    ArrayList<Node> temp;
+
     ObservableList<Node> list;
 
     int score;
@@ -45,6 +46,7 @@ public class Game {
         obstacleColumn = new Pane();
         obstacles = new ArrayList<>();
         stars = new ArrayList<>();
+        temp = new ArrayList<Node>();
         colorSwitchers = new ArrayList<>();
         list = obstacleColumn.getChildren();
 
@@ -76,7 +78,6 @@ public class Game {
 
         Main.gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
-                incrementScore();
 //                moveDown();
 //                playerOrb.jump(initPos);
 
@@ -120,6 +121,7 @@ public class Game {
     public void createElement(double PosX, double PosY) {
         StackPane e1 = addObstacles();
         list.add(e1);
+        temp.add(e1);
         e1.relocate(PosX, PosY);
     }
 
@@ -128,6 +130,7 @@ public class Game {
 
         if (e.getTranslateY() > 1000) {
             list.remove(e);
+            temp.remove(e);
         }
     }
 
@@ -242,6 +245,45 @@ public class Game {
     public void revive() {
     }
 
+    public void otherCollisions() {
+        Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
+        Shape starShape = orb; //dummy
+        Group elementGroup = new Group();
+        int delete = 0;
+//        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
+        for (Node element : list) {
+            // Collision for Stars
+            if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
+                StackPane tempPane = (StackPane) element;
+                if(tempPane.getChildren().size()>1) {
+                    starShape = (Shape) tempPane.getChildren().get(1);
+                    Shape intersect = Shape.intersect(orb, starShape);
+                    if (intersect.getBoundsInLocal().getWidth() != -1) {
+                        starShape.setVisible(false);
+                        incrementScore();
+                        tempPane.getChildren().remove(1);
+                    }
+                }
+            }
+            //Collision with ColorSwitcher
+            else if (element.getClass().getName().equals("javafx.scene.layout.Group")) {
+                elementGroup = (Group) element;
+                for (Node iterator : elementGroup.getChildren()) {
+                    Shape shape = (Shape) iterator;
+                    Shape intersect = Shape.intersect(orb, shape);
+                    if (intersect.getBoundsInLocal().getWidth() != -1) {
+                        System.out.println("cs");
+                        elementGroup.setVisible(false);
+                        delete = 1;
+                    }
+                }
+            }
+        }
+        if (delete == 1 && list.get(0).getClass().getName().equals("javafx.scene.layout.StackPane")) {
+            removeElement(list.get(0));
+        }
+    }
+
     public Boolean checkObstacleCollision() {
         boolean collisionSafe = false;
 
@@ -258,13 +300,6 @@ public class Game {
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
 //                    System.out.print("Collision "+shape.getStroke()+ " ");
                     return true;
-                } else {
-                    if (gameStart) {
-
-                        stars.get(0).setVisible(false);
-
-                    }
-                    System.out.println(stars.size());
                 }
             }
         }

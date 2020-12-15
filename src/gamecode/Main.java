@@ -76,7 +76,8 @@ public class Main extends Application {
             @Override
             public void handle(Event event) {
                 currentGame.checkObstacleCollision();
-                currentGame.checkStarCollision();
+//                currentGame.checkStarCollision();
+                currentGame.otherCollisions();
             }
         });
 
