@@ -16,8 +16,6 @@ public class PausePopupController {
 		public Button resumeButton, saveButton, quitButton;
 		public Label pauseMsg;
 
-		static Boolean ans = false;
-
 		@FXML
 		void resumeClicked(MouseEvent mouseEvent)
 		{
@@ -38,7 +36,7 @@ public class PausePopupController {
 			window.close();
 		}
 
-		public static Boolean display() {
+		public static void display() {
 			window = new Stage();
 
 			//Block events to other windows
@@ -53,8 +51,6 @@ public class PausePopupController {
 			scene = Main.pausePopupScene;
 			window.setScene(scene);
 			window.showAndWait();
-
-			return ans;
 		}
 
 }

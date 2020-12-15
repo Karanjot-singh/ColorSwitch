@@ -18,10 +18,11 @@ import java.io.IOException;
 public class Main extends Application {
     static Stage window;
     static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, pausePopupScene, closePopupScene, gameOverScene;
-    	static Parent gameplayRoot;
+    static Parent gameplayRoot;
     static MediaPlayer mediaPlayer;
     static Game currentGame;
     static FXMLLoader fxmlLoader;
+    static Player player;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -39,7 +40,7 @@ public class Main extends Application {
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
-        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+//        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
 
 
         homeScene = new Scene(homeRoot); //, 600, 300
@@ -49,7 +50,9 @@ public class Main extends Application {
         settingsScene = new Scene(settingsRoot);
         closePopupScene = new Scene(closePopupRoot);
         pausePopupScene = new Scene(pausePopupRoot);
-        gameOverScene = new Scene(gameOverRoot);
+//        gameOverScene = new Scene(gameOverRoot);
+
+        player = new Player();
 
         window.setOnCloseRequest(e -> {
             e.consume();
@@ -86,8 +89,7 @@ public class Main extends Application {
                 if(currentGame.playerOrb.getOrbGroup().getTranslateY()>150){
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
-                    GameOverController.display();
-
+                    currentGame.gameOver();
                 }
             }
         });
