@@ -14,41 +14,39 @@ import java.util.ResourceBundle;
 
 public class PlayerInfoController implements Initializable {
 
-	@FXML
-	Button backButton;
+    static Stage window;
+    static Scene scene;
+    @FXML
+    Button backButton;
+    @FXML
+    Label title, nameMsg, name, starsMsg, stars, highscoreMsg, highscore;
 
-	@FXML
-	Label title, nameMsg, name, starsMsg, stars, highscoreMsg, highscore;
+    public static void display() {
+        window = new Stage();
 
-	static Stage window;
-	static Scene scene;
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initOwner(Main.getWindow());
+        window.setTitle("Settings Screen");
+        window.setMinWidth(250);
+        window.setMinHeight(100);
+        window.centerOnScreen();
 
-	@FXML
-	void backClicked(MouseEvent mouseEvent) {
-		window.close();
-	}
+        //Display window and wait for it to be closed before returning
+        scene = Main.getPlayerInfoScene();
+        window.setScene(scene);
+        window.showAndWait();
+    }
 
-	public static void display() {
-		window = new Stage();
+    @FXML
+    void backClicked(MouseEvent mouseEvent) {
+        window.close();
+    }
 
-		//Block events to other windows
-		window.initModality(Modality.APPLICATION_MODAL);
-		window.initOwner(Main.window);
-		window.setTitle("Settings Screen");
-		window.setMinWidth(250);
-		window.setMinHeight(100);
-		window.centerOnScreen();
-
-		//Display window and wait for it to be closed before returning
-		scene = Main.playerInfoScene;
-		window.setScene(scene);
-		window.showAndWait();
-	}
-
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		name.setText(Main.player.getName());
-		stars.setText(Main.player.getTotalStars()+"");
-		highscore.setText(Main.player.getHighscore()+"");
-	}
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        name.setText(Main.getPlayer().getName());
+        stars.setText(Main.getPlayer().getTotalStars() + "");
+        highscore.setText(Main.getPlayer().getHighscore() + "");
+    }
 }

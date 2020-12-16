@@ -1,7 +1,6 @@
 package gamecode;
 
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -11,8 +10,7 @@ public class Star extends Elements {
 
     private int scoreValue;
 
-    //TODO Specify height and width for star image
-//	<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="280.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+    //	<ImageView fitHeight="40.0" fitWidth="40.0" layoutX="280.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
 //		         <image>
 //		            <Image url="@../assets/starIcon.png" />
 //		         </image>
@@ -29,6 +27,14 @@ public class Star extends Elements {
         return scoreValue;
     }
 
+    public void setScoreValue(int scoreValue) {
+        this.scoreValue = scoreValue;
+    }
+
+//    public ImageView getStarIcon() {
+//        return starIcon;
+//    }
+
     public Rectangle getStarShape() {
 //        Rectangle(double x, double y, double width, double height)
         Rectangle container = new Rectangle();
@@ -36,14 +42,6 @@ public class Star extends Elements {
         container.setHeight(40);
         container.setFill(new ImagePattern(starIcon.getImage()));
         return container;
-    }
-
-//    public ImageView getStarIcon() {
-//        return starIcon;
-//    }
-
-    public void setScoreValue(int scoreValue) {
-        this.scoreValue = scoreValue;
     }
 
     void explodeAnimation() {

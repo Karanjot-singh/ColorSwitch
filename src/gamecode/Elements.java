@@ -1,29 +1,31 @@
 package gamecode;
 
-public abstract class Elements {
-	protected int posX;
-	protected int posY;
+import java.io.Serializable;
 
-	Elements(){}
+public abstract class Elements implements Serializable {
+    protected int posX;
+    protected int posY;
 
-	public int getPosX() {
-		return posX;
-	}
+    Elements() {
+    }
 
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
+    public int getPosX() {
+        return posX;
+    }
 
-	public int getPosY() {
-		return posY;
-	}
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
 
-	public void setPosY(int posY) {
-		this.posY = posY;
-	}
+    public int getPosY() {
+        return posY;
+    }
 
-	void moveDown()
-	{
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
 
-	}
+    void moveDown() {
+
+    }
 }

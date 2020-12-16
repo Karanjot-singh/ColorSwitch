@@ -1,11 +1,13 @@
 package gamecode;
 
+import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
 
 public class SquareObstacle extends Obstacle {
 
+    private final RotateTransition rotateTransition;
     Group squareGroup;
 
     public SquareObstacle(int stroke, int duration, int angle, int velocity) {
@@ -38,7 +40,15 @@ public class SquareObstacle extends Obstacle {
         line.setStrokeWidth(12);
         squareGroup.getChildren().add(line);
 
-        Rotation.rotate(squareGroup,0);
+        rotateTransition = Rotation.rotate(squareGroup, 0);
+    }
+
+    public void pauseAnimation() {
+        rotateTransition.pause();
+    }
+
+    public void playAnimation() {
+        rotateTransition.play();
     }
 
     @Override
@@ -47,7 +57,7 @@ public class SquareObstacle extends Obstacle {
     }
 
     @Override
-    public void scaleSize(int scale){
+    public void scaleSize(int scale) {
 
     }
 
