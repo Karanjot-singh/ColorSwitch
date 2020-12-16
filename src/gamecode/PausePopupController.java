@@ -13,8 +13,10 @@ public class PausePopupController {
     static Stage window;
     static Scene scene;
 
-    public Button resumeButton, saveButton, quitButton;
-    public Label pauseMsg;
+    @FXML
+    Button resumeButton, saveButton, quitButton;
+    @FXML
+    Label pauseMsg;
 
     public static void display() {
         window = new Stage();
@@ -35,6 +37,7 @@ public class PausePopupController {
 
     @FXML
     void resumeClicked(MouseEvent mouseEvent) {
+        Main.getCurrentGame().setPaused(false);
         Main.getCurrentGame().playGame();
         window.close();
     }

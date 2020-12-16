@@ -23,6 +23,7 @@ public class GameplayController implements Initializable {
 
     @FXML
     void pauseClicked(MouseEvent mouseEvent) {
+        Main.getCurrentGame().setPaused(true);
         Main.getCurrentGame().pauseGame();
         PausePopupController.display();
     }
