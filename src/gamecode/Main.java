@@ -15,10 +15,10 @@ public class Main extends Application {
     static Stage window;
     static Scene homeScene, gameplayScene, loadGameScene, helpScene, settingsScene, playerInfoScene, pausePopupScene, closePopupScene, gameOverScene;
     static Parent gameplayRoot;
-    static MediaPlayer mediaPlayer;
     static Game currentGame;
     static FXMLLoader fxmlLoader;
     static Player player;
+    static PlayMusic music;
 
     static void closeProgram() {
         Boolean ans = ClosePopupController.display();
@@ -81,23 +81,48 @@ public class Main extends Application {
             e.consume();
             closeProgram();
         });
-
-//      startGameMusic();
 //		window.initStyle(StageStyle.TRANSPARENT);
         window.setTitle("Color Switch");
         window.setScene(homeScene);
         window.centerOnScreen();
-
         window.show();
+        playMusic();
     }
 
-    void startGameMusic() {
+    public void playMusic() {
+        Thread t1 = new Thread();
+        music = new PlayMusic();
+        t1.start();
+    }
+
+    public void pauseMusic() {
+        music.stopMusic();
+    }
+}
+
+class PlayMusic implements Runnable {
+
+    static MediaPlayer mediaPlayer;
+
+    public PlayMusic() {
         Media backgroundMusic = new Media(getClass().getResource("/assets/music.wav").toString());
         mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(30));
+    }
+
+    void stopMusic() {
+        mediaPlayer.stop();
+    }
+
+    void startGameMusic() {
         mediaPlayer.play();
+    }
+
+    @Override
+    public void run() {
+        startGameMusic();
     }
 }
