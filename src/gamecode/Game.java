@@ -28,8 +28,6 @@ public class Game {
     Pane obstacleColumn;
     StackPane gameColumn;
     ArrayList<Group> obstacles;
-    ArrayList<Node> temp;
-
     ObservableList<Node> list;
 
     int score;
@@ -48,7 +46,6 @@ public class Game {
         gameColumn = new StackPane();
         obstacleColumn = new Pane();
         obstacles = new ArrayList<>();
-        temp = new ArrayList<Node>();
         list = obstacleColumn.getChildren();
 
         obstacleColumn.setCenterShape(true);
@@ -113,7 +110,6 @@ public class Game {
     public void createElement(double PosX, double PosY) {
         StackPane e1 = addObstacles();
         list.add(e1);
-        temp.add(e1);
         e1.relocate(PosX, PosY);
     }
 
@@ -122,7 +118,9 @@ public class Game {
 
         if (e.getTranslateY() > 1000) {
             list.remove(e);
-            temp.remove(e);
+            if(e.getClass().getName().equals("javafx.scene.layout.StackPane")){
+                obstacles.remove(e);
+            }
         }
     }
 
@@ -221,7 +219,7 @@ public class Game {
         //TODO Reduce stars from player
         //TODO throw insufficient stars exception
         gameColumn.getChildren().get(1).setTranslateY(0);
-        gameLoop(Main.currentGame);
+        gameLoop();
     }
 
     public void otherCollisions() {
@@ -261,9 +259,8 @@ public class Game {
         }
     }
 
-    public Boolean checkObstacleCollision() {
+    public void checkObstacleCollision() {
         boolean collisionSafe = false;
-
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
 //        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
         for (Group elementGroup : obstacles) {
@@ -277,43 +274,42 @@ public class Game {
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
 //                    System.out.print("Collision "+shape.getStroke()+ " ");
                     gameStop = true;
-                    return true;
                 }
             }
         }
-        return false;
     }
 
-    public void checkSwitchCollision() {
+    public void obstacleCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
-        System.out.println("Orb: " + orb.getStroke() + " " + orb.getFill());
-        for (Group elementGroup : obstacles) {
-            for (Node iterator : elementGroup.getChildren()) {
-                Shape shape = (Shape) iterator;
-                if ((orb.getStroke()).equals(shape.getStroke())) {
+        for (Node element : list) {
+            // Collision for Obstacles
+            if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
+                StackPane tempPane = (StackPane) element;
+                Group obstacleGroup = (Group) tempPane.getChildren().get(0);
+                for (Node sub : obstacleGroup.getChildren()) {
+                    Shape shape = (Shape) sub;
+                    if ((orb.getStroke()).equals(shape.getStroke())) {
 //                    System.out.println("same"+shape.getStroke());
-                    collisionSafe = true;
-                } else {
-//                    System.out.println("diff"+shape.getStroke());
-                }
-                Shape intersect = Shape.intersect(orb, shape);
-                if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-//                    System.out.print("Collision "+shape.getStroke()+ " ");
-                    return;
+                        collisionSafe = true;
+                    }
+                    Shape intersect = Shape.intersect(orb, shape);
+                    if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
+                        System.out.print("Collision ");
+                        gameStop = true;
+                    }
                 }
             }
         }
     }
 
-    static void gameLoop(Game currentGame) {
+    static void gameLoop() {
         Timeline gameTimeline = new Timeline();
         final Duration fps = Duration.millis(1000 / 90);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
                 Main.currentGame.checkObstacleCollision();
-//                currentGame.checkStarCollision();
                 Main.currentGame.otherCollisions();
 
                 if (Main.currentGame.playerOrb.getOrbGroup().getTranslateY() > 150 || Main.currentGame.isGameStop()) {
@@ -323,14 +319,6 @@ public class Game {
                 }
             }
         });
-
-
-        //// sets the game world's game loop (Timeline)
-//        TimelineBuilder.create()
-//                .cycleCount(Animation.INDEFINITE)
-//                .keyFrames(gameFrame)
-//                .build()
-//                .play();
         gameTimeline.setCycleCount(Animation.INDEFINITE);
         gameTimeline.getKeyFrames().addAll(gameFrame);
         gameTimeline.play();

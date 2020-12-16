@@ -81,7 +81,9 @@ public class Orb extends Elements implements Rotation {
             @Override
             protected double curve(double t) {
                 // t is the fraction of animation completed
-                return t * (2 - t); //rate to change animation speed
+                return t * (2 - t);
+//                return (t>0.8? -t * (2 - t) : t);
+                //rate to change animation speed
             }
 
         };
@@ -93,6 +95,15 @@ public class Orb extends Elements implements Rotation {
             }
 
         };
+        Interpolator end = new Interpolator() {
+            @Override
+            protected double curve(double t) {
+                // t is the fraction of animation completed
+                return t*1.3; //rate to change animation speed
+            }
+
+        };
+
 
 //			System.out.println("ty=" + ty + " bound=" + bound + " pos="+ pos + " mid=" +mid);
 
@@ -101,8 +112,10 @@ public class Orb extends Elements implements Rotation {
                         new KeyValue(orbGroup.translateYProperty(), ty, interpolator)),
                 new KeyFrame(Duration.seconds(0.3),
                         new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
-                new KeyFrame(Duration.seconds(0.75),
-                        new KeyValue(orbGroup.translateYProperty(), 200, interpolator)));
+//                new KeyFrame(Duration.seconds(0.75),
+//                        new KeyValue(orbGroup.translateYProperty(), orbGroup.getTranslateY(), linear)),
+        new KeyFrame(Duration.seconds(1),
+                new KeyValue(orbGroup.translateYProperty(), 200, end)));
 
         timeline.play();
     }
