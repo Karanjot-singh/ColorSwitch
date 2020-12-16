@@ -7,7 +7,7 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 public interface Rotation {
-	static void rotate(Group g, double delay){
+	public static RotateTransition rotate(Group g, double delay){
 		RotateTransition rotation = new RotateTransition(Duration.seconds(25), g); //decreases speed
 
 //		rotation.setAutoReverse(direction);
@@ -19,5 +19,8 @@ public interface Rotation {
 		rotation.setRate(5); //increases speed
 		rotation.setInterpolator(Interpolator.LINEAR);
 		rotation.play();
+		return rotation;
 	}
+
+
 }

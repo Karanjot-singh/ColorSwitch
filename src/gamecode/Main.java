@@ -99,7 +99,7 @@ public class Main extends Application {
         }
         gameplayScene = new Scene(gameplayRoot);
         currentGame = new Game(fxmlLoader);
-        Game.gameLoop(currentGame);
+        Game.gameLoop();
     }
 
     public static void main(String[] args) {

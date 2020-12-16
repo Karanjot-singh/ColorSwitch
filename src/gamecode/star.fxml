@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<ImageView fx:id="starIcon" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.Star" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-	<image>
-		<Image url="@/assets/starIcon.png" />
-	</image>
-</ImageView>
+<Pane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Line endX="32.0" endY="54.0" layoutX="33.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
+      <Line endX="32.0" endY="54.0" layoutX="92.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#09c909" strokeLineCap="ROUND" strokeWidth="12.0" />
+      <Line endX="32.0" endY="54.0" layoutX="156.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e08219" strokeLineCap="ROUND" strokeWidth="12.0" />
+      <Line endX="32.0" endY="54.0" layoutX="219.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e01969" strokeLineCap="ROUND" strokeWidth="12.0" />
+	</children>
+</Pane>
