@@ -49,10 +49,10 @@ public class GameOverController implements Initializable {
 	void reviveClicked(MouseEvent mouseEvent) {
 		try {
 			Main.currentGame.revive();
+			window.close();
 		} catch (InsufficientStarsException e) {
 			e.getMessage();
 		}
-		window.close();
 	}
 
 	public static void display() {
