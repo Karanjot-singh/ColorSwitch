@@ -19,6 +19,7 @@ public class PausePopupController {
 		@FXML
 		void resumeClicked(MouseEvent mouseEvent)
 		{
+			Main.currentGame.playGame();
 			window.close();
 		}
 

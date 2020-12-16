@@ -1,9 +1,6 @@
 package gamecode;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -16,7 +13,8 @@ public class Orb extends Elements implements Rotation {
     private Color color;
     private String shape;
     private String trail;
-
+    private Timeline timeline;
+    private RotateTransition rotateTransition;
     Group orbGroup = new Group();
     Circle orb;
 
@@ -28,8 +26,8 @@ public class Orb extends Elements implements Rotation {
         orb.setStroke(Settings.currentTheme[x]);
         orb.setStrokeType(StrokeType.INSIDE);
         orbGroup.getChildren().add(orb);
-
-        Rotation.rotate(orbGroup, 0);
+        timeline = new Timeline();
+        rotateTransition =Rotation.rotate(orbGroup, 0);
     }
 
     public Group getOrbGroup() {
@@ -75,7 +73,7 @@ public class Orb extends Elements implements Rotation {
         double ty = orbGroup.getTranslateY();
         double mid = -100;
 //			double bound = Math.max(mid,ty-40);
-        double bound = (ty - 40) < -100 ? mid : ty - 40;
+        double bound = (ty - 25) < -100 ? mid : ty - 25;
         // quadratic interpolation to simulate gravity
         Interpolator interpolator = new Interpolator() {
             @Override
@@ -107,16 +105,25 @@ public class Orb extends Elements implements Rotation {
 
 //			System.out.println("ty=" + ty + " bound=" + bound + " pos="+ pos + " mid=" +mid);
 
-        Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(Duration.ZERO,
                         new KeyValue(orbGroup.translateYProperty(), ty, interpolator)),
-                new KeyFrame(Duration.seconds(0.3),
+                new KeyFrame(Duration.seconds(0.4),
                         new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
 //                new KeyFrame(Duration.seconds(0.75),
 //                        new KeyValue(orbGroup.translateYProperty(), orbGroup.getTranslateY(), linear)),
-        new KeyFrame(Duration.seconds(1),
+        new KeyFrame(Duration.seconds(1.5),
                 new KeyValue(orbGroup.translateYProperty(), 200, end)));
 
         timeline.play();
+    }
+    public void pauseAnimation() {
+        timeline.pause();
+        rotateTransition.pause();
+    }
+
+    public void playAnimation() {
+        timeline.play();
+        rotateTransition.play();
     }
 }

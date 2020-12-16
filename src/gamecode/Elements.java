@@ -1,6 +1,8 @@
 package gamecode;
 
-public abstract class Elements {
+import java.io.Serializable;
+
+public abstract class Elements implements Serializable {
 	protected int posX;
 	protected int posY;
 
