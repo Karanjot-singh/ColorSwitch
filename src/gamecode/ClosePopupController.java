@@ -1,9 +1,12 @@
 package gamecode;
 
 import javafx.fxml.FXML;
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ClosePopupController {
 

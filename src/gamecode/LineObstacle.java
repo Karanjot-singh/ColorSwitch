@@ -8,7 +8,7 @@ public class LineObstacle extends Obstacle {
 
     int numLines;
     Group lineGroup;
-    private RotateTransition rotateTransition;
+    private final RotateTransition rotateTransition;
 
     //    		<Line endX="32.0" endY="54.0" layoutX="33.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
 //      <Line endX="32.0" endY="54.0" layoutX="92.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#09c909" strokeLineCap="ROUND" strokeWidth="12.0" />

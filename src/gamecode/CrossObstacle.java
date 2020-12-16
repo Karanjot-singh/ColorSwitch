@@ -10,7 +10,7 @@ import javafx.scene.shape.ArcType;
 public class CrossObstacle extends Obstacle {
 
     Group crossGroup;
-    private RotateTransition rotateTransition;
+    private final RotateTransition rotateTransition;
 
     public CrossObstacle(int stroke, int duration, int angle, int velocity) {
         super(stroke, duration, angle, velocity);

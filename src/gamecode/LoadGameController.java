@@ -1,7 +1,8 @@
 package gamecode;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*; //rem
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 
 public class LoadGameController {

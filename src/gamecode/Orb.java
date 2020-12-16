@@ -10,13 +10,13 @@ import javafx.util.Duration;
 import java.util.Random;
 
 public class Orb extends Elements implements Rotation {
+    private final RotateTransition rotateTransition;
+    Group orbGroup = new Group();
+    Circle orb;
     private Color color;
     private String shape;
     private String trail;
     private Timeline timeline;
-    private RotateTransition rotateTransition;
-    Group orbGroup = new Group();
-    Circle orb;
 
     Orb() {
         orb = new Circle(300, 560, 10);
@@ -27,7 +27,7 @@ public class Orb extends Elements implements Rotation {
         orb.setStrokeType(StrokeType.INSIDE);
         orbGroup.getChildren().add(orb);
         timeline = new Timeline();
-        rotateTransition =Rotation.rotate(orbGroup, 0);
+        rotateTransition = Rotation.rotate(orbGroup, 0);
     }
 
     public Group getOrbGroup() {
@@ -97,7 +97,7 @@ public class Orb extends Elements implements Rotation {
             @Override
             protected double curve(double t) {
                 // t is the fraction of animation completed
-                return t*1.3; //rate to change animation speed
+                return t * 1.3; //rate to change animation speed
             }
 
         };
@@ -112,11 +112,12 @@ public class Orb extends Elements implements Rotation {
                         new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
 //                new KeyFrame(Duration.seconds(0.75),
 //                        new KeyValue(orbGroup.translateYProperty(), orbGroup.getTranslateY(), linear)),
-        new KeyFrame(Duration.seconds(1.5),
-                new KeyValue(orbGroup.translateYProperty(), 200, end)));
+                new KeyFrame(Duration.seconds(1.5),
+                        new KeyValue(orbGroup.translateYProperty(), 200, end)));
 
         timeline.play();
     }
+
     public void pauseAnimation() {
         timeline.pause();
         rotateTransition.pause();

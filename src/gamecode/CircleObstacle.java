@@ -8,7 +8,7 @@ import javafx.scene.shape.ArcType;
 
 
 public class CircleObstacle extends Obstacle {
-    private RotateTransition rotateTransition;
+    private final RotateTransition rotateTransition;
     Group arcGroup;
 
     public CircleObstacle(int stroke, int duration, int angle, int velocity) {

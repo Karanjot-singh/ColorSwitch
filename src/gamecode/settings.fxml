@@ -1,8 +1,7 @@
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.VBox?>
 <VBox prefHeight="400.0" prefWidth="600.0" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-	  fx:controller="gamecode.SettingsController" alignment="CENTER" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/settingsStyle.css">
+      fx:controller="gamecode.SettingsController" alignment="CENTER" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/settingsStyle.css">
 
 	<Label text="SETTINGS" fx:id="title" />
 	<Button text="Change Orb" fx:id="orbButton" />

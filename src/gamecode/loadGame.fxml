@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="gamecode.LoadGameController"
-	  prefHeight="640.0" prefWidth="500.0" alignment="CENTER" stylesheets="@/stylesheets/generalStyle.css, @../stylesheets/loadGameStyle.css">
+      prefHeight="640.0" prefWidth="500.0" alignment="CENTER" stylesheets="@/stylesheets/generalStyle.css, @../stylesheets/loadGameStyle.css">
 
 	<Label text="You don't have any saved games." fx:id="loadLabel" />
 	<Region prefHeight="20" />

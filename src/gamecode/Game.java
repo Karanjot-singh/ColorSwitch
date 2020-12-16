@@ -11,7 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -39,7 +41,7 @@ public class Game implements Serializable {
     boolean gameStart = false;
     boolean gameStop = false;
     boolean revived = false;
-    int elementCount= 2;
+    int elementCount = 2;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -118,20 +120,18 @@ public class Game implements Serializable {
 //        System.out.println(e.getClass().getName() + " " + e.getTranslateY());
 
 
-        int pos ;
+        int pos;
 
-        if(elementCount==2){
+        if (elementCount == 2) {
             pos = 400;
-        }
-        else if (elementCount==1){
+        } else if (elementCount == 1) {
             pos = 600;
-        }
-        else{
+        } else {
             pos = 1000;
         }
         if (e.getTranslateY() > pos) {
             list.remove(e);
-            if(e.getClass().getName().equals("javafx.scene.layout.StackPane")){
+            if (e.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 obstacles.remove(e);
                 elementCount--;
             }
@@ -209,10 +209,11 @@ public class Game implements Serializable {
 
     public void pauseGame() {
         for (Obstacle element : objects) {
-        element.pauseAnimation();
+            element.pauseAnimation();
         }
         playerOrb.pauseAnimation();
     }
+
     public void playGame() {
         for (Obstacle element : objects) {
             element.playAnimation();
@@ -238,14 +239,13 @@ public class Game implements Serializable {
     }
 
     public void revive() throws InsufficientStarsException {
-        if(Main.player.getTotalStars()>=5){
+        if (Main.player.getTotalStars() >= 5) {
             gameStop = false;
             revived = true;
             Main.player.subtractStars(5);
             gameColumn.getChildren().get(1).setTranslateY(0);
             gameLoop();
-        }
-        else{
+        } else {
             throw new InsufficientStarsException("Not enough stars");
         }
 
@@ -321,15 +321,10 @@ public class Game implements Serializable {
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
                 for (Node sub : obstacleGroup.getChildren()) {
                     Shape shape = (Shape) sub;
-                    if ((orb.getStroke()).equals(shape.getStroke())) {
-//                    System.out.println("same"+shape.getStroke());
-                        collisionSafe = true;
-                    }
-                    else{
-                        collisionSafe = false;
-                    }
+                    //                    System.out.println("same"+shape.getStroke());
+                    collisionSafe = (orb.getStroke()).equals(shape.getStroke());
                     Shape intersect = Shape.intersect(orb, shape);
-                    if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1 ) {
+                    if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
                         System.out.println("Collision ");
                         gameStop = true;
                     }

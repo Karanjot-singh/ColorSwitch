@@ -1,12 +1,8 @@
 package gamecode;
 
-import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 
 public class ColorSwitcher extends Elements implements Rotation {

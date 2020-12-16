@@ -8,7 +8,7 @@ import javafx.scene.shape.Line;
 public class SquareObstacle extends Obstacle {
 
     Group squareGroup;
-    private RotateTransition rotateTransition;
+    private final RotateTransition rotateTransition;
 
     public SquareObstacle(int stroke, int duration, int angle, int velocity) {
         super(stroke, duration, angle, velocity);
