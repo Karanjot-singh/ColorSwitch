@@ -108,11 +108,11 @@ public class Orb extends Elements implements Rotation {
         timeline = new Timeline(
                 new KeyFrame(Duration.ZERO,
                         new KeyValue(orbGroup.translateYProperty(), ty, interpolator)),
-                new KeyFrame(Duration.seconds(0.4),
+                new KeyFrame(Duration.seconds(0.2),
                         new KeyValue(orbGroup.translateYProperty(), bound, interpolator)),
 //                new KeyFrame(Duration.seconds(0.75),
 //                        new KeyValue(orbGroup.translateYProperty(), orbGroup.getTranslateY(), linear)),
-        new KeyFrame(Duration.seconds(1.5),
+        new KeyFrame(Duration.seconds(1.2),
                 new KeyValue(orbGroup.translateYProperty(), 200, end)));
 
         timeline.play();
