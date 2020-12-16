@@ -26,6 +26,7 @@ import java.util.Random;
 
 public class Game implements Serializable {
 
+    final double spacing = 70;
     GridPane gameGrid;
     Pane obstacleColumn;
     StackPane gameColumn;
@@ -37,7 +38,6 @@ public class Game implements Serializable {
     Orb playerOrb;
     Color[] currentTheme;
     Color colorFlag;
-    final double spacing = 70;
     boolean gameStart = false;
     boolean gameStop = false;
     boolean revived = false;
@@ -96,6 +96,29 @@ public class Game implements Serializable {
                 }
             }
         });
+    }
+
+    static void gameLoop() {
+        Timeline gameTimeline = new Timeline();
+        final Duration fps = Duration.millis(1000 / 60);
+        final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
+            @Override
+            public void handle(Event event) {
+//                Main.currentGame.checkObstacleCollision();
+                Main.currentGame.obstacleCollision();
+                Main.currentGame.otherCollisions();
+
+                if (Main.currentGame.playerOrb.getOrbGroup().getTranslateY() > 150 || Main.currentGame.isGameStop()) {
+                    System.out.println("GAME OVER");
+                    gameTimeline.stop();
+                    Main.currentGame.gameOver();
+                }
+            }
+        });
+        gameTimeline.setCycleCount(Animation.INDEFINITE);
+        gameTimeline.getKeyFrames().addAll(gameFrame);
+        gameTimeline.play();
+
     }
 
     void initialiseObstacles() {
@@ -331,29 +354,6 @@ public class Game implements Serializable {
                 }
             }
         }
-    }
-
-    static void gameLoop() {
-        Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 60);
-        final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
-            @Override
-            public void handle(Event event) {
-//                Main.currentGame.checkObstacleCollision();
-                Main.currentGame.obstacleCollision();
-                Main.currentGame.otherCollisions();
-
-                if (Main.currentGame.playerOrb.getOrbGroup().getTranslateY() > 150 || Main.currentGame.isGameStop()) {
-                    System.out.println("GAME OVER");
-                    gameTimeline.stop();
-                    Main.currentGame.gameOver();
-                }
-            }
-        });
-        gameTimeline.setCycleCount(Animation.INDEFINITE);
-        gameTimeline.getKeyFrames().addAll(gameFrame);
-        gameTimeline.play();
-
     }
 
     public int getScore() {

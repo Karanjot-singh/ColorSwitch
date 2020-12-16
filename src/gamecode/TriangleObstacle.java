@@ -8,8 +8,8 @@ import javafx.scene.shape.StrokeLineCap;
 
 public class TriangleObstacle extends Obstacle {
 
-    Group triangleGroup;
     private final RotateTransition rotateTransition;
+    Group triangleGroup;
 
     //    		<Line endX="32.0" endY="54.0" layoutX="122.0" layoutY="29.0" startX="-23.0" startY="-6.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
 //		<Line endX="-150.0" endY="32.0" layoutX="201.0" layoutY="55.0" startX="-102.0" startY="-32.0" stroke="#49b244" strokeLineCap="ROUND" strokeWidth="12.0" />
@@ -41,21 +41,24 @@ public class TriangleObstacle extends Obstacle {
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         triangleGroup.getChildren().add(line);
 
-        rotateTransition=Rotation.rotate(triangleGroup,0);
+        rotateTransition = Rotation.rotate(triangleGroup, 0);
     }
-    public void pauseAnimation(){
+
+    public void pauseAnimation() {
         rotateTransition.pause();
     }
-    public void playAnimation(){
+
+    public void playAnimation() {
         rotateTransition.play();
     }
+
     @Override
     public Group getGroup() {
         return triangleGroup;
     }
 
     @Override
-    public void scaleSize(int scale){
+    public void scaleSize(int scale) {
 
     }
 }

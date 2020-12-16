@@ -3,7 +3,7 @@ package gamecode;
 
 import javafx.scene.Group;
 
-public abstract class Obstacle extends Elements{
+public abstract class Obstacle extends Elements {
     private int stroke;
     private int duration;
     private int angle;

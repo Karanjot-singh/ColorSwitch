@@ -10,48 +10,45 @@ import javafx.stage.Stage;
 
 public class PausePopupController {
 
-		static Stage window;
-		static Scene scene;
+    static Stage window;
+    static Scene scene;
 
-		public Button resumeButton, saveButton, quitButton;
-		public Label pauseMsg;
+    public Button resumeButton, saveButton, quitButton;
+    public Label pauseMsg;
 
-		@FXML
-		void resumeClicked(MouseEvent mouseEvent)
-		{
-			Main.currentGame.playGame();
-			window.close();
-		}
+    public static void display() {
+        window = new Stage();
 
-		@FXML
-		void saveClicked(MouseEvent mouseEvent)
-		{
-			Main.window.setScene(Main.homeScene);
-			window.close();
-		}
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initOwner(Main.window);
+        window.setTitle("Pause game");
+        window.setWidth(350);
+        window.setHeight(300);
+        window.centerOnScreen();
 
-		@FXML
-		void quitClicked(MouseEvent mouseEvent)
-		{
-			Main.window.setScene(Main.homeScene);
-			window.close();
-		}
+        //Display window and wait for it to be closed before returning
+        scene = Main.pausePopupScene;
+        window.setScene(scene);
+        window.showAndWait();
+    }
 
-		public static void display() {
-			window = new Stage();
+    @FXML
+    void resumeClicked(MouseEvent mouseEvent) {
+        Main.currentGame.playGame();
+        window.close();
+    }
 
-			//Block events to other windows
-			window.initModality(Modality.APPLICATION_MODAL);
-			window.initOwner(Main.window);
-			window.setTitle("Pause game");
-			window.setWidth(350);
-			window.setHeight(300);
-			window.centerOnScreen();
+    @FXML
+    void saveClicked(MouseEvent mouseEvent) {
+        Main.window.setScene(Main.homeScene);
+        window.close();
+    }
 
-			//Display window and wait for it to be closed before returning
-			scene = Main.pausePopupScene;
-			window.setScene(scene);
-			window.showAndWait();
-		}
+    @FXML
+    void quitClicked(MouseEvent mouseEvent) {
+        Main.window.setScene(Main.homeScene);
+        window.close();
+    }
 
 }

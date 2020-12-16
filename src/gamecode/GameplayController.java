@@ -12,29 +12,29 @@ import java.util.ResourceBundle;
 
 public class GameplayController implements Initializable {
 
-	@FXML
-	GridPane grid;
+    @FXML
+    GridPane grid;
 
-	@FXML
-	ImageView pauseIcon;
+    @FXML
+    ImageView pauseIcon;
 
-	@FXML
-	Label scoreLabel;
+    @FXML
+    Label scoreLabel;
 
-	@FXML
-	void pauseClicked(MouseEvent mouseEvent) {
-		Main.currentGame.pauseGame();
-		PausePopupController.display();
-	}
+    @FXML
+    void pauseClicked(MouseEvent mouseEvent) {
+        Main.currentGame.pauseGame();
+        PausePopupController.display();
+    }
 
-	@FXML
-	void backClicked(MouseEvent mouseEvent) {
-		Main.window.setScene(Main.homeScene);
-	}
+    @FXML
+    void backClicked(MouseEvent mouseEvent) {
+        Main.window.setScene(Main.homeScene);
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-	}
+    }
 
 }

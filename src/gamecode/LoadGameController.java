@@ -10,13 +10,13 @@ public class LoadGameController {
 //	static Stage window;
 //	static Scene scene;
 
-	public Button backButton;
-	public Label loadLabel;
+    public Button backButton;
+    public Label loadLabel;
 
-	@FXML
-	void backClicked() {
-		Main.window.setScene(Main.homeScene);
-	}
+    @FXML
+    void backClicked() {
+        Main.window.setScene(Main.homeScene);
+    }
 
 //	public static void display() {
 //		window = new Stage();

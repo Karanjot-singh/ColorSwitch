@@ -17,8 +17,8 @@ public class HomeController {
 
     @FXML
     void newGameClicked() {
-		Main.startNewGame();
-		Main.window.setScene(Main.gameplayScene);
+        Main.startNewGame();
+        Main.window.setScene(Main.gameplayScene);
     }
 
     @FXML
@@ -32,24 +32,24 @@ public class HomeController {
         Main.closeProgram();
     }
 
-	@FXML
-	void settingsClicked() {
-		SettingsController.display();
+    @FXML
+    void settingsClicked() {
+        SettingsController.display();
     }
 
-	@FXML
-	void helpClicked() {
-		HelpController.display();
+    @FXML
+    void helpClicked() {
+        HelpController.display();
     }
 
-	@FXML
-	void userClicked(){
-		try {
-			Main.playerInfoScene = new Scene(FXMLLoader.load(getClass().getResource("playerInfo.fxml")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		PlayerInfoController.display();
-	}
+    @FXML
+    void userClicked() {
+        try {
+            Main.playerInfoScene = new Scene(FXMLLoader.load(getClass().getResource("playerInfo.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PlayerInfoController.display();
+    }
 
 }

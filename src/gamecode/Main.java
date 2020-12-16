@@ -20,6 +20,31 @@ public class Main extends Application {
     static FXMLLoader fxmlLoader;
     static Player player;
 
+    static void closeProgram() {
+        Boolean ans = ClosePopupController.display();
+
+        if (ans) {
+            window.close();
+        }
+
+    }
+
+    static void startNewGame() {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("gameplay.fxml"));
+        try {
+            gameplayRoot = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gameplayScene = new Scene(gameplayRoot);
+        currentGame = new Game(fxmlLoader);
+        Game.gameLoop();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
@@ -52,7 +77,6 @@ public class Main extends Application {
 //        gameOverScene = new Scene(gameOverRoot);
 
 
-
         window.setOnCloseRequest(e -> {
             e.consume();
             closeProgram();
@@ -75,30 +99,5 @@ public class Main extends Application {
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(30));
         mediaPlayer.play();
-    }
-
-    static void closeProgram() {
-        Boolean ans = ClosePopupController.display();
-
-        if (ans) {
-            window.close();
-        }
-
-    }
-
-    static void startNewGame() {
-        fxmlLoader = new FXMLLoader(Main.class.getResource("gameplay.fxml"));
-        try {
-            gameplayRoot = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        gameplayScene = new Scene(gameplayRoot);
-        currentGame = new Game(fxmlLoader);
-        Game.gameLoop();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

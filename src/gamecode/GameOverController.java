@@ -17,73 +17,73 @@ import java.util.ResourceBundle;
 
 public class GameOverController implements Initializable {
 
-	static Stage window;
-	static Scene scene;
+    static Stage window;
+    static Scene scene;
 
-	@FXML
-	VBox vbox;
+    @FXML
+    VBox vbox;
 
-	@FXML
-	Label gameOverMsg, scoreMsg, highscoreMsg, score, highscore;
+    @FXML
+    Label gameOverMsg, scoreMsg, highscoreMsg, score, highscore;
 
-	@FXML
-	ImageView backIcon, replayIcon;
+    @FXML
+    ImageView backIcon, replayIcon;
 
-	@FXML
-	Button backButton, replayButton, reviveButton;
+    @FXML
+    Button backButton, replayButton, reviveButton;
 
-	@FXML
-	void replayClicked(MouseEvent mouseEvent) {
-		Main.startNewGame();
-		Main.window.setScene(Main.gameplayScene);
-		window.close();
-	}
+    public static void display() {
+        window = new Stage();
 
-	@FXML
-	void backClicked(MouseEvent mouseEvent) {
-		Main.window.setScene(Main.homeScene);
-		window.close();
-	}
-
-	@FXML
-	void reviveClicked(MouseEvent mouseEvent) {
-		try {
-			Main.currentGame.revive();
-			window.close();
-		} catch (InsufficientStarsException e) {
-			e.getMessage();
-		}
-	}
-
-	public static void display() {
-		window = new Stage();
-
-		//Block events to other windows
-		window.initModality(Modality.APPLICATION_MODAL);
-		window.initStyle(StageStyle.TRANSPARENT);
-		window.initOwner(Main.window);
-		window.setTitle("Game Over");
-		window.setWidth(350);
-		window.setHeight(250);
-		window.centerOnScreen();
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.initOwner(Main.window);
+        window.setTitle("Game Over");
+        window.setWidth(350);
+        window.setHeight(250);
+        window.centerOnScreen();
 
 
-		//Display window and wait for it to be closed before returning
-		scene = Main.gameOverScene;
-		window.setScene(scene);
-		window.show();
+        //Display window and wait for it to be closed before returning
+        scene = Main.gameOverScene;
+        window.setScene(scene);
+        window.show();
 //			window.showAndWait();
-	}
+    }
 
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		score.setText(Main.currentGame.getScore() + "");
-		highscore.setText(Main.player.getHighscore() + "");
-		reviveButton.setText("Revive     " + (char) 9734 + "5");
+    @FXML
+    void replayClicked(MouseEvent mouseEvent) {
+        Main.startNewGame();
+        Main.window.setScene(Main.gameplayScene);
+        window.close();
+    }
 
-		if(Main.currentGame.isRevived()){
-			vbox.getChildren().remove(reviveButton);
+    @FXML
+    void backClicked(MouseEvent mouseEvent) {
+        Main.window.setScene(Main.homeScene);
+        window.close();
+    }
+
+    @FXML
+    void reviveClicked(MouseEvent mouseEvent) {
+        try {
+            Main.currentGame.revive();
+            window.close();
+        } catch (InsufficientStarsException e) {
+            e.getMessage();
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        score.setText(Main.currentGame.getScore() + "");
+        highscore.setText(Main.player.getHighscore() + "");
+        reviveButton.setText("Revive     " + (char) 9734 + "5");
+
+        if (Main.currentGame.isRevived()) {
+            vbox.getChildren().remove(reviveButton);
 //			reviveButton.setVisible(false);
-		}
-	}
+        }
+    }
 }

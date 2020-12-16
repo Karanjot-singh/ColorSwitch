@@ -10,47 +10,43 @@ import javafx.stage.StageStyle;
 
 public class ClosePopupController {
 
-		static Stage window;
-		static Scene scene;
+    static Stage window;
+    static Scene scene;
+    static Boolean ans = false;
+    public Button yesButton, noButton;
+    public Label confirmMsg;
 
-		public Button yesButton, noButton;
-		public Label confirmMsg;
+    public static Boolean display() {
+        window = new Stage();
 
-		static Boolean ans = false;
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initOwner(Main.window);
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.setTitle("Exit program");
+        window.setWidth(270);
+        window.setHeight(150);
+        window.centerOnScreen();
+        window.setResizable(false);
 
-		@FXML
-		void yesClicked()
-		{
-			ans=true;
-			window.close();
-		}
+        //Display window and wait for it to be closed before returning
+        scene = Main.closePopupScene;
+        window.setScene(scene);
+        window.showAndWait();
 
-		@FXML
-		void noClicked()
-		{
-			ans=false;
-			window.close();
-		}
+        return ans;
+    }
 
-		public static Boolean display() {
-			window = new Stage();
+    @FXML
+    void yesClicked() {
+        ans = true;
+        window.close();
+    }
 
-			//Block events to other windows
-			window.initModality(Modality.APPLICATION_MODAL);
-			window.initOwner(Main.window);
-			window.initStyle(StageStyle.TRANSPARENT);
-			window.setTitle("Exit program");
-			window.setWidth(270);
-			window.setHeight(150);
-			window.centerOnScreen();
-			window.setResizable(false);
-
-			//Display window and wait for it to be closed before returning
-			scene = Main.closePopupScene;
-			window.setScene(scene);
-			window.showAndWait();
-
-			return ans;
-		}
+    @FXML
+    void noClicked() {
+        ans = false;
+        window.close();
+    }
 
 }
