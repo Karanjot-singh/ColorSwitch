@@ -1,16 +1,12 @@
 package gamecode;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -23,6 +19,31 @@ public class Main extends Application {
     static FXMLLoader fxmlLoader;
     static Player player;
     static PlayMusic music;
+
+    static void closeProgram() {
+        Boolean ans = ClosePopupController.display();
+
+        if (ans) {
+            window.close();
+        }
+
+    }
+
+    static void startNewGame() {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("gameplay.fxml"));
+        try {
+            gameplayRoot = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gameplayScene = new Scene(gameplayRoot);
+        currentGame = new Game(fxmlLoader);
+        Game.gameLoop();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -56,7 +77,6 @@ public class Main extends Application {
 //        gameOverScene = new Scene(gameOverRoot);
 
 
-
         window.setOnCloseRequest(e -> {
             e.consume();
             closeProgram();
@@ -71,39 +91,16 @@ public class Main extends Application {
 
     public void playMusic() {
         Thread t1 = new Thread();
-        music =new PlayMusic();
+        music = new PlayMusic();
         t1.start();
     }
-    public void pauseMusic(){
+
+    public void pauseMusic() {
         music.stopMusic();
     }
-
-    static void closeProgram() {
-        Boolean ans = ClosePopupController.display();
-
-        if (ans) {
-            window.close();
-        }
-
-    }
-
-    static void startNewGame() {
-        fxmlLoader = new FXMLLoader(Main.class.getResource("gameplay.fxml"));
-        try {
-            gameplayRoot = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        gameplayScene = new Scene(gameplayRoot);
-        currentGame = new Game(fxmlLoader);
-        Game.gameLoop();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
-class PlayMusic implements Runnable{
+
+class PlayMusic implements Runnable {
 
     static MediaPlayer mediaPlayer;
 
@@ -115,13 +112,15 @@ class PlayMusic implements Runnable{
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(30));
     }
-    void stopMusic(){
+
+    void stopMusic() {
         mediaPlayer.stop();
     }
 
     void startGameMusic() {
         mediaPlayer.play();
     }
+
     @Override
     public void run() {
         startGameMusic();

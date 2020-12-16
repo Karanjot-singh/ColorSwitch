@@ -14,7 +14,7 @@ public class Orb extends Elements implements Rotation {
     private String shape;
     private String trail;
     private Timeline timeline;
-    private RotateTransition rotateTransition;
+    private final RotateTransition rotateTransition;
     Group orbGroup = new Group();
     Circle orb;
 

@@ -301,13 +301,8 @@ public class Game implements Serializable {
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
                 for (Node sub : obstacleGroup.getChildren()) {
                     Shape shape = (Shape) sub;
-                    if ((orb.getStroke()).equals(shape.getStroke())) {
-//                    System.out.println("same"+shape.getStroke());
-                        collisionSafe = true;
-                    }
-                    else{
-                        collisionSafe = false;
-                    }
+                    //                    System.out.println("same"+shape.getStroke());
+                    collisionSafe = (orb.getStroke()).equals(shape.getStroke());
                     Shape intersect = Shape.intersect(orb, shape);
                     if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
                         System.out.println("Collision ");
