@@ -294,7 +294,7 @@ public class Game implements Serializable {
         boolean collisionSafe = false;
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
         for (Node element : list) {
-            System.out.println(element);
+//            System.out.println(element);
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
@@ -305,10 +305,13 @@ public class Game implements Serializable {
 //                    System.out.println("same"+shape.getStroke());
                         collisionSafe = true;
                     }
+                    else{
+                        collisionSafe = false;
+                    }
                     Shape intersect = Shape.intersect(orb, shape);
                     if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
                         System.out.println("Collision ");
-//                        gameStop = true;
+                        gameStop = true;
                     }
                 }
             }
@@ -321,7 +324,7 @@ public class Game implements Serializable {
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
-                Main.currentGame.checkObstacleCollision();
+//                Main.currentGame.checkObstacleCollision();
                 Main.currentGame.obstacleCollision();
                 Main.currentGame.otherCollisions();
 
