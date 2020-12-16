@@ -264,6 +264,7 @@ public class Game {
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
 //        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
         for (Group elementGroup : obstacles) {
+
             for (Node iterator : elementGroup.getChildren()) {
                 Shape shape = (Shape) iterator;
                 if ((orb.getStroke()).equals(shape.getStroke())) {
@@ -289,6 +290,7 @@ public class Game {
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
                 for (Node sub : obstacleGroup.getChildren()) {
                     Shape shape = (Shape) sub;
+                    System.out.println(sub);
                     if ((orb.getStroke()).equals(shape.getStroke())) {
 //                    System.out.println("same"+shape.getStroke());
                         collisionSafe = true;
@@ -310,6 +312,7 @@ public class Game {
             @Override
             public void handle(Event event) {
                 Main.currentGame.checkObstacleCollision();
+                Main.currentGame.obstacleCollision();
                 Main.currentGame.otherCollisions();
 
                 if (Main.currentGame.playerOrb.getOrbGroup().getTranslateY() > 150 || Main.currentGame.isGameStop()) {
