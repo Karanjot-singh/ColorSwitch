@@ -41,8 +41,28 @@ public class Game implements Serializable {
     private boolean gameStart = false;
     private boolean gameStop = false;
     private boolean revived = false;
+    private boolean orbDead = false;
+    private boolean paused = false;
     private int elementCount = 2;
     static ObstacleFactory factory;
+
+
+    public boolean isOrbDead() {
+        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
+        return orbDead;
+    }
+
+    public void setOrbDead(boolean orbDead) {
+        this.orbDead = orbDead;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -109,7 +129,7 @@ public class Game implements Serializable {
                 Main.getCurrentGame().obstacleCollision();
                 Main.getCurrentGame().otherCollisions();
 
-                if (Main.getCurrentGame().getPlayerOrb().getOrbGroup().getTranslateY() > 150 || Main.getCurrentGame().isGameStop()) {
+                if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
                     Main.getCurrentGame().gameOver();
@@ -223,10 +243,13 @@ public class Game implements Serializable {
         for (Obstacle element : getObjects()) {
             element.pauseAnimation();
         }
+        setOrbDead(false);
         getPlayerOrb().pauseAnimation();
+        getPlayerOrb().getOrbGroup().setTranslateY(100);
     }
 
     public void playGame() {
+        setOrbDead(false);
         for (Obstacle element : getObjects()) {
             element.playAnimation();
         }
@@ -267,6 +290,7 @@ public class Game implements Serializable {
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
         Shape starShape;
         int delete = 0;
+        //TODO implement iterator
         for (Node element : getList()) {
             // Collision for Stars
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
@@ -321,6 +345,7 @@ public class Game implements Serializable {
     public void obstacleCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
+        //TODO implement iterator
         for (Node element : getList()) {
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
