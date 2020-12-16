@@ -22,14 +22,14 @@ public class SettingsController {
 
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
-        window.initOwner(Main.window);
+        window.initOwner(Main.getWindow());
         window.setTitle("Settings Screen");
         window.setMinWidth(250);
         window.setMinHeight(100);
         window.centerOnScreen();
 
         //Display window and wait for it to be closed before returning
-        scene = Main.settingsScene;
+        scene = Main.getSettingsScene();
         window.setScene(scene);
         window.showAndWait();
     }

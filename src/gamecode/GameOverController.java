@@ -38,7 +38,7 @@ public class GameOverController implements Initializable {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         window.initStyle(StageStyle.TRANSPARENT);
-        window.initOwner(Main.window);
+        window.initOwner(Main.getWindow());
         window.setTitle("Game Over");
         window.setWidth(350);
         window.setHeight(250);
@@ -46,7 +46,7 @@ public class GameOverController implements Initializable {
 
 
         //Display window and wait for it to be closed before returning
-        scene = Main.gameOverScene;
+        scene = Main.getGameOverScene();
         window.setScene(scene);
         window.show();
 //			window.showAndWait();
@@ -55,20 +55,20 @@ public class GameOverController implements Initializable {
     @FXML
     void replayClicked(MouseEvent mouseEvent) {
         Main.startNewGame();
-        Main.window.setScene(Main.gameplayScene);
+        Main.getWindow().setScene(Main.getGameplayScene());
         window.close();
     }
 
     @FXML
     void backClicked(MouseEvent mouseEvent) {
-        Main.window.setScene(Main.homeScene);
+        Main.getWindow().setScene(Main.getHomeScene());
         window.close();
     }
 
     @FXML
     void reviveClicked(MouseEvent mouseEvent) {
         try {
-            Main.currentGame.revive();
+            Main.getCurrentGame().revive();
             window.close();
         } catch (InsufficientStarsException e) {
             e.getMessage();
@@ -77,11 +77,11 @@ public class GameOverController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        score.setText(Main.currentGame.getScore() + "");
-        highscore.setText(Main.player.getHighscore() + "");
+        score.setText(Main.getCurrentGame().getScore() + "");
+        highscore.setText(Main.getPlayer().getHighscore() + "");
         reviveButton.setText("Revive     " + (char) 9734 + "5");
 
-        if (Main.currentGame.isRevived()) {
+        if (Main.getCurrentGame().isRevived()) {
             vbox.getChildren().remove(reviveButton);
 //			reviveButton.setVisible(false);
         }

@@ -18,13 +18,13 @@ public class HomeController {
     @FXML
     void newGameClicked() {
         Main.startNewGame();
-        Main.window.setScene(Main.gameplayScene);
+        Main.getWindow().setScene(Main.getGameplayScene());
     }
 
     @FXML
     void loadGameClicked() {
 //        LoadGameController.display();
-        Main.window.setScene(Main.loadGameScene);
+        Main.getWindow().setScene(Main.getLoadGameScene());
     }
 
     @FXML
@@ -45,7 +45,7 @@ public class HomeController {
     @FXML
     void userClicked() {
         try {
-            Main.playerInfoScene = new Scene(FXMLLoader.load(getClass().getResource("playerInfo.fxml")));
+            Main.setPlayerInfoScene(new Scene(FXMLLoader.load(getClass().getResource("playerInfo.fxml"))));
         } catch (IOException e) {
             e.printStackTrace();
         }

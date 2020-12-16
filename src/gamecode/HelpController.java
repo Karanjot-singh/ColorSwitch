@@ -14,14 +14,14 @@ public class HelpController {
 
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
-        window.initOwner(Main.window);
+        window.initOwner(Main.getWindow());
         window.setTitle("Help Screen");
         window.setMinWidth(250);
         window.setMinHeight(100);
         window.centerOnScreen();
 
         //Display window and wait for it to be closed before returning
-        scene = Main.helpScene;
+        scene = Main.getHelpScene();
         window.setScene(scene);
         window.showAndWait();
     }

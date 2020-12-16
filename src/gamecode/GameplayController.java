@@ -23,13 +23,13 @@ public class GameplayController implements Initializable {
 
     @FXML
     void pauseClicked(MouseEvent mouseEvent) {
-        Main.currentGame.pauseGame();
+        Main.getCurrentGame().pauseGame();
         PausePopupController.display();
     }
 
     @FXML
     void backClicked(MouseEvent mouseEvent) {
-        Main.window.setScene(Main.homeScene);
+        Main.getWindow().setScene(Main.getHomeScene());
     }
 
     @Override

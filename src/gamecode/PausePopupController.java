@@ -21,33 +21,33 @@ public class PausePopupController {
 
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
-        window.initOwner(Main.window);
+        window.initOwner(Main.getWindow());
         window.setTitle("Pause game");
         window.setWidth(350);
         window.setHeight(300);
         window.centerOnScreen();
 
         //Display window and wait for it to be closed before returning
-        scene = Main.pausePopupScene;
+        scene = Main.getPausePopupScene();
         window.setScene(scene);
         window.showAndWait();
     }
 
     @FXML
     void resumeClicked(MouseEvent mouseEvent) {
-        Main.currentGame.playGame();
+        Main.getCurrentGame().playGame();
         window.close();
     }
 
     @FXML
     void saveClicked(MouseEvent mouseEvent) {
-        Main.window.setScene(Main.homeScene);
+        Main.getWindow().setScene(Main.getHomeScene());
         window.close();
     }
 
     @FXML
     void quitClicked(MouseEvent mouseEvent) {
-        Main.window.setScene(Main.homeScene);
+        Main.getWindow().setScene(Main.getHomeScene());
         window.close();
     }
 

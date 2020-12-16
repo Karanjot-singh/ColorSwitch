@@ -21,7 +21,7 @@ public class ClosePopupController {
 
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
-        window.initOwner(Main.window);
+        window.initOwner(Main.getWindow());
         window.initStyle(StageStyle.TRANSPARENT);
         window.setTitle("Exit program");
         window.setWidth(270);
@@ -30,7 +30,7 @@ public class ClosePopupController {
         window.setResizable(false);
 
         //Display window and wait for it to be closed before returning
-        scene = Main.closePopupScene;
+        scene = Main.getClosePopupScene();
         window.setScene(scene);
         window.showAndWait();
 

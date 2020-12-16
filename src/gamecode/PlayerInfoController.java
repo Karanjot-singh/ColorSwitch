@@ -26,14 +26,14 @@ public class PlayerInfoController implements Initializable {
 
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
-        window.initOwner(Main.window);
+        window.initOwner(Main.getWindow());
         window.setTitle("Settings Screen");
         window.setMinWidth(250);
         window.setMinHeight(100);
         window.centerOnScreen();
 
         //Display window and wait for it to be closed before returning
-        scene = Main.playerInfoScene;
+        scene = Main.getPlayerInfoScene();
         window.setScene(scene);
         window.showAndWait();
     }
@@ -45,8 +45,8 @@ public class PlayerInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setText(Main.player.getName());
-        stars.setText(Main.player.getTotalStars() + "");
-        highscore.setText(Main.player.getHighscore() + "");
+        name.setText(Main.getPlayer().getName());
+        stars.setText(Main.getPlayer().getTotalStars() + "");
+        highscore.setText(Main.getPlayer().getHighscore() + "");
     }
 }

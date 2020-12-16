@@ -15,7 +15,7 @@ public class LoadGameController {
 
     @FXML
     void backClicked() {
-        Main.window.setScene(Main.homeScene);
+        Main.getWindow().setScene(Main.getHomeScene());
     }
 
 //	public static void display() {
