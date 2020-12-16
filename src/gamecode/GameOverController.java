@@ -47,7 +47,11 @@ public class GameOverController implements Initializable {
 
 	@FXML
 	void reviveClicked(MouseEvent mouseEvent) {
-		Main.currentGame.revive();
+		try {
+			Main.currentGame.revive();
+		} catch (InsufficientStarsException e) {
+			e.getMessage();
+		}
 		window.close();
 	}
 

@@ -39,6 +39,7 @@ public class Game {
     boolean gameStart = false;
     boolean gameStop = false;
     boolean revived = false;
+    int elementCount= 2;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -115,10 +116,23 @@ public class Game {
     public void removeElement(Node e) {
 //        System.out.println(e.getClass().getName() + " " + e.getTranslateY());
 
-        if (e.getTranslateY() > 1000) {
+
+        int pos ;
+
+        if(elementCount==2){
+            pos = 400;
+        }
+        else if (elementCount==1){
+            pos = 600;
+        }
+        else{
+            pos = 1000;
+        }
+        if (e.getTranslateY() > pos) {
             list.remove(e);
             if(e.getClass().getName().equals("javafx.scene.layout.StackPane")){
                 obstacles.remove(e);
+                elementCount--;
             }
         }
     }
@@ -212,13 +226,18 @@ public class Game {
         GameOverController.display();
     }
 
-    public void revive() {
-        gameStop = false;
-        revived = true;
-        //TODO Reduce stars from player
-        //TODO throw insufficient stars exception
-        gameColumn.getChildren().get(1).setTranslateY(0);
-        gameLoop();
+    public void revive() throws InsufficientStarsException {
+        if(Main.player.getTotalStars()>=5){
+            gameStop = false;
+            revived = true;
+            Main.player.subtractStars(5);
+            gameColumn.getChildren().get(1).setTranslateY(0);
+            gameLoop();
+        }
+        else{
+            throw new InsufficientStarsException("Not enough stars");
+        }
+
     }
 
     public void otherCollisions() {
@@ -242,7 +261,7 @@ public class Game {
                 }
             }
             //Collision with ColorSwitcher
-            else if (element.getClass().getName().equals("javafx.scene.shape.Circle")) {
+            else if (element.getClass().getName().equals("javafx.scene.shape.Circle") && element.isVisible()) {
                 Circle elementGroup = (Circle) element;
                 Shape intersect = Shape.intersect(orb, elementGroup);
                 if (intersect.getBoundsInLocal().getWidth() != -1) {
@@ -254,7 +273,8 @@ public class Game {
             }
         }
         if (delete == 1 && list.get(0).getClass().getName().equals("javafx.scene.shape.Circle")) {
-            removeElement(list.get(0));
+//            removeElement(list.get(0));
+            list.remove(0);
         }
     }
 
@@ -283,19 +303,19 @@ public class Game {
         boolean collisionSafe = false;
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
         for (Node element : list) {
-            System.out.println(element);
+            System.out.println(list.size());
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
                 for (Node sub : obstacleGroup.getChildren()) {
                     Shape shape = (Shape) sub;
-                    if ((orb.getStroke()).equals(shape.getStroke())) {
+                    if ((orb.getStroke()) == (shape.getStroke())) {
 //                    System.out.println("same"+shape.getStroke());
                         collisionSafe = true;
                     }
                     Shape intersect = Shape.intersect(orb, shape);
-                    if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
+                    if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1 ) {
                         System.out.println("Collision ");
 //                        gameStop = true;
                     }
@@ -310,7 +330,7 @@ public class Game {
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
-                Main.currentGame.checkObstacleCollision();
+//                Main.currentGame.checkObstacleCollision();
                 Main.currentGame.obstacleCollision();
                 Main.currentGame.otherCollisions();
 
