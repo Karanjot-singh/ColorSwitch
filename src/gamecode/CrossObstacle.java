@@ -1,5 +1,6 @@
 package gamecode;
 
+import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -9,6 +10,7 @@ import javafx.scene.shape.ArcType;
 public class CrossObstacle extends Obstacle {
 
     Group crossGroup;
+    private RotateTransition rotateTransition;
 
     public CrossObstacle(int stroke, int duration, int angle, int velocity) {
         super(stroke, duration, angle, velocity);
@@ -28,7 +30,16 @@ public class CrossObstacle extends Obstacle {
             arc.setStrokeWidth(12);
             crossGroup.getChildren().add(arc);
         }
-        Rotation.rotate(crossGroup,0);
+        rotateTransition=Rotation.rotate(crossGroup,0);
+    }
+    @Override
+    public void pauseAnimation(){
+        rotateTransition.pause();
+    }
+    @Override
+
+    public void playAnimation(){
+        rotateTransition.play();
     }
 
     @Override

@@ -3,54 +3,61 @@ package gamecode;
 
 import javafx.scene.Group;
 
-public abstract class Obstacle extends Elements implements Rotation{
-	private int stroke;
-	private int duration;
-	private int angle;
-	private int velocity;
+public abstract class Obstacle extends Elements{
+    private int stroke;
+    private int duration;
+    private int angle;
+    private int velocity;
 
-	public Obstacle( int stroke, int duration, int angle, int velocity) {
-		this.setStroke(stroke);
-		this.setDuration(duration);
-		this.setAngle(angle);
-		this.setVelocity(velocity);
-	}
+    public Obstacle(int stroke, int duration, int angle, int velocity) {
+        this.setStroke(stroke);
+        this.setDuration(duration);
+        this.setAngle(angle);
+        this.setVelocity(velocity);
+    }
 
-	abstract public Group getGroup();
+    public void pauseAnimation() {
+    }
 
-	public void scaleSize(int scale){
+    public void playAnimation() {
 
-	}
+    }
 
-	public int getStroke() {
-		return stroke;
-	}
+    abstract public Group getGroup();
 
-	public void setStroke(int stroke) {
-		this.stroke = stroke;
-	}
+    public void scaleSize(int scale) {
 
-	public int getDuration() {
-		return duration;
-	}
+    }
 
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
+    public int getStroke() {
+        return stroke;
+    }
 
-	public int getAngle() {
-		return angle;
-	}
+    public void setStroke(int stroke) {
+        this.stroke = stroke;
+    }
 
-	public void setAngle(int angle) {
-		this.angle = angle;
-	}
+    public int getDuration() {
+        return duration;
+    }
 
-	public int getVelocity() {
-		return velocity;
-	}
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
-	public void setVelocity(int velocity) {
-		this.velocity = velocity;
-	}
+    public int getAngle() {
+        return angle;
+    }
+
+    public void setAngle(int angle) {
+        this.angle = angle;
+    }
+
+    public int getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(int velocity) {
+        this.velocity = velocity;
+    }
 }

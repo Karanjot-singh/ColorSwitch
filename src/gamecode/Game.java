@@ -14,22 +14,22 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game {
+public class Game implements Serializable {
 
     GridPane gameGrid;
     Pane obstacleColumn;
     StackPane gameColumn;
     ArrayList<Group> obstacles;
     ObservableList<Node> list;
-
+    ArrayList<Obstacle> objects;
     int score;
     float height;
     Orb playerOrb;
@@ -46,6 +46,7 @@ public class Game {
         gameColumn = new StackPane();
         obstacleColumn = new Pane();
         obstacles = new ArrayList<>();
+        objects = new ArrayList<>();
         list = obstacleColumn.getChildren();
 
         obstacleColumn.setCenterShape(true);
@@ -153,6 +154,7 @@ public class Game {
 //		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
 
         obstacles.add(obstacle.getGroup());
+        objects.add(obstacle);
         return new StackPane(obstacle.getGroup(), star.getStarShape());
     }
 
@@ -192,7 +194,16 @@ public class Game {
     }
 
     public void pauseGame() {
-
+        for (Obstacle element : objects) {
+        element.pauseAnimation();
+        }
+        playerOrb.pauseAnimation();
+    }
+    public void playGame() {
+        for (Obstacle element : objects) {
+            element.playAnimation();
+        }
+        playerOrb.playAnimation();
     }
 
     public boolean isGameStop() {
