@@ -67,9 +67,8 @@ public class Game {
 
         Main.gameplayScene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
-//                moveDown();
-//                playerOrb.jump(initPos);
-
+                Main.currentGame.obstacleCollision();
+                Main.currentGame.otherCollisions();
                 playerOrb.jump(initPos);
 //                checkCollision(obstacles);
                 if (playerOrb.getOrbGroup().getTranslateY() <= -40) {
@@ -273,8 +272,8 @@ public class Game {
                 }
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-//                    System.out.print("Collision "+shape.getStroke()+ " ");
-                    gameStop = true;
+                    System.out.println("ColX ");
+//                    gameStop = true;
                 }
             }
         }
@@ -284,21 +283,21 @@ public class Game {
         boolean collisionSafe = false;
         Shape orb = (Shape) playerOrb.getOrbGroup().getChildren().get(0);
         for (Node element : list) {
+            System.out.println(element);
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
                 for (Node sub : obstacleGroup.getChildren()) {
                     Shape shape = (Shape) sub;
-                    System.out.println(sub);
                     if ((orb.getStroke()).equals(shape.getStroke())) {
 //                    System.out.println("same"+shape.getStroke());
                         collisionSafe = true;
                     }
                     Shape intersect = Shape.intersect(orb, shape);
                     if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-                        System.out.print("Collision ");
-                        gameStop = true;
+                        System.out.println("Collision ");
+//                        gameStop = true;
                     }
                 }
             }
@@ -307,7 +306,7 @@ public class Game {
 
     static void gameLoop() {
         Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 90);
+        final Duration fps = Duration.millis(1000 / 60);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
