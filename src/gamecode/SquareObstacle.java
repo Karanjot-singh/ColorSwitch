@@ -7,8 +7,8 @@ import javafx.scene.shape.Line;
 
 public class SquareObstacle extends Obstacle {
 
-    Group squareGroup;
     private final RotateTransition rotateTransition;
+    Group squareGroup;
 
     public SquareObstacle(int stroke, int duration, int angle, int velocity) {
         super(stroke, duration, angle, velocity);
@@ -40,21 +40,24 @@ public class SquareObstacle extends Obstacle {
         line.setStrokeWidth(12);
         squareGroup.getChildren().add(line);
 
-        rotateTransition=Rotation.rotate(squareGroup,0);
+        rotateTransition = Rotation.rotate(squareGroup, 0);
     }
-    public void pauseAnimation(){
+
+    public void pauseAnimation() {
         rotateTransition.pause();
     }
-    public void playAnimation(){
+
+    public void playAnimation() {
         rotateTransition.play();
     }
+
     @Override
     public Group getGroup() {
         return squareGroup;
     }
 
     @Override
-    public void scaleSize(int scale){
+    public void scaleSize(int scale) {
 
     }
 

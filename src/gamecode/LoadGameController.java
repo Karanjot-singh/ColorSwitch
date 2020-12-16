@@ -1,7 +1,8 @@
 package gamecode;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*; //rem
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 
 public class LoadGameController {
@@ -9,13 +10,13 @@ public class LoadGameController {
 //	static Stage window;
 //	static Scene scene;
 
-	public Button backButton;
-	public Label loadLabel;
+    public Button backButton;
+    public Label loadLabel;
 
-	@FXML
-	void backClicked() {
-		Main.window.setScene(Main.homeScene);
-	}
+    @FXML
+    void backClicked() {
+        Main.getWindow().setScene(Main.getHomeScene());
+    }
 
 //	public static void display() {
 //		window = new Stage();

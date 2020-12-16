@@ -10,34 +10,32 @@ import javafx.stage.Stage;
 
 public class SettingsController {
 
-	@FXML
-	Button orbButton, trailButton, backButton, themeButton;
+    static Stage window;
+    static Scene scene;
+    @FXML
+    Button orbButton, trailButton, backButton, themeButton;
+    @FXML
+    Label title;
 
-	@FXML
-	Label title;
+    public static void display() {
+        window = new Stage();
 
-	static Stage window;
-	static Scene scene;
+        //Block events to other windows
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initOwner(Main.getWindow());
+        window.setTitle("Settings Screen");
+        window.setMinWidth(250);
+        window.setMinHeight(100);
+        window.centerOnScreen();
 
-	@FXML
-	void backClicked(MouseEvent mouseEvent) {
-		window.close();
-	}
+        //Display window and wait for it to be closed before returning
+        scene = Main.getSettingsScene();
+        window.setScene(scene);
+        window.showAndWait();
+    }
 
-	public static void display() {
-		window = new Stage();
-
-		//Block events to other windows
-		window.initModality(Modality.APPLICATION_MODAL);
-		window.initOwner(Main.window);
-		window.setTitle("Settings Screen");
-		window.setMinWidth(250);
-		window.setMinHeight(100);
-		window.centerOnScreen();
-
-		//Display window and wait for it to be closed before returning
-		scene = Main.settingsScene;
-		window.setScene(scene);
-		window.showAndWait();
-	}
+    @FXML
+    void backClicked(MouseEvent mouseEvent) {
+        window.close();
+    }
 }

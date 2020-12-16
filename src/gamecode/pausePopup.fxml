@@ -1,8 +1,8 @@
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="gamecode.PausePopupController"
-			prefHeight="500.0" prefWidth="200.0" alignment="CENTER" spacing="20" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/pausePopupStyle.css">
+      prefHeight="500.0" prefWidth="200.0" alignment="CENTER" spacing="20" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/pausePopupStyle.css">
 
 	<Label text="Game Paused" fx:id="pauseMsg" />
 
