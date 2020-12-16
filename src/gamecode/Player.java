@@ -1,15 +1,23 @@
 package gamecode;
 
 public class Player {
+    private static Player player = null;
     private String name;
     private int totalStars;
-    //private Game currentGame;
     private int highscore;
 
-    Player() {
+    private Player() {
         name = "ProGamer";
         totalStars = 0;
         highscore = 0;
+    }
+
+    //Design pattern: SINGLETON
+    public static Player getInstance(){
+        if(player==null){
+            player = new Player();
+        }
+        return player;
     }
 
     public String getName() {

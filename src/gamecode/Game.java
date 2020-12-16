@@ -42,6 +42,7 @@ public class Game implements Serializable {
     private boolean gameStop = false;
     private boolean revived = false;
     private int elementCount = 2;
+    static ObstacleFactory factory;
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -51,6 +52,7 @@ public class Game implements Serializable {
         setObstacles(new ArrayList<>());
         setObjects(new ArrayList<>());
         setList(getObstacleColumn().getChildren());
+        factory = new ObstacleFactory();
 
         getObstacleColumn().setCenterShape(true);
         getObstacleColumn().setPrefSize(200, 500);
@@ -66,7 +68,7 @@ public class Game implements Serializable {
         getGameColumn().setAlignment(Pos.BOTTOM_CENTER);
         getGameColumn().setMinHeight(500);
 
-        getGameGrid().setGridLinesVisible(true);
+        getGameGrid().setGridLinesVisible(false);
         getGameGrid().add(getGameColumn(), 1, 0, 1, 6);
 
         Main.getGameplayScene().setOnKeyPressed(e -> {
@@ -82,7 +84,6 @@ public class Game implements Serializable {
                     }
 
                     if (getList().get(getList().size() - 1).getClass().getName() == "javafx.scene.layout.StackPane") {
-//						System.out.println(list.get(list.size() - 1).getLayoutY());
                         if (getList().get(getList().size() - 1).getTranslateY() > 180) {
                             createSwitcher(90, -90);
                         }
@@ -172,23 +173,11 @@ public class Game implements Serializable {
 
         Random ran = new Random();
         Star star = new Star();
-        Obstacle obstacle = new CircleObstacle(1, 1, 1, 1);
+        Obstacle obstacle = factory.createObstacle(0);
 
         if (isGameStart()) {
-            switch (ran.nextInt(3)) {
-                case 0:
-                    obstacle = new CircleObstacle(1, 1, 1, 1);
-                    break;
-                case 1:
-                    obstacle = new SquareObstacle(1, 1, 1, 1);
-                    break;
-                case 2:
-                    obstacle = new TriangleObstacle(1, 1, 1, 1);
-                    break;
-            }
+            obstacle = factory.createObstacle(ran.nextInt(3));
         }
-//		CircleObstacle circle1 = new CircleObstacle(1, 1, 1, 1);
-//		SquareObstacle square = new SquareObstacle(1, 1, 1, 1);
 
         getObstacles().add(obstacle.getGroup());
         getObjects().add(obstacle);
@@ -249,9 +238,9 @@ public class Game implements Serializable {
     }
 
     public void gameOver() {
-        Main.getPlayer().addTotalStars(this.getScore());
-        if (this.getScore() > Main.getPlayer().getHighscore()) {
-            Main.getPlayer().setHighscore(this.getScore());
+        Player.getInstance().addTotalStars(this.getScore());
+        if (this.getScore() > Player.getInstance().getHighscore()) {
+            Player.getInstance().setHighscore(this.getScore());
         }
         try {
             Main.setGameOverScene(new Scene(FXMLLoader.load(getClass().getResource("gameOver.fxml"))));
@@ -262,10 +251,10 @@ public class Game implements Serializable {
     }
 
     public void revive() throws InsufficientStarsException {
-        if (Main.getPlayer().getTotalStars() >= 5) {
+        if (Player.getInstance().getTotalStars() >= 5) {
             setGameStop(false);
             setRevived(true);
-            Main.getPlayer().subtractStars(5);
+            Player.getInstance().subtractStars(5);
             getGameColumn().getChildren().get(1).setTranslateY(0);
             gameLoop();
         } else {
@@ -278,7 +267,6 @@ public class Game implements Serializable {
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
         Shape starShape;
         int delete = 0;
-//        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
         for (Node element : getList()) {
             // Collision for Stars
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
@@ -307,7 +295,6 @@ public class Game implements Serializable {
             }
         }
         if (delete == 1 && getList().get(0).getClass().getName().equals("javafx.scene.shape.Circle")) {
-//            removeElement(list.get(0));
             getList().remove(0);
         }
     }
@@ -315,13 +302,11 @@ public class Game implements Serializable {
     public void checkObstacleCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
-//        System.out.println("Orb: "+orb.getStroke()+" "+orb.getFill());
         for (Group elementGroup : getObstacles()) {
 
             for (Node iterator : elementGroup.getChildren()) {
                 Shape shape = (Shape) iterator;
                 if ((orb.getStroke()).equals(shape.getStroke())) {
-//                    System.out.println("same"+shape.getStroke());
                     collisionSafe = true;
                 }
                 Shape intersect = Shape.intersect(orb, shape);
@@ -337,14 +322,12 @@ public class Game implements Serializable {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
         for (Node element : getList()) {
-//            System.out.println(list.size());
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
                 for (Node sub : obstacleGroup.getChildren()) {
                     Shape shape = (Shape) sub;
-                    //                    System.out.println("same"+shape.getStroke());
                     collisionSafe = (orb.getStroke()).equals(shape.getStroke());
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {

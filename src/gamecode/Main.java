@@ -25,7 +25,6 @@ public class Main extends Application {
     private static Parent gameplayRoot;
     private static Game currentGame;
     private static FXMLLoader fxmlLoader;
-    private static Player player;
     private static PlayMusic music;
 
     static void closeProgram() {
@@ -157,14 +156,6 @@ public class Main extends Application {
         Main.fxmlLoader = fxmlLoader;
     }
 
-    public static Player getPlayer() {
-        return player;
-    }
-
-    public static void setPlayer(Player player) {
-        Main.player = player;
-    }
-
     public static PlayMusic getMusic() {
         return music;
     }
@@ -177,38 +168,26 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         setWindow(primaryStage);
 
-        setPlayer(new Player());
+        Player.getInstance();
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
-//		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
-//        fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
-
-//		this.controller = fxmlLoader.getController();
-
-//        gameplayRoot = fxmlLoader.load();
         Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
         Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
-//        Parent playerInfoRoot = FXMLLoader.load(getClass().getResource("playerInfo.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
-//        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
 
-
-        setHomeScene(new Scene(homeRoot)); //, 600, 300
-//        gameplayScene = new Scene(gameplayRoot);
+        setHomeScene(new Scene(homeRoot));
         setLoadGameScene(new Scene(loadGameRoot));
         setHelpScene(new Scene(helpRoot));
         setSettingsScene(new Scene(settingsRoot));
-//        playerInfoScene = new Scene(playerInfoRoot);
         setClosePopupScene(new Scene(closePopupRoot));
         setPausePopupScene(new Scene(pausePopupRoot));
-//        gameOverScene = new Scene(gameOverRoot);
-
 
         getWindow().setOnCloseRequest(e -> {
             e.consume();
             closeProgram();
         });
+
 //		window.initStyle(StageStyle.TRANSPARENT);
         getWindow().setTitle("Color Switch");
         getWindow().setScene(getHomeScene());

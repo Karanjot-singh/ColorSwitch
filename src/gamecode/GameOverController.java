@@ -78,7 +78,7 @@ public class GameOverController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         score.setText(Main.getCurrentGame().getScore() + "");
-        highscore.setText(Main.getPlayer().getHighscore() + "");
+        highscore.setText(Player.getInstance().getHighscore() + "");
         reviveButton.setText("Revive     " + (char) 9734 + "5");
 
         if (Main.getCurrentGame().isRevived()) {
