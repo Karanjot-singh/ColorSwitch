@@ -12,7 +12,7 @@ public class DiamondObstacle extends Obstacle {
     Group triangleGroup;
 
     public DiamondObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
+        super(0, 0, 0, 1, 1);
 
         triangleGroup = new Group();
         Line line = new Line(-98, -57, -157,25);

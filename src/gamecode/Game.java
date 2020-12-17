@@ -113,7 +113,7 @@ public class Game implements Serializable {
             public void handle(Event event) {
                 Main.getCurrentGame().obstacleCollision();
                 Main.getCurrentGame().otherCollisions();
-                Main.getCurrentGame().getState();
+                Main.getCurrentGame().saveState();
 
                 if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
@@ -187,6 +187,7 @@ public class Game implements Serializable {
             getList().remove(e);
             if (e.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 getObstacles().remove(e);
+                getObjects().remove(0);
                 setElementCount(getElementCount() - 1);
             }
         }
@@ -375,10 +376,18 @@ public class Game implements Serializable {
         }
     }
 
-    public void getState() {
+    public void saveState() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
         //TODO implement iterator
+        int i =0;
+        while(i< getList().size()){
+            if (getList().get(i).getClass().getName().equals("javafx.scene.layout.StackPane")) {
+
+                i++;
+            }
+
+            }
         for (Node element : getList()) {
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {

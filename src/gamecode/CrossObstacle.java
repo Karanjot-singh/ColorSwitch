@@ -2,9 +2,6 @@ package gamecode;
 
 import javafx.animation.RotateTransition;
 import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 
@@ -15,7 +12,7 @@ public class CrossObstacle extends Obstacle {
     Group crossGroup;
 
     public CrossObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
+        super(0, 0, 0, 1, 1);
         GameAnimation.rotate(crossGroup, 0);
 
         crossGroup = new Group();
