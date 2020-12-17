@@ -43,7 +43,7 @@ public class Game{
     private transient boolean revived = false;
     private transient boolean orbDead = false;
     private transient boolean paused = false;
-//    private transient boolean paused = false;
+    private transient static boolean testMode = false;
     private transient int elementCount = 2;
     private transient int levelCount = 0;
     private transient int levelAuxiliary = 0;
@@ -114,7 +114,7 @@ public class Game{
                 Main.getCurrentGame().otherCollisions();
 //                Main.getCurrentGame().saveState();
 
-                if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
+                if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()  ) {
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
                     Main.getCurrentGame().gameOver();
@@ -359,6 +359,14 @@ public class Game{
         }
     }
 
+    public static boolean isTestMode() {
+        return testMode;
+    }
+
+    public static void setTestMode(boolean testMode) {
+        Game.testMode = testMode;
+    }
+
     public void obstacleCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
@@ -374,7 +382,9 @@ public class Game{
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
 //                        System.out.println("Collision ");
-                        setGameStop(true);
+                     if(!isTestMode()) {
+                         setGameStop(true);
+                     }
                     }
                 }
             }

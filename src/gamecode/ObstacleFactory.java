@@ -7,17 +7,34 @@ public class ObstacleFactory {
     public Obstacle createObstacle(int type, boolean scaleAnimate) {
         switch (type) {
             case 1:
-                return new DiamondObstacle(1, 1, 1, 1,1, scaleAnimate);
+                return createDiamond(scaleAnimate);
 
 			case 2:
-                return new SquareObstacle(1, 1, 1, 1,1, scaleAnimate);
+                return createSquare(scaleAnimate);
 
 			case 3:
-                return new CrossObstacle(1,1,1,1,1);
+                return createCross();
 
 			case 0:
 			default:
-				return new CircleObstacle(1, 1, 1, 1,1, scaleAnimate );
+				return createCircle(scaleAnimate);
 		}
     }
+
+	//Design pattern: FACADE
+    public DiamondObstacle createDiamond(boolean scaleAnimate){
+    	return new DiamondObstacle(1, 1, 1, 1,1, scaleAnimate);
+	}
+
+	public SquareObstacle createSquare(boolean scaleAnimate){
+		return new SquareObstacle(1, 1, 1, 1,1, scaleAnimate);
+	}
+
+	public CrossObstacle createCross(){
+		return new CrossObstacle(1,1,1,1,1);
+	}
+
+	public CircleObstacle createCircle(boolean scaleAnimate){
+		return new CircleObstacle(1, 1, 1, 1,1, scaleAnimate );
+	}
 }

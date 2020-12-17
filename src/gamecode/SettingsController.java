@@ -53,6 +53,19 @@ public class SettingsController implements Initializable {
     }
 
     @FXML
+    void testClicked(MouseEvent mouseEvent) {
+
+        if(!Game.isTestMode()) {
+            Game.setTestMode(true);
+            System.out.println("Test ON");
+        }
+        else{
+            Game.setTestMode(false);
+            System.out.println("Test OFF");
+        }
+    }
+
+    @FXML
     void musicClicked(MouseEvent mouseEvent) {
         if(Music.getInstance().isPlaying()){
             Main.pauseMusic();
