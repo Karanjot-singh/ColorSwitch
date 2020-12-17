@@ -25,7 +25,6 @@ public class Main extends Application {
     private static Parent gameplayRoot;
     private static Game currentGame;
     private static FXMLLoader fxmlLoader;
-    private static PlayMusic music;
 
     static void closeProgram() {
         Boolean ans = ClosePopupController.display();
@@ -156,13 +155,6 @@ public class Main extends Application {
         Main.fxmlLoader = fxmlLoader;
     }
 
-    public static PlayMusic getMusic() {
-        return music;
-    }
-
-    public static void setMusic(PlayMusic music) {
-        Main.music = music;
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -193,43 +185,68 @@ public class Main extends Application {
         getWindow().setScene(getHomeScene());
         getWindow().centerOnScreen();
         getWindow().show();
-        playMusic();
+        initialiseMusic();
     }
 
-    public void playMusic() {
+    public static void initialiseMusic() {
         Thread t1 = new Thread();
-        setMusic(new PlayMusic());
+        Music.getInstance();
         t1.start();
     }
 
-    public void pauseMusic() {
-        getMusic().stopMusic();
+    public static void playMusic() {
+        Music.getInstance().startMusic();
+    }
+
+    public static void pauseMusic() {
+        Music.getInstance().stopMusic();
     }
 }
 
-class PlayMusic implements Runnable {
+class Music implements Runnable {
 
+    private static Music music = null;
     static MediaPlayer mediaPlayer;
+    static boolean playing;
 
-    public PlayMusic() {
+    private Music() {
         Media backgroundMusic = new Media(getClass().getResource("/assets/music.wav").toString());
         mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(30));
+        playing = true;
+    }
+
+    //Design pattern: SINGLETON
+    public static Music getInstance(){
+        if(music==null){
+            music = new Music();
+        }
+        return music;
     }
 
     void stopMusic() {
         mediaPlayer.stop();
+        setPlaying(false);
     }
 
-    void startGameMusic() {
+    void startMusic() {
         mediaPlayer.play();
+        setPlaying(true);
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean isPlaying) {
+        Music.playing = isPlaying;
     }
 
     @Override
     public void run() {
-        startGameMusic();
+        startMusic();
     }
 }
