@@ -26,6 +26,7 @@ public class CrossObstacle extends Obstacle {
 //          		<Line endX="-54.0" endY="39.0" layoutX="205.0" layoutY="115.0" startX="-100.0" stroke="#e09b19" strokeLineCap="ROUND" strokeWidth="12.0" />
 //      </Group>
         crossGroup = new Group();
+        //purple old
         Line line = new Line(-54, 39,-8,-2);
         line.setStroke(Settings.currentTheme[0]);
         line.setLayoutX(159);
@@ -33,7 +34,8 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
-//        Line = new Line(-54,39,,-17)
+//        line = new Line(-54,39,-21,-17);
+        //cyan old
         line = new Line(-145,52,-110, -2);
         line.setStroke(Settings.currentTheme[1]);
         line.setLayoutX(204);
