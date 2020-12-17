@@ -130,6 +130,10 @@ public class Game implements Serializable {
 
     }
 
+    public int getLevelCount() {
+        return levelCount;
+    }
+
     public boolean isOrbDead() {
         orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
         return orbDead;
@@ -206,10 +210,10 @@ public class Game implements Serializable {
 
         Random ran = new Random();
         Star star = new Star(0, 0);
-        Obstacle obstacle = factory.createObstacle(0);
+        Obstacle obstacle = factory.createObstacle(0, this.getLevelCount()>=2);
 
         if (isGameStart()) {
-            obstacle = factory.createObstacle(ran.nextInt(4));
+            obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
         }
 
         getObstacles().add(obstacle.getGroup());
