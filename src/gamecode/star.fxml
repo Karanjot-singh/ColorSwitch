@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<Pane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-	<children>
-		<Line endX="32.0" endY="54.0" layoutX="33.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
-      <Line endX="32.0" endY="54.0" layoutX="92.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#09c909" strokeLineCap="ROUND" strokeWidth="12.0" />
-      <Line endX="32.0" endY="54.0" layoutX="156.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e08219" strokeLineCap="ROUND" strokeWidth="12.0" />
-      <Line endX="32.0" endY="54.0" layoutX="219.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e01969" strokeLineCap="ROUND" strokeWidth="12.0" />
-	</children>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane prefHeight="579.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Group layoutX="15.0" layoutY="200.0">
+                		<Line endX="-54.0" endY="39.0" layoutX="159.0" layoutY="64.0" startX="-17.0" startY="-2.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
+          		<Line endX="-150.0" endY="32.0" layoutX="204.0" layoutY="124.0" startX="-110.70709228515625" startY="-10.70709228515625" stroke="#49b244" strokeLineCap="ROUND" strokeWidth="12.0" />
+          		<Line endX="-54.0" endY="39.0" layoutX="147.0" layoutY="63.0" startX="-100.0" stroke="#d01212" strokeLineCap="ROUND" strokeWidth="12.0" />
+          		<Line endX="-54.0" endY="39.0" layoutX="205.0" layoutY="115.0" startX="-100.0" stroke="#e09b19" strokeLineCap="ROUND" strokeWidth="12.0" />
+      </Group>
+   </children>
 </Pane>
