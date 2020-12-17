@@ -184,6 +184,7 @@ public class Main extends Application {
         getWindow().setTitle("Color Switch");
         getWindow().setScene(getHomeScene());
         getWindow().centerOnScreen();
+        getWindow().setResizable(false);
         getWindow().show();
         initialiseMusic();
     }
