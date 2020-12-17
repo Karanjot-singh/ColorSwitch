@@ -1,6 +1,8 @@
 package gamecode;
 
 import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -25,6 +27,7 @@ public class CircleObstacle extends Obstacle {
             arcGroup.getChildren().add(arc);
         }
         rotateTransition = GameAnimation.rotate(arcGroup, 0);
+        SequentialTransition transition = GameAnimation.scaleTransition(arcGroup,0,0);
     }
     @Override
     public void saveObstacle() {

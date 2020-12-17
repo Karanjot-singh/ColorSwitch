@@ -1,5 +1,7 @@
 package gamecode;
 
+import javafx.animation.ScaleTransition;
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -7,6 +9,8 @@ import javafx.scene.shape.Rectangle;
 
 public class Star extends Elements {
     ImageView starIcon;
+    Group starGroup;
+//    private ScaleTransition scaleTransition;
 
     private int scoreValue;
 
@@ -21,6 +25,10 @@ public class Star extends Elements {
         starIcon.setFitHeight(40);
         starIcon.setPreserveRatio(true);
         starIcon.setPickOnBounds(true);
+//        starGroup= new Group();
+//        starGroup.getChildren().add(starIcon);
+//        scaleTransition= GameAnimation.scaleTransition(starGroup,0,0);
+
     }
 
     public int getScoreValue() {
