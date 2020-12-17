@@ -32,7 +32,6 @@ public class CircleObstacle extends Obstacle {
 //        rotateTransition.get
         double a= rotateTransition.getDuration().toSeconds();
         double b =rotateTransition.getCurrentTime().toSeconds();
-        System.out.println(b+" "+a);
     }
 
     @Override

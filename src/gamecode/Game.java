@@ -121,13 +121,13 @@ public class Game implements Serializable {
 
     static void gameLoop() {
         Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 60);
+        final Duration fps = Duration.millis(1000 / 1);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
                 Main.getCurrentGame().obstacleCollision();
                 Main.getCurrentGame().otherCollisions();
-                Main.getCurrentGame().saveStatus();
+                Main.getCurrentGame().getState();
 
                 if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
@@ -363,11 +363,28 @@ public class Game implements Serializable {
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
 //                        System.out.println("Collision ");
-                        setGameStop(true);
+//                        setGameStop(true);
                     }
                 }
             }
         }
+    }
+    public void  getState(){
+        boolean collisionSafe = false;
+        Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
+        //TODO implement iterator
+        for (Node element : getList()) {
+            // Collision for Obstacles
+            if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
+                StackPane tempPane = (StackPane) element;
+                System.out.println(tempPane.getLayoutY()+" "+tempPane.getTranslateY());
+
+                Group obstacleGroup = (Group) tempPane.getChildren().get(0);
+            }
+        }
+        System.out.println("------------------");
+
+
     }
 
     public int getScore() {
