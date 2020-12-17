@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+/*
+--module-path /home/karan/Installations/openjfx-11.0.2_linux-x64_bin-sdk/javafx-sdk-11.0.2/lib --add-modules javafx.media,javafx.controls,javafx.fxml
+*/
+
 
 public class Main extends Application {
     private static Stage window;
