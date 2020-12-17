@@ -125,9 +125,9 @@ public class Game implements Serializable {
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
-//                Main.currentGame.checkObstacleCollision();
                 Main.getCurrentGame().obstacleCollision();
                 Main.getCurrentGame().otherCollisions();
+                Main.getCurrentGame().saveStatus();
 
                 if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
@@ -255,6 +255,12 @@ public class Game implements Serializable {
         }
         getPlayerOrb().playAnimation();
     }
+    public void saveStatus() {
+        setOrbDead(false);
+        for (Obstacle element : getObjects()) {
+            element.saveObstacle();
+        }
+    }
 
     public boolean isGameStop() {
         return gameStop;
@@ -335,7 +341,7 @@ public class Game implements Serializable {
                 }
                 Shape intersect = Shape.intersect(orb, shape);
                 if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-                    System.out.println("ColX ");
+//                    System.out.println("ColX ");
 //                    gameStop = true;
                 }
             }
@@ -356,7 +362,7 @@ public class Game implements Serializable {
                     collisionSafe = (orb.getStroke()).equals(shape.getStroke());
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
-                        System.out.println("Collision ");
+//                        System.out.println("Collision ");
                         setGameStop(true);
                     }
                 }

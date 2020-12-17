@@ -34,6 +34,11 @@ public class CrossObstacle extends Obstacle {
     }
 
     @Override
+    public void saveObstacle() {
+
+    }
+
+    @Override
     public void pauseAnimation() {
         rotateTransition.pause();
     }

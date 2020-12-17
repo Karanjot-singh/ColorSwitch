@@ -43,6 +43,11 @@ public class SquareObstacle extends Obstacle {
         rotateTransition = Rotation.rotate(squareGroup, 0);
     }
 
+    @Override
+    public void saveObstacle() {
+
+    }
+
     public void pauseAnimation() {
         rotateTransition.pause();
     }

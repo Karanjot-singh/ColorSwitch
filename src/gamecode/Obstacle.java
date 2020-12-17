@@ -16,12 +16,11 @@ public abstract class Obstacle extends Elements {
         this.setVelocity(velocity);
     }
 
-    public void pauseAnimation() {
-    }
+    public abstract void saveObstacle();
 
-    public void playAnimation() {
+    public abstract void pauseAnimation();
 
-    }
+    public abstract void playAnimation();
 
     abstract public Group getGroup();
 

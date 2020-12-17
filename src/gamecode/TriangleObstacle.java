@@ -44,6 +44,11 @@ public class TriangleObstacle extends Obstacle {
         rotateTransition = Rotation.rotate(triangleGroup, 0);
     }
 
+    @Override
+    public void saveObstacle() {
+
+    }
+
     public void pauseAnimation() {
         rotateTransition.pause();
     }

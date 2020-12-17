@@ -20,6 +20,11 @@ public class LineObstacle extends Obstacle {
     }
 
     @Override
+    public void saveObstacle() {
+
+    }
+
+    @Override
 
     public void pauseAnimation() {
         rotateTransition.pause();
