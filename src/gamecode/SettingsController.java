@@ -13,7 +13,7 @@ public class SettingsController {
     static Stage window;
     static Scene scene;
     @FXML
-    Button orbButton, trailButton, backButton, themeButton;
+    Button orbButton, musicButton, backButton, themeButton;
     @FXML
     Label title;
 
@@ -37,5 +37,17 @@ public class SettingsController {
     @FXML
     void backClicked(MouseEvent mouseEvent) {
         window.close();
+    }
+
+    @FXML
+    void musicClicked(MouseEvent mouseEvent) {
+        if(Music.getInstance().isPlaying()){
+            Main.pauseMusic();
+            musicButton.setText("Play music");
+        }
+        else {
+            Main.playMusic();
+            musicButton.setText("Pause music");
+        }
     }
 }
