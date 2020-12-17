@@ -20,11 +20,10 @@ import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game{
+public class LoadedGame {
     static ObstacleFactory factory;
     private transient final double spacing = 70;
     private transient GridPane gameGrid;
@@ -48,7 +47,7 @@ public class Game{
     private transient int levelAuxiliary = 0;
     final transient double switcherX = 85;
     final transient double elementX = 20;
-    Game(FXMLLoader fxmlLoader) {
+    LoadedGame(FXMLLoader fxmlLoader) {
 
         setGameGrid(fxmlLoader.getRoot());
         setGameColumn(new StackPane());
@@ -386,6 +385,7 @@ public class Game{
         Database d = new Database();
         saveState(d);
         Database.serialize(d);
+        SavedGames.addToSavedGames(d);
     }
 
     public void saveState(Database d) {

@@ -36,6 +36,7 @@ public class Database implements Serializable {
                     new FileInputStream("out.txt"));
             Database s1 = (Database) in.readObject();
             s1.printValue();
+            SavedGames.addToSavedGames(s1);
         } finally {
             in.close();
         }
