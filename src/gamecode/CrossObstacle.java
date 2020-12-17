@@ -14,7 +14,7 @@ public class CrossObstacle extends Obstacle {
 
     public CrossObstacle(int stroke, int duration, int angle, int velocity) {
         super(stroke, duration, angle, velocity);
-        Rotation.rotate(crossGroup, 0);
+        GameAnimation.rotate(crossGroup, 0);
 
         crossGroup = new Group();
 //        		<Line endX="-54.0" endY="39.0" layoutX="159.0" layoutY="64.0" startX="-17.0" startY="-2.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
@@ -30,7 +30,7 @@ public class CrossObstacle extends Obstacle {
             arc.setStrokeWidth(12);
             crossGroup.getChildren().add(arc);
         }
-        rotateTransition = Rotation.rotate(crossGroup, 0);
+        rotateTransition = GameAnimation.rotate(crossGroup, 0);
     }
 
     @Override

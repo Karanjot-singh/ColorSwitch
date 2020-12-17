@@ -40,7 +40,7 @@ public class SquareObstacle extends Obstacle {
         line.setStrokeWidth(12);
         squareGroup.getChildren().add(line);
 
-        rotateTransition = Rotation.rotate(squareGroup, 0);
+        rotateTransition = GameAnimation.rotate(squareGroup, 0);
     }
 
     @Override

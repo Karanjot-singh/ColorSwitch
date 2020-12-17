@@ -9,7 +9,7 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-public class Orb extends Elements implements Rotation {
+public class Orb extends Elements implements GameAnimation {
     private final RotateTransition rotateTransition;
     Group orbGroup = new Group();
     Circle orb;
@@ -27,7 +27,7 @@ public class Orb extends Elements implements Rotation {
         orb.setStrokeType(StrokeType.INSIDE);
         orbGroup.getChildren().add(orb);
         timeline = new Timeline();
-        rotateTransition = Rotation.rotate(orbGroup, 0);
+        rotateTransition = GameAnimation.rotate(orbGroup, 0);
     }
 
     public Group getOrbGroup() {

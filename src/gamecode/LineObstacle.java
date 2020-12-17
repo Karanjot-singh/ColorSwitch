@@ -16,7 +16,7 @@ public class LineObstacle extends Obstacle {
 //      <Line endX="32.0" endY="54.0" layoutX="219.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e01969" strokeLineCap="ROUND" strokeWidth="12.0" />
     public LineObstacle(int stroke, int duration, int angle, int velocity) {
         super(stroke, duration, angle, velocity);
-        rotateTransition = Rotation.rotate(lineGroup, 0);
+        rotateTransition = GameAnimation.rotate(lineGroup, 0);
     }
 
     @Override

@@ -41,7 +41,8 @@ public class TriangleObstacle extends Obstacle {
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         triangleGroup.getChildren().add(line);
 
-        rotateTransition = Rotation.rotate(triangleGroup, 0);
+        rotateTransition = GameAnimation.rotate(triangleGroup, 0);
+        GameAnimation.Ytranslation(triangleGroup,0,1);
     }
 
     @Override

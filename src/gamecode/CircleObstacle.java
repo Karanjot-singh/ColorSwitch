@@ -5,7 +5,6 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
-import javafx.util.Duration;
 
 
 public class CircleObstacle extends Obstacle {
@@ -25,7 +24,7 @@ public class CircleObstacle extends Obstacle {
             arc.setStrokeWidth(12);
             arcGroup.getChildren().add(arc);
         }
-        rotateTransition = Rotation.rotate(arcGroup, 0);
+        rotateTransition = GameAnimation.rotate(arcGroup, 0);
     }
     @Override
     public void saveObstacle() {
