@@ -11,8 +11,8 @@ public class DiamondObstacle extends Obstacle {
     private final RotateTransition rotateTransition;
     Group triangleGroup;
 
-    public DiamondObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
+    public DiamondObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+        super(0, 0, 0, 1, 1);
 
         triangleGroup = new Group();
         Line line = new Line(-98, -57, -157,25);

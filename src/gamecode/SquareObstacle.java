@@ -10,8 +10,8 @@ public class SquareObstacle extends Obstacle {
     private final RotateTransition rotateTransition;
     Group squareGroup;
 
-    public SquareObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
+    public SquareObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+        super(0, 0, 0, 1, 1);
 
 //        Line(double startX, double startY, double endX, double endY)
         squareGroup = new Group();

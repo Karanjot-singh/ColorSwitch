@@ -14,8 +14,8 @@ public class LineObstacle extends Obstacle {
 //      <Line endX="32.0" endY="54.0" layoutX="92.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#09c909" strokeLineCap="ROUND" strokeWidth="12.0" />
 //      <Line endX="32.0" endY="54.0" layoutX="156.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e08219" strokeLineCap="ROUND" strokeWidth="12.0" />
 //      <Line endX="32.0" endY="54.0" layoutX="219.0" layoutY="33.0" startX="-13.0" startY="54.0" stroke="#e01969" strokeLineCap="ROUND" strokeWidth="12.0" />
-    public LineObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
+    public LineObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+        super(0, 0, 0, 1, 1);
         rotateTransition = GameAnimation.rotate(lineGroup, 0);
     }
 

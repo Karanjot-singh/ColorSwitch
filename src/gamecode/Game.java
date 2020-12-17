@@ -49,16 +49,6 @@ public class Game implements Serializable {
     private int levelAuxiliary = 0;
 
 
-    public boolean isOrbDead() {
-        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
-        return orbDead;
-    }
-
-    public void setOrbDead(boolean orbDead) {
-        this.orbDead = orbDead;
-    }
-
-
     Game(FXMLLoader fxmlLoader) {
 
         setGameGrid(fxmlLoader.getRoot());
@@ -115,6 +105,7 @@ public class Game implements Serializable {
     }
 
     static void gameLoop() {
+        //TODO  make fps 60 after testing
         Timeline gameTimeline = new Timeline();
         final Duration fps = Duration.millis(1000 / 1);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
@@ -122,7 +113,7 @@ public class Game implements Serializable {
             public void handle(Event event) {
                 Main.getCurrentGame().obstacleCollision();
                 Main.getCurrentGame().otherCollisions();
-                Main.getCurrentGame().getState();
+                Main.getCurrentGame().saveState();
 
                 if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
@@ -135,6 +126,15 @@ public class Game implements Serializable {
         gameTimeline.getKeyFrames().addAll(gameFrame);
         gameTimeline.play();
 
+    }
+
+    public boolean isOrbDead() {
+        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
+        return orbDead;
+    }
+
+    public void setOrbDead(boolean orbDead) {
+        this.orbDead = orbDead;
     }
 
     public boolean isPaused() {
@@ -160,12 +160,11 @@ public class Game implements Serializable {
     public void createElement(double PosX, double PosY) {
         StackPane e1 = addObstacles();
         getList().add(e1);
-        if(levelAuxiliary >=3){
+        if (levelAuxiliary >= 3) {
             levelCount++;
-            levelAuxiliary =0;
-        }
-        else {
-            levelAuxiliary ++;
+            levelAuxiliary = 0;
+        } else {
+            levelAuxiliary++;
         }
         System.out.println("LA=" + levelAuxiliary + " LC=" + levelCount);
         e1.relocate(PosX, PosY);
@@ -188,6 +187,7 @@ public class Game implements Serializable {
             getList().remove(e);
             if (e.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 getObstacles().remove(e);
+                getObjects().remove(0);
                 setElementCount(getElementCount() - 1);
             }
         }
@@ -214,7 +214,7 @@ public class Game implements Serializable {
         getObstacles().add(obstacle.getGroup());
         getObjects().add(obstacle);
         StackPane temp = new StackPane(obstacle.getGroup(), star.getStarShape());
-        if (obstacle.checkCross()){
+        if (obstacle.checkCross()) {
             Group crossGroup = obstacle.getGroup();
             crossGroup.setLayoutX(15);
             crossGroup.setLayoutY(200);
@@ -353,25 +353,6 @@ public class Game implements Serializable {
         }
     }
 
-    public void checkObstacleCollision() {
-        boolean collisionSafe = false;
-        Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
-        for (Group elementGroup : getObstacles()) {
-
-            for (Node iterator : elementGroup.getChildren()) {
-                Shape shape = (Shape) iterator;
-                if ((orb.getStroke()).equals(shape.getStroke())) {
-                    collisionSafe = true;
-                }
-                Shape intersect = Shape.intersect(orb, shape);
-                if (intersect.getBoundsInLocal().getWidth() != -1 && (!collisionSafe)) {
-//                    System.out.println("ColX ");
-//                    gameStop = true;
-                }
-            }
-        }
-    }
-
     public void obstacleCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
@@ -387,6 +368,7 @@ public class Game implements Serializable {
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
 //                        System.out.println("Collision ");
+                        //TODO enable collisions
 //                        setGameStop(true);
                     }
                 }
@@ -394,10 +376,19 @@ public class Game implements Serializable {
         }
     }
 
-    public void getState() {
+    public void saveState() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
         //TODO implement iterator
+        int i =0;
+        while(i< getList().size()){
+            if (getList().get(i).getClass().getName().equals("javafx.scene.layout.StackPane")) {
+
+
+                i++;
+            }
+
+            }
         for (Node element : getList()) {
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
