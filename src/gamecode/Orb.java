@@ -18,7 +18,8 @@ public class Orb extends Elements implements GameAnimation {
     private String trail;
     private Timeline timeline;
 
-    Orb() {
+    Orb(double posX, double posY) {
+        super(posX, posY);
         orb = new Circle(300, 560, 10);
         Random ran = new Random();
         int x = ran.nextInt(4);

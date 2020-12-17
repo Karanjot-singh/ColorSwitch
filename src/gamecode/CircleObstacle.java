@@ -26,7 +26,7 @@ public class CircleObstacle extends Obstacle {
             arcGroup.getChildren().add(arc);
         }
         rotateTransition = GameAnimation.rotate(arcGroup, 0);
-        SequentialTransition transition = GameAnimation.scaleTransition(arcGroup,0,0);
+//        SequentialTransition transition = GameAnimation.scaleTransition(arcGroup,0,0);
     }
     @Override
     public void saveObstacle() {

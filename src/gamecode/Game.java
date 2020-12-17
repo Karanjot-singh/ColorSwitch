@@ -62,7 +62,7 @@ public class Game implements Serializable {
         getObstacleColumn().setCenterShape(true);
         getObstacleColumn().setPrefSize(200, 500);
 
-        setPlayerOrb(new Orb());
+        setPlayerOrb(new Orb(0, 0));
         setColorFlag(getPlayerOrb().getColor());
         double initPos = getPlayerOrb().getOrbGroup().getTranslateY();
 
@@ -194,7 +194,7 @@ public class Game implements Serializable {
     }
 
     void createSwitcher(double PosX, double PosY) {
-        Circle e2 = new ColorSwitcher().getSwitchGroup();
+        Circle e2 = new ColorSwitcher(0, 0).getSwitchGroup();
         getList().addAll(e2);
         getObstacleColumn().setCenterShape(true);
         e2.relocate(PosX, PosY);
@@ -203,7 +203,7 @@ public class Game implements Serializable {
     public StackPane addObstacles() {
 
         Random ran = new Random();
-        Star star = new Star();
+        Star star = new Star(0, 0);
         Obstacle obstacle = factory.createObstacle(0);
 
         if (isGameStart()) {
