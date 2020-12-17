@@ -26,6 +26,7 @@ import java.util.Random;
 
 public class Game implements Serializable {
 
+    static ObstacleFactory factory;
     private final double spacing = 70;
     private GridPane gameGrid;
     private Pane obstacleColumn;
@@ -44,25 +45,7 @@ public class Game implements Serializable {
     private boolean orbDead = false;
     private boolean paused = false;
     private int elementCount = 2;
-    static ObstacleFactory factory;
 
-
-    public boolean isOrbDead() {
-        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
-        return orbDead;
-    }
-
-    public void setOrbDead(boolean orbDead) {
-        this.orbDead = orbDead;
-    }
-
-    public boolean isPaused() {
-        return paused;
-    }
-
-    public void setPaused(boolean paused) {
-        this.paused = paused;
-    }
 
     Game(FXMLLoader fxmlLoader) {
 
@@ -142,6 +125,23 @@ public class Game implements Serializable {
 
     }
 
+    public boolean isOrbDead() {
+        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
+        return orbDead;
+    }
+
+    public void setOrbDead(boolean orbDead) {
+        this.orbDead = orbDead;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+
     void initialiseObstacles() {
         //TODO Generalise using spacing variable
         createElement(20, 290);
@@ -196,12 +196,18 @@ public class Game implements Serializable {
         Obstacle obstacle = factory.createObstacle(0);
 
         if (isGameStart()) {
-            obstacle = factory.createObstacle(ran.nextInt(5));
+            obstacle = factory.createObstacle(ran.nextInt(4));
         }
 
         getObstacles().add(obstacle.getGroup());
+        getObstacles().add(obstacle.getGroup());
         getObjects().add(obstacle);
-        return new StackPane(obstacle.getGroup(), star.getStarShape());
+        StackPane temp = new StackPane(obstacle.getGroup(), star.getStarShape());
+        if (obstacle.checkCross()){
+            temp.setAlignment(obstacle.getGroup(), Pos.CENTER_RIGHT);
+            temp.setAlignment(star.getStarShape(), Pos.CENTER);
+        }
+        return temp;
     }
 
     void moveDown(Node x) {
@@ -255,6 +261,7 @@ public class Game implements Serializable {
         }
         getPlayerOrb().playAnimation();
     }
+
     public void saveStatus() {
         setOrbDead(false);
         for (Obstacle element : getObjects()) {
@@ -264,6 +271,10 @@ public class Game implements Serializable {
 
     public boolean isGameStop() {
         return gameStop;
+    }
+
+    public void setGameStop(boolean gameStop) {
+        this.gameStop = gameStop;
     }
 
     public void gameOver() {
@@ -369,7 +380,8 @@ public class Game implements Serializable {
             }
         }
     }
-    public void  getState(){
+
+    public void getState() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
         //TODO implement iterator
@@ -377,7 +389,7 @@ public class Game implements Serializable {
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
-                System.out.println(tempPane.getLayoutY()+" "+tempPane.getTranslateY());
+                System.out.println(tempPane.getLayoutY() + " " + tempPane.getTranslateY());
 
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
             }
@@ -429,6 +441,10 @@ public class Game implements Serializable {
 
     public boolean isRevived() {
         return revived;
+    }
+
+    public void setRevived(boolean revived) {
+        this.revived = revived;
     }
 
     public double getSpacing() {
@@ -497,14 +513,6 @@ public class Game implements Serializable {
 
     public void setGameStart(boolean gameStart) {
         this.gameStart = gameStart;
-    }
-
-    public void setGameStop(boolean gameStop) {
-        this.gameStop = gameStop;
-    }
-
-    public void setRevived(boolean revived) {
-        this.revived = revived;
     }
 
     public int getElementCount() {

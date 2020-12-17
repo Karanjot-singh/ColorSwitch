@@ -2,7 +2,6 @@ package gamecode;
 
 import javafx.animation.RotateTransition;
 import javafx.scene.Group;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
@@ -48,13 +47,15 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
-        line = new Line(-100,0,-54,-39);
+        line = new Line(-54, 39, -100,0);
         line.setStroke(Settings.currentTheme[3]);
         line.setLayoutX(205);
         line.setLayoutY(115);
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
+        crossGroup.setLayoutX(15);
+        crossGroup.setLayoutY(200);
         rotateTransition = GameAnimation.rotate(crossGroup, 0);
     }
 

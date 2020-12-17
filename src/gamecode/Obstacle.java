@@ -2,6 +2,7 @@ package gamecode;
 
 
 import javafx.scene.Group;
+import javafx.scene.layout.StackPane;
 
 public abstract class Obstacle extends Elements {
     private int stroke;
@@ -26,6 +27,9 @@ public abstract class Obstacle extends Elements {
 
     public void scaleSize(int scale) {
 
+    }
+    public boolean checkCross(){
+        return false;
     }
 
     public int getStroke() {
