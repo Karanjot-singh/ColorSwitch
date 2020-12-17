@@ -47,7 +47,6 @@ public class Game implements Serializable {
     private int elementCount = 2;
     private int levelCount = 0;
     private int levelAuxiliary = 0;
-    static ObstacleFactory factory;
 
 
     public boolean isOrbDead() {
@@ -136,15 +135,6 @@ public class Game implements Serializable {
         gameTimeline.getKeyFrames().addAll(gameFrame);
         gameTimeline.play();
 
-    }
-
-    public boolean isOrbDead() {
-        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
-        return orbDead;
-    }
-
-    public void setOrbDead(boolean orbDead) {
-        this.orbDead = orbDead;
     }
 
     public boolean isPaused() {
