@@ -5,6 +5,8 @@ import javafx.scene.Group;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 
+import java.util.Random;
+
 
 public class DiamondObstacle extends Obstacle {
 
@@ -44,7 +46,10 @@ public class DiamondObstacle extends Obstacle {
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         triangleGroup.getChildren().add(line);
 
-        rotateTransition = GameAnimation.rotate(triangleGroup, 0);
+        Random ran = new Random();
+        int no = ran.nextInt(2);
+        int dir = no==0?-1:1;
+        rotateTransition = GameAnimation.rotate(triangleGroup, 0, dir);
 //        GameAnimation.Ytranslation(triangleGroup,0,1);
     }
 

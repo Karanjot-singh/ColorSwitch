@@ -47,6 +47,8 @@ public class Game implements Serializable {
     private int elementCount = 2;
     private int levelCount = 0;
     private int levelAuxiliary = 0;
+    final double switcherX = 85;
+    final double elementX = 20;
 
 
     Game(FXMLLoader fxmlLoader) {
@@ -90,11 +92,11 @@ public class Game implements Serializable {
 
                     if (getList().get(getList().size() - 1).getClass().getName() == "javafx.scene.layout.StackPane") {
                         if (getList().get(getList().size() - 1).getTranslateY() > 180) {
-                            createSwitcher(90, -90);
+                            createSwitcher(switcherX, -90);
                         }
                     } else {
                         if (getList().get(getList().size() - 1).getTranslateY() > 20) {
-                            createElement(20, -250);
+                            createElement(elementX, -250);
                         }
                     }
                     removeElement(getList().get(0));
@@ -128,6 +130,10 @@ public class Game implements Serializable {
 
     }
 
+    public int getLevelCount() {
+        return levelCount;
+    }
+
     public boolean isOrbDead() {
         orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
         return orbDead;
@@ -147,14 +153,14 @@ public class Game implements Serializable {
 
     void initialiseObstacles() {
         //TODO Generalise using spacing variable
-        createElement(20, 290);
+        createElement(elementX, 290);
 
-        createSwitcher(90, 230);
-        createElement(20, 20);
+        createSwitcher(switcherX, 230);
+        createElement(elementX, 20);
 
         setGameStart(true);
-        createSwitcher(90, -40);
-        createElement(20, -250);
+        createSwitcher(switcherX, -40);
+        createElement(elementX, -250);
     }
 
     public void createElement(double PosX, double PosY) {
@@ -204,10 +210,10 @@ public class Game implements Serializable {
 
         Random ran = new Random();
         Star star = new Star(0, 0);
-        Obstacle obstacle = factory.createObstacle(0);
+        Obstacle obstacle = factory.createObstacle(0, this.getLevelCount()>=2);
 
         if (isGameStart()) {
-            obstacle = factory.createObstacle(ran.nextInt(4));
+            obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
         }
 
         getObstacles().add(obstacle.getGroup());
@@ -215,11 +221,14 @@ public class Game implements Serializable {
         getObjects().add(obstacle);
         StackPane temp = new StackPane(obstacle.getGroup(), star.getStarShape());
         if (obstacle.checkCross()) {
-            Group crossGroup = obstacle.getGroup();
-            crossGroup.setLayoutX(15);
-            crossGroup.setLayoutY(200);
-            temp.setAlignment(obstacle.getGroup(), Pos.TOP_LEFT);
-            temp.setAlignment(star.getStarShape(), Pos.CENTER_RIGHT);
+//            Group crossGroup = obstacle.getGroup();
+//            crossGroup.setLayoutX(15);
+//            crossGroup.setLayoutY(200);
+            temp.getChildren().get(0).setTranslateX(-20);
+            temp.getChildren().get(1).setTranslateY(-25);
+            temp.getChildren().get(1).setTranslateX(23);
+//            temp.setAlignment(obstacle.getGroup(), Pos.TOP_LEFT);
+//            temp.setAlignment(star.getStarShape(), Pos.CENTER_RIGHT);
         }
         return temp;
     }

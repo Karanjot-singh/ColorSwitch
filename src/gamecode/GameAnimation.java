@@ -6,7 +6,7 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 public interface GameAnimation {
-    static RotateTransition rotate(Group g, double delay) {
+    static RotateTransition rotate(Group g, double delay, int direction) {
         RotateTransition rotation = new RotateTransition(Duration.seconds(25), g); //decreases speed
 
 //		rotation.setAutoReverse(direction);
@@ -14,7 +14,7 @@ public interface GameAnimation {
 //		rotation.setAxis(new Point3D(100,100,100));
         rotation.setCycleCount(500);
         rotation.setAxis(Rotate.Z_AXIS);
-        rotation.setByAngle(360);
+        rotation.setByAngle(direction * 360);
         rotation.setRate(5); //increases speed
         rotation.setInterpolator(Interpolator.LINEAR);
         rotation.play();
@@ -48,8 +48,9 @@ public interface GameAnimation {
         increase.setByX(0.625);
         increase.setByY(0.625);
         ScaleTransition decrease = new ScaleTransition(duration, g);
-        decrease.setByX(-0.5);
-        decrease.setByY(-0.5);
+        decrease.setByX(-0.2);
+        decrease.setByY(-0.2);
+
         SequentialTransition sequentialTransition = new SequentialTransition(decrease, increase);
         sequentialTransition.setDelay(Duration.millis(delay));
         sequentialTransition.play();
