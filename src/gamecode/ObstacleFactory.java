@@ -5,7 +5,7 @@ public class ObstacleFactory {
 	public Obstacle createObstacle(int type){
 		switch (type){
 			case 1:
-				return new TriangleObstacle(1, 1, 1, 1);
+				return new DiamondObstacle(1, 1, 1, 1);
 			case 2:
 				return new SquareObstacle(1, 1, 1, 1);
 			case 0:

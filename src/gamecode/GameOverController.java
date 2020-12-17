@@ -71,7 +71,12 @@ public class GameOverController implements Initializable {
             Main.getCurrentGame().revive();
             window.close();
         } catch (InsufficientStarsException e) {
-            e.getMessage();
+            Label label = new Label(e.getMessage());
+            if(vbox.getChildren().get(vbox.getChildren().size()-1).getClass().getName() != "javafx.scene.control.Label") {
+//            vbox.getChildren().remove(saveButton);
+                label.setStyle("-fx-text-fill: #e75023; ");
+                vbox.getChildren().add(label);
+            }
         }
     }
 
