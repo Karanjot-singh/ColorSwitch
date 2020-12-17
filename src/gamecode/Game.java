@@ -204,8 +204,11 @@ public class Game implements Serializable {
         getObjects().add(obstacle);
         StackPane temp = new StackPane(obstacle.getGroup(), star.getStarShape());
         if (obstacle.checkCross()){
-            temp.setAlignment(obstacle.getGroup(), Pos.CENTER_RIGHT);
-            temp.setAlignment(star.getStarShape(), Pos.CENTER);
+            Group crossGroup = obstacle.getGroup();
+            crossGroup.setLayoutX(15);
+            crossGroup.setLayoutY(200);
+            temp.setAlignment(obstacle.getGroup(), Pos.TOP_LEFT);
+            temp.setAlignment(star.getStarShape(), Pos.CENTER_RIGHT);
         }
         return temp;
     }

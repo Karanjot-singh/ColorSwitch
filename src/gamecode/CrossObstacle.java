@@ -26,14 +26,15 @@ public class CrossObstacle extends Obstacle {
 //          		<Line endX="-54.0" endY="39.0" layoutX="205.0" layoutY="115.0" startX="-100.0" stroke="#e09b19" strokeLineCap="ROUND" strokeWidth="12.0" />
 //      </Group>
         crossGroup = new Group();
-        Line line = new Line(-17,-2,-54, 39);
+        Line line = new Line(-54, 39,-8,-2);
         line.setStroke(Settings.currentTheme[0]);
         line.setLayoutX(159);
         line.setLayoutY(64);
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
-        line = new Line(-150,32,-110, -10);
+//        Line = new Line(-54,39,,-17)
+        line = new Line(-145,52,-110, -2);
         line.setStroke(Settings.currentTheme[1]);
         line.setLayoutX(204);
         line.setLayoutY(115);
@@ -47,15 +48,13 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
-        line = new Line(-54, 39, -100,0);
+        line = new Line(-54, 39, -100,-2);
         line.setStroke(Settings.currentTheme[3]);
         line.setLayoutX(205);
         line.setLayoutY(115);
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
-        crossGroup.setLayoutX(15);
-        crossGroup.setLayoutY(200);
         rotateTransition = GameAnimation.rotate(crossGroup, 0);
     }
 
