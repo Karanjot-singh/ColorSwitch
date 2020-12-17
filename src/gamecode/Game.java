@@ -384,6 +384,7 @@ public class Game implements Serializable {
         while(i< getList().size()){
             if (getList().get(i).getClass().getName().equals("javafx.scene.layout.StackPane")) {
 
+
                 i++;
             }
 

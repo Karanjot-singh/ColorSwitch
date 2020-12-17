@@ -3,7 +3,10 @@ package gamecode;
 
 import javafx.scene.Group;
 
-public abstract class Obstacle extends Elements {
+import java.io.Serializable;
+
+public abstract class Obstacle extends Elements implements Serializable {
+    public static final long serialVersionUID = 1L;
     double posX,posY,animationTime;
     int cycleCount,scale;
 

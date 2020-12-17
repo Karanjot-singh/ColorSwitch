@@ -3,6 +3,8 @@ package gamecode;
 import java.io.Serializable;
 
 public abstract class Elements implements Serializable {
+    public static final long serialVersionUID = 1L;
+
     protected double posX;
     protected double posY;
 
