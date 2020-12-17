@@ -32,6 +32,7 @@ public class Database implements Serializable {
             throws IOException, ClassNotFoundException {
         ObjectInputStream in = null;
         try {
+            System.out.println("DESerialise");
             in = new ObjectInputStream (
                     new FileInputStream("out.txt"));
             Database s1 = (Database) in.readObject();

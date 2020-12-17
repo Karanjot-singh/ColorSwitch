@@ -10,7 +10,7 @@ public class SavedGames {
     }
 
     public static Database getDatabase(){
-        return allSavedGames.get(0);
+        return allSavedGames.get(allSavedGames.size()-1);
     }
 //    public static ArrayList<Database> getAllSavedGames() {
 //        return allSavedGames;

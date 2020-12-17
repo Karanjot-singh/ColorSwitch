@@ -57,11 +57,13 @@ public class PausePopupController {
 
     @FXML
     void saveClicked(MouseEvent mouseEvent) throws IOException {
-        Label label = new Label("Game saved successfully!");
-        vbox.getChildren().remove(saveButton);
-        label.setStyle("-fx-text-fill: #37b884; ");
-        vbox.getChildren().add(label);
-        Main.getCurrentGame().initialiseState();
+        if(vbox.getChildren().get(vbox.getChildren().size()-1).getClass().getName() != "javafx.scene.control.Label") {
+            Label label = new Label("Game saved successfully!");
+            //        vbox.getChildren().remove(saveButton);
+            label.setStyle("-fx-text-fill: #37b884; ");
+            vbox.getChildren().add(label);
+            Main.getCurrentGame().initialiseState();
+        }
 //        Popup popup = new Popup();
 //        popup.getContent().add(label);
 //        popup.setHideOnEscape(true);
@@ -81,6 +83,9 @@ public class PausePopupController {
 
     @FXML
     void quitClicked(MouseEvent mouseEvent) {
+        if(vbox.getChildren().get(vbox.getChildren().size()-1).getClass().getName() == "javafx.scene.control.Label") {
+            vbox.getChildren().remove(vbox.getChildren().size()-1);
+        }
         Main.getWindow().setScene(Main.getHomeScene());
         window.close();
     }

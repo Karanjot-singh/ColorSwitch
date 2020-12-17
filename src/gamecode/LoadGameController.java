@@ -4,18 +4,33 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+
 
 public class LoadGameController {
 
 //	static Stage window;
 //	static Scene scene;
 
-    public Button backButton;
+    public Button backButton, load;
     public Label loadLabel;
 
     @FXML
     void backClicked() {
         Main.getWindow().setScene(Main.getHomeScene());
+    }
+
+    @FXML
+    void loadClicked() {
+        try {
+            Database.deserialize();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Main.startLoadedGame();
+        Main.getWindow().setScene(Main.getGameplayScene());
     }
 
 //	public static void display() {

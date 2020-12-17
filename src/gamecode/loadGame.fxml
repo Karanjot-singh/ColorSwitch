@@ -9,6 +9,8 @@
 
 	<Label text="You don't have any saved games." fx:id="loadLabel" />
 	<Region prefHeight="20" />
+	<Button text="Load last game" fx:id="load" onMouseClicked="#loadClicked"/>
+	<Region prefHeight="20" />
 	<Button text="Back to home" fx:id="backButton" onMouseClicked="#backClicked"/>
 
 </VBox>

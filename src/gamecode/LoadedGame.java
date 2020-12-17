@@ -89,9 +89,10 @@ public class LoadedGame {
 
         Main.getGameplayScene().setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
-                Main.getCurrentGame().obstacleCollision();
-                Main.getCurrentGame().otherCollisions();
+                Main.getCurrentLoadedGame().obstacleCollision();
+                Main.getCurrentLoadedGame().otherCollisions();
                 getPlayerOrb().jump(initPos);
+                Random ran = new Random();
 //                checkCollision(obstacles);
                 if (getPlayerOrb().getOrbGroup().getTranslateY() <= -40) {
 
@@ -105,7 +106,7 @@ public class LoadedGame {
                         }
                     } else {
                         if (getList().get(getList().size() - 1).getTranslateY() > 20) {
-                            createElement(elementX, -250);
+                            createElement(ran.nextInt(4), elementX, -250);
                         }
                     }
                     removeElement(getList().get(0));
@@ -122,14 +123,14 @@ public class LoadedGame {
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
-                Main.getCurrentGame().obstacleCollision();
-                Main.getCurrentGame().otherCollisions();
+                Main.getCurrentLoadedGame().obstacleCollision();
+                Main.getCurrentLoadedGame().otherCollisions();
 //                Main.getCurrentGame().saveState();
 
-                if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
+                if ((Main.getCurrentLoadedGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
-                    Main.getCurrentGame().gameOver();
+                    Main.getCurrentLoadedGame().gameOver();
                 }
             }
         });
@@ -161,19 +162,49 @@ public class LoadedGame {
     }
 
     void initialiseObstacles() {
-        //TODO Generalise using spacing variable
-        createElement(elementX, 290);
-
-        createSwitcher(switcherX, 230);
-        createElement(elementX, 20);
-
+        double posy =  600;
+//        //TODO Generalise using spacing variable
+//        createElement(elementX, 290);
+//
+//        createSwitcher(switcherX, 230);
+//        createElement(elementX, 20);
+//
+//        setGameStart(true);
+//        createSwitcher(switcherX, -40);
+//        createElement(elementX, -250);
         setGameStart(true);
-        createSwitcher(switcherX, -40);
-        createElement(elementX, -250);
+        setOrbDead(false);
+        setGameStop(false);
+        this.setScore(savedGame.getScore());
+        Label score = (Label) getGameGrid().getChildren().get(0);
+        score.setText("" + savedGame.getScore());
+        for(Obstacle node : savedGame.getOnScreenObstacles()) {
+            double posX = node.getPosX();
+            double posY = node.getPosY();
+
+            System.out.println(posX);
+            System.out.println(posY);
+
+            int type = 0;
+            if (node.getName().equals("gamecode.CircleObstacle")) {
+                type = 0;
+            } else if (node.getName().equals("gamecode.DiamondObstacle")) {
+                type = 1;
+            } else if (node.getName().equals("gamecode.SquareObstacle")) {
+                type = 2;
+            } else if (node.getName().equals("gamecode.CrossObstacle")) {
+                type = 3;
+            }
+            System.out.println(type);
+
+            createElement(type, elementX, posy);
+//            getList().get(getList().size()-1).relocate(posX,posY);
+            posy-=270;
+        }
     }
 
-    public void createElement(double PosX, double PosY) {
-        StackPane e1 = addObstacles();
+    public void createElement(int type, double PosX, double PosY) {
+        StackPane e1 = addObstacles(type);
         getList().add(e1);
         if (levelAuxiliary >= 3) {
             levelCount++;
@@ -215,17 +246,16 @@ public class LoadedGame {
         e2.relocate(PosX, PosY);
     }
 
-    public StackPane addObstacles() {
+    public StackPane addObstacles(int type) {
 
         Random ran = new Random();
         Star star = new Star(0, 0);
-        Obstacle obstacle = factory.createObstacle(0, this.getLevelCount()>=2);
+        Obstacle obstacle = factory.createObstacle(type, this.getLevelCount()>=2);
 
-        if (isGameStart()) {
-            obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
-        }
+//        if (isGameStart()) {
+//            obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
+//        }
 
-        getObstacles().add(obstacle.getGroup());
         getObstacles().add(obstacle.getGroup());
         getObjects().add(obstacle);
         StackPane temp = new StackPane(obstacle.getGroup(), star.getStarShape());

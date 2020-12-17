@@ -24,6 +24,7 @@ public class Main extends Application {
     private static Scene gameOverScene;
     private static Parent gameplayRoot;
     private static Game currentGame;
+    private static LoadedGame currentLoadedGame;
     private static FXMLLoader fxmlLoader;
 
     static void closeProgram() {
@@ -44,6 +45,18 @@ public class Main extends Application {
         }
         setGameplayScene(new Scene(getGameplayRoot()));
         setCurrentGame(new Game(getFxmlLoader()));
+        Game.gameLoop();
+    }
+
+    static void startLoadedGame() {
+        setFxmlLoader(new FXMLLoader(Main.class.getResource("gameplay.fxml")));
+        try {
+            setGameplayRoot(getFxmlLoader().load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setGameplayScene(new Scene(getGameplayRoot()));
+        setCurrentLoadedGame(new LoadedGame(getFxmlLoader()));
         Game.gameLoop();
     }
 
@@ -145,6 +158,14 @@ public class Main extends Application {
 
     public static void setCurrentGame(Game currentGame) {
         Main.currentGame = currentGame;
+    }
+
+    public static LoadedGame getCurrentLoadedGame() {
+        return currentLoadedGame;
+    }
+
+    public static void setCurrentLoadedGame(LoadedGame currentLoadedGame) {
+        Main.currentLoadedGame = currentLoadedGame;
     }
 
     public static FXMLLoader getFxmlLoader() {
