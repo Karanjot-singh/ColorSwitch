@@ -376,19 +376,28 @@ public class Game implements Serializable {
         }
     }
 
-    public void saveState() {
-        boolean collisionSafe = false;
-        Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
-        //TODO implement iterator
-        int i =0;
-        while(i< getList().size()){
-            if (getList().get(i).getClass().getName().equals("javafx.scene.layout.StackPane")) {
+    public void initialiseState() {
+        Database d = new Database();
+        saveState(d);
+    }
 
+    public void saveState(Database d) {
+        int i = 0, j = 0;
+        while (j < getList().size()) {
+            if (getList().get(j).getClass().getName().equals("javafx.scene.layout.StackPane")) {
+                Node element = getList().get(j);
+                StackPane tempPane = (StackPane) element;
+                Obstacle savedObstacle = getObjects().get(i);
+                savedObstacle.setPosX(tempPane.getTranslateX());
+                savedObstacle.setPosY(tempPane.getTranslateY());
+                saveAnimation(savedObstacle, d);
 
                 i++;
+            } else {
+                j++;
             }
 
-            }
+        }
         for (Node element : getList()) {
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
@@ -401,6 +410,18 @@ public class Game implements Serializable {
 //        System.out.println("------------------");
 
 
+    }
+
+    private void saveAnimation(Obstacle savedObstacle, Database d) {
+        if (savedObstacle.getClass().getName() == "CircleObstacle") {
+
+        } else if (savedObstacle.getClass().getName() == "DiamondObstacle") {
+
+        }else if (savedObstacle.getClass().getName() == "CircleObstacle") {
+
+        }else if (savedObstacle.getClass().getName() == "CircleObstacle") {
+
+        }
     }
 
     public int getScore() {
