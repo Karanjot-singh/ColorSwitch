@@ -6,8 +6,12 @@
 <GridPane alignment="CENTER" prefHeight="400.0" prefWidth="600.0" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/helpStyle.css" vgap="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecode.HelpController">
 
    <Label text="HOW TO PLAY?" fx:id="helpTitle" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-   <Label text="Made by:" fx:id="credit1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-   <Label text="Karanjot Singh | Samarth Saxena" fx:id="credit2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-   <Button fx:id="helpButton" onAction="#backClicked" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BASELINE" />
+   <Label text="Developed by Fortafy Games, Color Switch has a very simple goal." fx:id="helpTitle2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+   <Label text="You play as a small circle, which is 1 of 4 colours. Press the SpaceBar to moveUp." fx:id="helpTitle3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+   <Label text="The goal is to avoid all the obstacles and collect Stars as long as you can!! " fx:id="helpTitle4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+
+   <Label text="Made by:" fx:id="credit1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+   <Label text="Karanjot Singh | Samarth Saxena" fx:id="credit2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+   <Button fx:id="helpButton" onAction="#backClicked" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BASELINE" />
 
 </GridPane>
