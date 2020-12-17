@@ -1,17 +1,24 @@
 package gamecode;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class SettingsController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SettingsController implements Initializable {
 
     static Stage window;
-    static Scene scene;
+    static Scene scene, colorScene;
     @FXML
     Button orbButton, musicButton, backButton, themeButton;
     @FXML
@@ -19,10 +26,16 @@ public class SettingsController {
 
     public static void display() {
         window = new Stage();
+        try {
+            colorScene = new Scene (FXMLLoader.load(SettingsController.class.getResource("settingsTheme.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         window.initOwner(Main.getWindow());
+        window.initStyle(StageStyle.TRANSPARENT);
         window.setTitle("Settings Screen");
         window.setMinWidth(250);
         window.setMinHeight(100);
@@ -49,5 +62,14 @@ public class SettingsController {
             Main.playMusic();
             musicButton.setText("Pause music");
         }
+    }
+
+    @FXML
+    void themeClicked(MouseEvent mouseEvent) {
+        window.setScene(colorScene);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 }

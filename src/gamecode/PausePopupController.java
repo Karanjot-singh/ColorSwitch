@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.EventListener;
 
@@ -33,6 +34,7 @@ public class PausePopupController {
         //Block events to other windows
         window.initModality(Modality.APPLICATION_MODAL);
         window.initOwner(Main.getWindow());
+        window.initStyle(StageStyle.TRANSPARENT);
         window.setTitle("Pause game");
         window.setWidth(350);
         window.setHeight(300);

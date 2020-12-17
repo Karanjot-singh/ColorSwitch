@@ -113,7 +113,7 @@ public class Orb extends Elements implements GameAnimation {
 //                new KeyFrame(Duration.seconds(0.75),
 //                        new KeyValue(orbGroup.translateYProperty(), orbGroup.getTranslateY(), linear)),
                 new KeyFrame(Duration.seconds(1.5),
-                        new KeyValue(orbGroup.translateYProperty(), 200, end)));
+                        new KeyValue(orbGroup.translateYProperty(), 200, linear)));
 
         timeline.play();
     }
