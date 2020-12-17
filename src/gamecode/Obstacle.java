@@ -3,25 +3,25 @@ package gamecode;
 
 import javafx.scene.Group;
 
-public abstract class Obstacle extends Elements {
-    private int stroke;
-    private int duration;
-    private int angle;
-    private int velocity;
+import java.io.Serializable;
 
-    public Obstacle(int stroke, int duration, int angle, int velocity) {
-        this.setStroke(stroke);
-        this.setDuration(duration);
-        this.setAngle(angle);
-        this.setVelocity(velocity);
+public abstract class Obstacle extends Elements implements Serializable {
+    public static final long serialVersionUID = 1L;
+    double posX,posY,animationTime;
+    int cycleCount,scale;
+
+    public Obstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+        super(posX,posY);
+        this.animationTime=animationTime;
+        this.cycleCount=cycleCount;
+        this.scale= scale;
     }
 
-    public void pauseAnimation() {
-    }
+    public abstract void saveObstacle();
 
-    public void playAnimation() {
+    public abstract void pauseAnimation();
 
-    }
+    public abstract void playAnimation();
 
     abstract public Group getGroup();
 
@@ -29,35 +29,49 @@ public abstract class Obstacle extends Elements {
 
     }
 
-    public int getStroke() {
-        return stroke;
+    public boolean checkCross() {
+        return false;
     }
 
-    public void setStroke(int stroke) {
-        this.stroke = stroke;
+    @Override
+    public double getPosX() {
+        return posX;
     }
 
-    public int getDuration() {
-        return duration;
+    public void setPosX(double posX) {
+        this.posX = posX;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    @Override
+    public double getPosY() {
+        return posY;
     }
 
-    public int getAngle() {
-        return angle;
+    public void setPosY(double posY) {
+        this.posY = posY;
     }
 
-    public void setAngle(int angle) {
-        this.angle = angle;
+    public double getAnimationTime() {
+        return animationTime;
     }
 
-    public int getVelocity() {
-        return velocity;
+    public void setAnimationTime(double animationTime) {
+        this.animationTime = animationTime;
     }
 
-    public void setVelocity(int velocity) {
-        this.velocity = velocity;
+    public int getCycleCount() {
+        return cycleCount;
+    }
+
+    public void setCycleCount(int cycleCount) {
+        this.cycleCount = cycleCount;
+    }
+
+    public int getScale() {
+        return scale;
+    }
+
+    public void setScale(int scale) {
+        this.scale = scale;
     }
 }

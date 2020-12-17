@@ -1,0 +1,23 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox prefHeight="400.0" prefWidth="600.0" spacing="20" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+	  fx:controller="gamecode.SettingsThemeController" alignment="CENTER" stylesheets="@/stylesheets/generalStyle.css, @/stylesheets/settingsStyle.css">
+
+	<Label text="SETTINGS" fx:id="title" />
+	<GridPane alignment="CENTER" hgap="5" vgap="5">
+		<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="0" GridPane.columnIndex="0">
+			<Image url="@../assets/theme1.png" />
+		</ImageView>
+		<ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" GridPane.columnIndex="0">
+			<Image url="@../assets/theme2.png" />
+		</ImageView>
+	<Button text="Default" fx:id="theme1Button" onMouseClicked="#oneClicked" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+	<Button text="Theme 2" fx:id="theme2Button" onMouseClicked="#twoClicked" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+	</GridPane>
+	<Button text="Back" fx:id="backButton" onMouseClicked="#backClicked"/>
+
+
+</VBox>

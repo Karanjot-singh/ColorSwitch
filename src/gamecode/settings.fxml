@@ -5,8 +5,8 @@
 
 	<Label text="SETTINGS" fx:id="title" />
 	<Button text="Change Orb" fx:id="orbButton" />
-	<Button text="Add trail" fx:id="trailButton" />
-	<Button text="Theme" fx:id="themeButton" />
+	<Button text="Pause music" fx:id="musicButton" onMouseClicked="#musicClicked"/>
+	<Button text="Theme" fx:id="themeButton" onMouseClicked="#themeClicked"/>
 	<Button text="Back" fx:id="backButton" onMouseClicked="#backClicked"/>
 
 

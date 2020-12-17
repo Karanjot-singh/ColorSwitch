@@ -45,8 +45,8 @@ public class PlayerInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name.setText(Main.getPlayer().getName());
-        stars.setText(Main.getPlayer().getTotalStars() + "");
-        highscore.setText(Main.getPlayer().getHighscore() + "");
+        name.setText(Player.getInstance().getName());
+        stars.setText(Player.getInstance().getTotalStars() + "");
+        highscore.setText(Player.getInstance().getHighscore() + "");
     }
 }
