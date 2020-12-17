@@ -4,6 +4,8 @@ import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
+import java.util.Random;
+
 
 public class SquareObstacle extends Obstacle {
 
@@ -40,7 +42,10 @@ public class SquareObstacle extends Obstacle {
         line.setStrokeWidth(12);
         squareGroup.getChildren().add(line);
 
-        rotateTransition = GameAnimation.rotate(squareGroup, 0);
+        Random ran = new Random();
+        int no = ran.nextInt(2);
+        int dir = no==0?-1:1;
+        rotateTransition = GameAnimation.rotate(squareGroup, 0, dir);
     }
 
     @Override

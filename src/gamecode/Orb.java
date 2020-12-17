@@ -28,7 +28,7 @@ public class Orb extends Elements implements GameAnimation {
         orb.setStrokeType(StrokeType.INSIDE);
         orbGroup.getChildren().add(orb);
         timeline = new Timeline();
-        rotateTransition = GameAnimation.rotate(orbGroup, 0);
+        rotateTransition = GameAnimation.rotate(orbGroup, 0, 1);
     }
 
     public Group getOrbGroup() {

@@ -13,7 +13,7 @@ public class CrossObstacle extends Obstacle {
 
     public CrossObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
         super(0, 0, 0, 1, 1);
-        GameAnimation.rotate(crossGroup, 0);
+        GameAnimation.rotate(crossGroup, 0, 1);
 
         crossGroup = new Group();
 //      <Group layoutX="15.0" layoutY="200.0">
@@ -55,7 +55,7 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
-        rotateTransition = GameAnimation.rotate(crossGroup, 0);
+        rotateTransition = GameAnimation.rotate(crossGroup, 0, -1);
     }
 
     @Override
