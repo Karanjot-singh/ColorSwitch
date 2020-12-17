@@ -9,7 +9,7 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-public class Orb extends Elements implements Rotation {
+public class Orb extends Elements implements GameAnimation {
     private final RotateTransition rotateTransition;
     Group orbGroup = new Group();
     Circle orb;
@@ -18,7 +18,8 @@ public class Orb extends Elements implements Rotation {
     private String trail;
     private Timeline timeline;
 
-    Orb() {
+    Orb(double posX, double posY) {
+        super(posX, posY);
         orb = new Circle(300, 560, 10);
         Random ran = new Random();
         int x = ran.nextInt(4);
@@ -27,7 +28,7 @@ public class Orb extends Elements implements Rotation {
         orb.setStrokeType(StrokeType.INSIDE);
         orbGroup.getChildren().add(orb);
         timeline = new Timeline();
-        rotateTransition = Rotation.rotate(orbGroup, 0);
+        rotateTransition = GameAnimation.rotate(orbGroup, 0);
     }
 
     public Group getOrbGroup() {
@@ -113,7 +114,7 @@ public class Orb extends Elements implements Rotation {
 //                new KeyFrame(Duration.seconds(0.75),
 //                        new KeyValue(orbGroup.translateYProperty(), orbGroup.getTranslateY(), linear)),
                 new KeyFrame(Duration.seconds(1.5),
-                        new KeyValue(orbGroup.translateYProperty(), 200, end)));
+                        new KeyValue(orbGroup.translateYProperty(), 200, linear)));
 
         timeline.play();
     }

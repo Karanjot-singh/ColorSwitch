@@ -2,9 +2,8 @@ package gamecode;
 
 import javafx.animation.RotateTransition;
 import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.StrokeLineCap;
 
 
 public class CrossObstacle extends Obstacle {
@@ -12,25 +11,60 @@ public class CrossObstacle extends Obstacle {
     private final RotateTransition rotateTransition;
     Group crossGroup;
 
-    public CrossObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
-        Rotation.rotate(crossGroup, 0);
+    public CrossObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+        super(0, 0, 0, 1, 1);
+        GameAnimation.rotate(crossGroup, 0);
 
         crossGroup = new Group();
-//        		<Line endX="-54.0" endY="39.0" layoutX="159.0" layoutY="64.0" startX="-17.0" startY="-2.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
-//		<Line endX="-150.0" endY="32.0" layoutX="204.0" layoutY="124.0" startX="-110.70709228515625" startY="-10.70709228515625" stroke="#49b244" strokeLineCap="ROUND" strokeWidth="12.0" />
-//		<Line endX="-54.0" endY="39.0" layoutX="147.0" layoutY="63.0" startX="-100.0" stroke="#d01212" strokeLineCap="ROUND" strokeWidth="12.0" />
-//		<Line endX="-54.0" endY="39.0" layoutX="205.0" layoutY="115.0" startX="-100.0" stroke="#e09b19" strokeLineCap="ROUND" strokeWidth="12.0" />
-//        Arc( double centerX, double centerY, double radiusX, double radiusY, double startAngle, double length)
-        for (int i = 1; i <= 4; i++) {
-            Arc arc = new Arc(150, 150, 75, 75, 90 * i, 90);
-            arc.setFill(Color.TRANSPARENT);
-            arc.setStroke(Settings.currentTheme[i - 1]);
-            arc.setType(ArcType.OPEN);
-            arc.setStrokeWidth(12);
-            crossGroup.getChildren().add(arc);
-        }
-        rotateTransition = Rotation.rotate(crossGroup, 0);
+//      <Group layoutX="15.0" layoutY="200.0">
+//                		<Line endX="-54.0" endY="39.0" layoutX="159.0" layoutY="64.0" startX="-17.0" startY="-2.0" stroke="#1750e1" strokeLineCap="ROUND" strokeWidth="12.0" />
+//          		<Line endX="-150.0" endY="32.0" layoutX="204.0" layoutY="124.0" startX="-110.70709228515625" startY="-10.70709228515625" stroke="#49b244" strokeLineCap="ROUND" strokeWidth="12.0" />
+//          		<Line endX="-54.0" endY="39.0" layoutX="147.0" layoutY="63.0" startX="-100.0" stroke="#d01212" strokeLineCap="ROUND" strokeWidth="12.0" />
+//          		<Line endX="-54.0" endY="39.0" layoutX="205.0" layoutY="115.0" startX="-100.0" stroke="#e09b19" strokeLineCap="ROUND" strokeWidth="12.0" />
+//      </Group>
+        crossGroup = new Group();
+        //y
+        Line line = new Line(-54, 39,-17,-2);
+        line.setStroke(Settings.currentTheme[0]);
+        line.setLayoutX(159);
+        line.setLayoutY(64);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        crossGroup.getChildren().add(line);
+//        pu
+        line = new Line(-142,42,-105, -2);
+        line.setStroke(Settings.currentTheme[1]);
+        line.setLayoutX(204);
+        line.setLayoutY(115);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        crossGroup.getChildren().add(line);
+        //p
+        line = new Line(-54, 39, -100,-2);
+        line.setStroke(Settings.currentTheme[2]);
+        line.setLayoutX(147);
+        line.setLayoutY(63);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        crossGroup.getChildren().add(line);
+        //y
+        line = new Line(-54, 39, -100,-2);
+        line.setStroke(Settings.currentTheme[3]);
+        line.setLayoutX(205);
+        line.setLayoutY(115);
+        line.setStrokeWidth(12);
+        line.setStrokeLineCap(StrokeLineCap.ROUND);
+        crossGroup.getChildren().add(line);
+        rotateTransition = GameAnimation.rotate(crossGroup, 0);
+    }
+
+    @Override
+    public void saveObstacle() {
+
+    }
+    @Override
+    public boolean checkCross(){
+        return true;
     }
 
     @Override

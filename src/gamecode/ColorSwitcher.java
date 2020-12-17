@@ -5,12 +5,12 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 
-public class ColorSwitcher extends Elements implements Rotation {
+public class ColorSwitcher extends Elements implements GameAnimation {
     final int radius = 18;
     ImageView colorSwitcher;
 
-    ColorSwitcher() {
-        super();
+    ColorSwitcher(double posX, double posY) {
+        super(posX, posY);
         colorSwitcher = new ImageView("/assets/switcher.png");
         colorSwitcher.setFitWidth(radius);
         colorSwitcher.setFitHeight(radius);

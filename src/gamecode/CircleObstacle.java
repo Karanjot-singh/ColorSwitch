@@ -1,6 +1,7 @@
 package gamecode;
 
 import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -11,8 +12,8 @@ public class CircleObstacle extends Obstacle {
     private final RotateTransition rotateTransition;
     Group arcGroup;
 
-    public CircleObstacle(int stroke, int duration, int angle, int velocity) {
-        super(stroke, duration, angle, velocity);
+    public CircleObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+        super(0, 0, 0, 1, 1);
 
         arcGroup = new Group();
 //        Arc( double centerX, double centerY, double radiusX, double radiusY, double startAngle, double length)
@@ -24,7 +25,14 @@ public class CircleObstacle extends Obstacle {
             arc.setStrokeWidth(12);
             arcGroup.getChildren().add(arc);
         }
-        rotateTransition = Rotation.rotate(arcGroup, 0);
+        rotateTransition = GameAnimation.rotate(arcGroup, 0);
+//        SequentialTransition transition = GameAnimation.scaleTransition(arcGroup,0,0);
+    }
+    @Override
+    public void saveObstacle() {
+//        rotateTransition.get
+        double a= rotateTransition.getDuration().toSeconds();
+        double b =rotateTransition.getCurrentTime().toSeconds();
     }
 
     @Override

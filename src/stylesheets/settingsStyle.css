@@ -4,3 +4,18 @@
 	/*-fx-pref-height: 40;*/
 	-fx-font-size:18;
 }
+
+#theme1Button, #theme2Button {
+	-fx-pref-width: 100;
+	-fx-pref-height: 30;
+	-fx-font-size:15;
+}
+
+#title {
+	-fx-font-size: 30;
+}
+
+VBox {
+	-fx-border-width: 2;
+	-fx-border-color: #e3e3e3;
+}

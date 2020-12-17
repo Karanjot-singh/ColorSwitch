@@ -25,8 +25,6 @@ public class Main extends Application {
     private static Parent gameplayRoot;
     private static Game currentGame;
     private static FXMLLoader fxmlLoader;
-    private static Player player;
-    private static PlayMusic music;
 
     static void closeProgram() {
         Boolean ans = ClosePopupController.display();
@@ -157,100 +155,99 @@ public class Main extends Application {
         Main.fxmlLoader = fxmlLoader;
     }
 
-    public static Player getPlayer() {
-        return player;
-    }
-
-    public static void setPlayer(Player player) {
-        Main.player = player;
-    }
-
-    public static PlayMusic getMusic() {
-        return music;
-    }
-
-    public static void setMusic(PlayMusic music) {
-        Main.music = music;
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         setWindow(primaryStage);
 
-        setPlayer(new Player());
+        Player.getInstance();
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
-//		Parent gameplayRoot = FXMLLoader.load(getClass().getResource("gameplay.fxml"));
-//        fxmlLoader = new FXMLLoader(getClass().getResource("gameplay.fxml"));
-
-//		this.controller = fxmlLoader.getController();
-
-//        gameplayRoot = fxmlLoader.load();
         Parent loadGameRoot = FXMLLoader.load(getClass().getResource("loadGame.fxml"));
         Parent helpRoot = FXMLLoader.load(getClass().getResource("help.fxml"));
         Parent settingsRoot = FXMLLoader.load(getClass().getResource("settings.fxml"));
-//        Parent playerInfoRoot = FXMLLoader.load(getClass().getResource("playerInfo.fxml"));
         Parent pausePopupRoot = FXMLLoader.load(getClass().getResource("pausePopup.fxml"));
         Parent closePopupRoot = FXMLLoader.load(getClass().getResource("closePopup.fxml"));
-//        Parent gameOverRoot = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
 
-
-        setHomeScene(new Scene(homeRoot)); //, 600, 300
-//        gameplayScene = new Scene(gameplayRoot);
+        setHomeScene(new Scene(homeRoot));
         setLoadGameScene(new Scene(loadGameRoot));
         setHelpScene(new Scene(helpRoot));
         setSettingsScene(new Scene(settingsRoot));
-//        playerInfoScene = new Scene(playerInfoRoot);
         setClosePopupScene(new Scene(closePopupRoot));
         setPausePopupScene(new Scene(pausePopupRoot));
-//        gameOverScene = new Scene(gameOverRoot);
-
 
         getWindow().setOnCloseRequest(e -> {
             e.consume();
             closeProgram();
         });
+
 //		window.initStyle(StageStyle.TRANSPARENT);
         getWindow().setTitle("Color Switch");
         getWindow().setScene(getHomeScene());
         getWindow().centerOnScreen();
+        getWindow().setResizable(false);
         getWindow().show();
-        playMusic();
+        initialiseMusic();
     }
 
-    public void playMusic() {
+    public static void initialiseMusic() {
         Thread t1 = new Thread();
-        setMusic(new PlayMusic());
+        Music.getInstance();
         t1.start();
     }
 
-    public void pauseMusic() {
-        getMusic().stopMusic();
+    public static void playMusic() {
+        Music.getInstance().startMusic();
+    }
+
+    public static void pauseMusic() {
+        Music.getInstance().stopMusic();
     }
 }
 
-class PlayMusic implements Runnable {
+class Music implements Runnable {
 
+    private static Music music = null;
     static MediaPlayer mediaPlayer;
+    static boolean playing;
 
-    public PlayMusic() {
+    private Music() {
         Media backgroundMusic = new Media(getClass().getResource("/assets/music.wav").toString());
         mediaPlayer = new MediaPlayer(backgroundMusic);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(30));
+        playing = true;
+    }
+
+    //Design pattern: SINGLETON
+    public static Music getInstance(){
+        if(music==null){
+            music = new Music();
+        }
+        return music;
     }
 
     void stopMusic() {
         mediaPlayer.stop();
+        setPlaying(false);
     }
 
-    void startGameMusic() {
+    void startMusic() {
         mediaPlayer.play();
+        setPlaying(true);
+    }
+
+    public boolean isPlaying() {
+        return playing;
+    }
+
+    public void setPlaying(boolean isPlaying) {
+        Music.playing = isPlaying;
     }
 
     @Override
     public void run() {
-        startGameMusic();
+        startMusic();
     }
 }
