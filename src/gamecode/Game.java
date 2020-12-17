@@ -113,7 +113,7 @@ public class Game implements Serializable {
             public void handle(Event event) {
                 Main.getCurrentGame().obstacleCollision();
                 Main.getCurrentGame().otherCollisions();
-                Main.getCurrentGame().saveState();
+//                Main.getCurrentGame().saveState();
 
                 if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
