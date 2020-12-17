@@ -1,19 +1,21 @@
 package gamecode;
 
 
+import javafx.animation.RotateTransition;
 import javafx.scene.Group;
 
 import java.io.Serializable;
 
 public abstract class Obstacle extends Elements implements Serializable {
     public static final long serialVersionUID = 1L;
-    double posX,posY,animationTime;
-    int cycleCount,scale;
+    double posX,posY,animationTime,animationDuration;
+    private String name;
+    int scale;
 
-    public Obstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+    public Obstacle(double posX, double posY, double animationTime, double animationDuration, int scale) {
         super(posX,posY);
         this.animationTime=animationTime;
-        this.cycleCount=cycleCount;
+        this.animationDuration= animationDuration;
         this.scale= scale;
     }
 
@@ -27,6 +29,9 @@ public abstract class Obstacle extends Elements implements Serializable {
 
     public void scaleSize(int scale) {
 
+    }
+    public RotateTransition getRotation(){
+        return new RotateTransition();
     }
 
     public boolean checkCross() {
@@ -58,20 +63,27 @@ public abstract class Obstacle extends Elements implements Serializable {
     public void setAnimationTime(double animationTime) {
         this.animationTime = animationTime;
     }
-
-    public int getCycleCount() {
-        return cycleCount;
-    }
-
-    public void setCycleCount(int cycleCount) {
-        this.cycleCount = cycleCount;
-    }
-
     public int getScale() {
         return scale;
     }
 
     public void setScale(int scale) {
         this.scale = scale;
+    }
+
+    public double getAnimationDuration() {
+        return animationDuration;
+    }
+
+    public void setAnimationDuration(double animationDuration) {
+        this.animationDuration = animationDuration;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

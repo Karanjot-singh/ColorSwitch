@@ -11,8 +11,8 @@ import java.util.Random;
 
 
 public class CircleObstacle extends Obstacle {
-    private final RotateTransition rotateTransition;
-    Group arcGroup;
+    private final transient RotateTransition rotateTransition;
+    transient Group arcGroup;
 
     public CircleObstacle(double posX, double posY, double animationTime, int cycleCount, int scale, boolean scaleAnimate) {
         super(0, 0, 0, 1, 1);
@@ -40,6 +40,9 @@ public class CircleObstacle extends Obstacle {
 //        rotateTransition.get
         double a= rotateTransition.getDuration().toSeconds();
         double b =rotateTransition.getCurrentTime().toSeconds();
+    }
+    public RotateTransition getRotation(){
+        return rotateTransition;
     }
 
     @Override

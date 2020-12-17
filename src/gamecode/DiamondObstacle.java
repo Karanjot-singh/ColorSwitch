@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class DiamondObstacle extends Obstacle {
 
-    private final RotateTransition rotateTransition;
-    Group triangleGroup;
+    private transient final RotateTransition rotateTransition;
+    transient Group triangleGroup;
 
     public DiamondObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
         super(0, 0, 0, 1, 1);
@@ -74,5 +74,8 @@ public class DiamondObstacle extends Obstacle {
     @Override
     public void scaleSize(int scale) {
 
+    }
+    public RotateTransition getRotation(){
+        return rotateTransition;
     }
 }

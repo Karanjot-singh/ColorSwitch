@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class SquareObstacle extends Obstacle {
 
-    private final RotateTransition rotateTransition;
-    Group squareGroup;
+    private transient final RotateTransition rotateTransition;
+    transient Group squareGroup;
 
     public SquareObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
         super(0, 0, 0, 1, 1);
@@ -69,6 +69,9 @@ public class SquareObstacle extends Obstacle {
     @Override
     public void scaleSize(int scale) {
 
+    }
+    public RotateTransition getRotation(){
+        return rotateTransition;
     }
 
 }

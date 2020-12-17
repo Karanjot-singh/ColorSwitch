@@ -8,8 +8,8 @@ import javafx.scene.shape.StrokeLineCap;
 
 public class CrossObstacle extends Obstacle {
 
-    private final RotateTransition rotateTransition;
-    Group crossGroup;
+    private transient final RotateTransition rotateTransition;
+    transient Group crossGroup;
 
     public CrossObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
         super(0, 0, 0, 1, 1);
@@ -86,5 +86,8 @@ public class CrossObstacle extends Obstacle {
     @Override
     public void scaleSize(int scale) {
 
+    }
+    public RotateTransition getRotation(){
+        return rotateTransition;
     }
 }

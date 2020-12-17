@@ -24,33 +24,30 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game implements Serializable {
-
+public class Game{
     static ObstacleFactory factory;
-    private final double spacing = 70;
-    private GridPane gameGrid;
-    private Pane obstacleColumn;
-    private StackPane gameColumn;
-    private ArrayList<Group> obstacles;
-    private ObservableList<Node> list;
-    private ArrayList<Obstacle> objects;
-    private int score;
-    private float height;
-    private Orb playerOrb;
-    private Color[] currentTheme;
-    private Color colorFlag;
-    private boolean gameStart = false;
-    private boolean gameStop = false;
-    private boolean revived = false;
-    private boolean orbDead = false;
-    private boolean paused = false;
-    private int elementCount = 2;
-    private int levelCount = 0;
-    private int levelAuxiliary = 0;
-    final double switcherX = 85;
-    final double elementX = 20;
-
-
+    private transient final double spacing = 70;
+    private transient GridPane gameGrid;
+    private transient Pane obstacleColumn;
+    private transient StackPane gameColumn;
+    private transient ArrayList<Group> obstacles;
+    private transient ObservableList<Node> list;
+    private transient ArrayList<Obstacle> objects;
+    private transient int score;
+    private transient float height;
+    private transient Orb playerOrb;
+    private transient Color[] currentTheme;
+    private transient Color colorFlag;
+    private transient boolean gameStart = false;
+    private transient boolean gameStop = false;
+    private transient boolean revived = false;
+    private transient boolean orbDead = false;
+    private transient boolean paused = false;
+    private transient int elementCount = 2;
+    private transient int levelCount = 0;
+    private transient int levelAuxiliary = 0;
+    final transient double switcherX = 85;
+    final transient double elementX = 20;
     Game(FXMLLoader fxmlLoader) {
 
         setGameGrid(fxmlLoader.getRoot());
@@ -385,52 +382,56 @@ public class Game implements Serializable {
         }
     }
 
-    public void initialiseState() {
+    public void initialiseState() throws IOException {
         Database d = new Database();
         saveState(d);
+        Database.serialize(d);
     }
 
     public void saveState(Database d) {
+        boolean except = false;
+        Obstacle savedObstacle = null;
         int i = 0, j = 0;
         while (j < getList().size()) {
             if (getList().get(j).getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 Node element = getList().get(j);
                 StackPane tempPane = (StackPane) element;
-                Obstacle savedObstacle = getObjects().get(i);
-                savedObstacle.setPosX(tempPane.getTranslateX());
-                savedObstacle.setPosY(tempPane.getTranslateY());
-                saveAnimation(savedObstacle, d);
-
+                try{
+                    savedObstacle = getObjects().get(i);
+                    savedObstacle.setPosX(tempPane.getTranslateX());
+                    savedObstacle.setPosY(tempPane.getTranslateY());
+                    saveAnimation(savedObstacle, d);
+                }
+                catch (IndexOutOfBoundsException e){
+                    except = true;
+                    break;
+                }
                 i++;
             } else {
                 j++;
             }
 
         }
-        for (Node element : getList()) {
-            // Collision for Obstacles
-            if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
-                StackPane tempPane = (StackPane) element;
-//                System.out.println(tempPane.getLayoutY() + " " + tempPane.getTranslateY());
-
-                Group obstacleGroup = (Group) tempPane.getChildren().get(0);
-            }
+        if(except){
+            saveAnimation(savedObstacle, d);
         }
-//        System.out.println("------------------");
-
-
     }
 
     private void saveAnimation(Obstacle savedObstacle, Database d) {
-        if (savedObstacle.getClass().getName() == "CircleObstacle") {
-
-        } else if (savedObstacle.getClass().getName() == "DiamondObstacle") {
-
-        }else if (savedObstacle.getClass().getName() == "CircleObstacle") {
-
-        }else if (savedObstacle.getClass().getName() == "CircleObstacle") {
-
-        }
+        RotateTransition saveTransition=savedObstacle.getRotation();
+        savedObstacle.setAnimationTime(saveTransition.getCurrentTime().toSeconds());
+        savedObstacle.setAnimationDuration(saveTransition.getDuration().toSeconds());
+        savedObstacle.setName(savedObstacle.getClass().getName());
+        d.getOnScreenObstacles().add(savedObstacle);
+//        if (savedObstacle.getClass().getName() == "CircleObstacle") {
+//
+//        } else if (savedObstacle.getClass().getName() == "DiamondObstacle") {
+//
+//        }else if (savedObstacle.getClass().getName() == "CircleObstacle") {
+//
+//        }else if (savedObstacle.getClass().getName() == "CircleObstacle") {
+//
+//        }
     }
 
     public int getScore() {

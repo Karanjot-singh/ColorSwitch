@@ -14,6 +14,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.EventListener;
 
 public class PausePopupController {
@@ -55,11 +56,12 @@ public class PausePopupController {
     }
 
     @FXML
-    void saveClicked(MouseEvent mouseEvent) {
+    void saveClicked(MouseEvent mouseEvent) throws IOException {
         Label label = new Label("Game saved successfully!");
         vbox.getChildren().remove(saveButton);
         label.setStyle("-fx-text-fill: #37b884; ");
         vbox.getChildren().add(label);
+        Main.getCurrentGame().initialiseState();
 //        Popup popup = new Popup();
 //        popup.getContent().add(label);
 //        popup.setHideOnEscape(true);
