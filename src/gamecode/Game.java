@@ -196,7 +196,7 @@ public class Game implements Serializable {
         Obstacle obstacle = factory.createObstacle(0);
 
         if (isGameStart()) {
-            obstacle = factory.createObstacle(ran.nextInt(3));
+            obstacle = factory.createObstacle(ran.nextInt(5));
         }
 
         getObstacles().add(obstacle.getGroup());
@@ -308,7 +308,7 @@ public class Game implements Serializable {
                         starShape.setVisible(false);
                         incrementScore();
                         setColorFlag(getPlayerOrb().getColor());
-                        tempPane.getChildren().remove(1);
+                        tempPane.getChildren().remove(1); //remove star
                     }
                 }
             }
