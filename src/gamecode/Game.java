@@ -43,6 +43,7 @@ public class Game{
     private transient boolean revived = false;
     private transient boolean orbDead = false;
     private transient boolean paused = false;
+//    private transient boolean paused = false;
     private transient int elementCount = 2;
     private transient int levelCount = 0;
     private transient int levelAuxiliary = 0;
@@ -104,9 +105,8 @@ public class Game{
     }
 
     static void gameLoop() {
-        //TODO  make fps 60 after testing
         Timeline gameTimeline = new Timeline();
-        final Duration fps = Duration.millis(1000 / 1);
+        final Duration fps = Duration.millis(1000 / 60);
         final KeyFrame gameFrame = new KeyFrame(fps, new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -163,7 +163,7 @@ public class Game{
     public void createElement(double PosX, double PosY) {
         StackPane e1 = addObstacles();
         getList().add(e1);
-        if (levelAuxiliary >= 3) {
+        if (levelAuxiliary >= 2) {
             levelCount++;
             levelAuxiliary = 0;
         } else {
@@ -213,7 +213,7 @@ public class Game{
             obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
         }
 
-        getObstacles().add(obstacle.getGroup());
+//        getObstacles().add(obstacle.getGroup());
         getObstacles().add(obstacle.getGroup());
         getObjects().add(obstacle);
         StackPane temp = new StackPane(obstacle.getGroup(), star.getStarShape());
@@ -374,8 +374,7 @@ public class Game{
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
 //                        System.out.println("Collision ");
-                        //TODO enable collisions
-//                        setGameStop(true);
+                        setGameStop(true);
                     }
                 }
             }

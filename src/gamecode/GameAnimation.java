@@ -24,7 +24,7 @@ public interface GameAnimation {
     static TranslateTransition Xtranslation(Group g, double delay,int speed){
         Duration duration = Duration.millis(3000/speed);
         TranslateTransition transition = new TranslateTransition(duration, g);
-        transition.setByX(150);
+        transition.setByX(30);
         transition.setDelay(Duration.millis(delay));
         transition.setAutoReverse(true);
         transition.setCycleCount(50);
@@ -36,7 +36,7 @@ public interface GameAnimation {
         Duration duration = Duration.millis(3000/speed);
         TranslateTransition transition = new TranslateTransition(duration, g);
         transition.setDelay(Duration.millis(delay));
-        transition.setByY(-60);
+        transition.setByY(-30);
         transition.setAutoReverse(true);
         transition.setCycleCount(50);
         transition.setInterpolator(Interpolator.LINEAR);
@@ -46,8 +46,8 @@ public interface GameAnimation {
     static SequentialTransition scaleTransition(Group g, double delay,int scale){
         Duration duration = Duration.millis(2500);
         ScaleTransition increase = new ScaleTransition(duration, g);
-        increase.setByX(0.625);
-        increase.setByY(0.625);
+        increase.setByX(0.5);
+        increase.setByY(0.5);
         ScaleTransition decrease = new ScaleTransition(duration, g);
         decrease.setByX(-0.2);
         decrease.setByY(-0.2);

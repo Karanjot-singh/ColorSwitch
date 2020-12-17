@@ -1,6 +1,7 @@
 package gamecode;
 
 import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.shape.Line;
 
@@ -12,7 +13,7 @@ public class SquareObstacle extends Obstacle {
     private transient final RotateTransition rotateTransition;
     transient Group squareGroup;
 
-    public SquareObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+    public SquareObstacle(double posX, double posY, double animationTime, int cycleCount, int scale,boolean scaleAnimate) {
         super(0, 0, 0, 1, 1);
 
 //        Line(double startX, double startY, double endX, double endY)
@@ -46,6 +47,9 @@ public class SquareObstacle extends Obstacle {
         int no = ran.nextInt(2);
         int dir = no==0?-1:1;
         rotateTransition = GameAnimation.rotate(squareGroup, 0, dir);
+        if(scaleAnimate) {
+            TranslateTransition transition = GameAnimation.Xtranslation(squareGroup, 0, 4);
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package gamecode;
 
 import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
 import javafx.scene.Group;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
@@ -13,7 +14,7 @@ public class DiamondObstacle extends Obstacle {
     private transient final RotateTransition rotateTransition;
     transient Group triangleGroup;
 
-    public DiamondObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
+    public DiamondObstacle(double posX, double posY, double animationTime, int cycleCount, int scale, boolean scaleAnimate) {
         super(0, 0, 0, 1, 1);
 
         triangleGroup = new Group();
@@ -50,6 +51,9 @@ public class DiamondObstacle extends Obstacle {
         int no = ran.nextInt(2);
         int dir = no==0?-1:1;
         rotateTransition = GameAnimation.rotate(triangleGroup, 0, dir);
+        if(scaleAnimate) {
+            SequentialTransition transition = GameAnimation.scaleTransition(triangleGroup,0,0);
+        }
 //        GameAnimation.Ytranslation(triangleGroup,0,1);
     }
 
