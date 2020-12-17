@@ -80,4 +80,5 @@ public class Database implements Serializable {
     public void setOnScreenObstacles(ArrayList<Obstacle> onScreenObstacles) {
         this.onScreenObstacles = onScreenObstacles;
     }
+
 }

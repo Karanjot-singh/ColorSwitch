@@ -9,29 +9,10 @@ public class SavedGames {
         allSavedGames.add(d);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static ArrayList<Database> getAllSavedGames() {
-        return allSavedGames;
+    public static Database getDatabase(){
+        return allSavedGames.get(0);
     }
+//    public static ArrayList<Database> getAllSavedGames() {
+//        return allSavedGames;
+//    }
 }

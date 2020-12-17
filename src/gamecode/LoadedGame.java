@@ -47,7 +47,20 @@ public class LoadedGame {
     private transient int levelAuxiliary = 0;
     final transient double switcherX = 85;
     final transient double elementX = 20;
+
+    Database savedGame;
+    public double computeAnimationTime(Obstacle o){
+        if(o.getAnimationTime()< o.getAnimationDuration()){
+            return o.getAnimationTime();
+        }
+        else{
+            return (o.getAnimationTime()/o.getAnimationDuration());
+        }
+    }
+
     LoadedGame(FXMLLoader fxmlLoader) {
+
+        savedGame= SavedGames.getDatabase();
 
         setGameGrid(fxmlLoader.getRoot());
         setGameColumn(new StackPane());

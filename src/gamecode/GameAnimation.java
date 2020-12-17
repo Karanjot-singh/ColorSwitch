@@ -18,6 +18,7 @@ public interface GameAnimation {
         rotation.setRate(5); //increases speed
         rotation.setInterpolator(Interpolator.LINEAR);
         rotation.play();
+//        rotation.playFrom();
         return rotation;
     }
     static TranslateTransition Xtranslation(Group g, double delay,int speed){
