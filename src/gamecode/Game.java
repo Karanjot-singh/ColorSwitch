@@ -45,6 +45,19 @@ public class Game implements Serializable {
     private boolean orbDead = false;
     private boolean paused = false;
     private int elementCount = 2;
+    private int levelCount = 0;
+    private int levelAuxiliary = 0;
+    static ObstacleFactory factory;
+
+
+    public boolean isOrbDead() {
+        orbDead = this.getPlayerOrb().getOrbGroup().getTranslateY() > 150;
+        return orbDead;
+    }
+
+    public void setOrbDead(boolean orbDead) {
+        this.orbDead = orbDead;
+    }
 
 
     Game(FXMLLoader fxmlLoader) {
@@ -157,6 +170,14 @@ public class Game implements Serializable {
     public void createElement(double PosX, double PosY) {
         StackPane e1 = addObstacles();
         getList().add(e1);
+        if(levelAuxiliary >=3){
+            levelCount++;
+            levelAuxiliary =0;
+        }
+        else {
+            levelAuxiliary ++;
+        }
+        System.out.println("LA=" + levelAuxiliary + " LC=" + levelCount);
         e1.relocate(PosX, PosY);
     }
 
@@ -258,7 +279,6 @@ public class Game implements Serializable {
     }
 
     public void playGame() {
-        setOrbDead(false);
         for (Obstacle element : getObjects()) {
             element.playAnimation();
         }
@@ -392,12 +412,12 @@ public class Game implements Serializable {
             // Collision for Obstacles
             if (element.getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 StackPane tempPane = (StackPane) element;
-                System.out.println(tempPane.getLayoutY() + " " + tempPane.getTranslateY());
+//                System.out.println(tempPane.getLayoutY() + " " + tempPane.getTranslateY());
 
                 Group obstacleGroup = (Group) tempPane.getChildren().get(0);
             }
         }
-        System.out.println("------------------");
+//        System.out.println("------------------");
 
 
     }
