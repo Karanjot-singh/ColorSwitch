@@ -3,5 +3,6 @@ package gamecode;
 import java.util.ArrayList;
 
 public class Database {
-    private ArrayList<>
+    private ArrayList<Obstacle> onScreenObstacles;
+
 }

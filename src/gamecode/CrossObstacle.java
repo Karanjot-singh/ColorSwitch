@@ -11,7 +11,7 @@ public class CrossObstacle extends Obstacle {
     private final RotateTransition rotateTransition;
     Group crossGroup;
 
-    public CrossObstacle(int stroke, int duration, int angle, int velocity) {
+    public CrossObstacle(double posX, double posY, double animationTime, int cycleCount, int scale) {
         super(0, 0, 0, 1, 1);
         GameAnimation.rotate(crossGroup, 0);
 
