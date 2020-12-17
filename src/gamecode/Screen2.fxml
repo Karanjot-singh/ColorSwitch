@@ -19,8 +19,8 @@
 
     <Group fx:id="switchGroup" layoutX="150.0" layoutY="80.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
         <children>
-            <Arc fx:id="arc212" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="270.0" stroke="#e4e42c" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
-            <Arc fx:id="arc222" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="180.0" stroke="#9711ae" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
+            <Arc fx:id="arc212" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="270.0" stroke="#f6df0e" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
+            <Arc fx:id="arc222" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="180.0" stroke="#8c13fb" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
             <Arc fx:id="arc232" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" startAngle="90.0" stroke="#32d0d0" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
             <Arc fx:id="arc242" centerX="150.0" centerY="150.0" fill="#0f8af500" length="81.0" radiusX="10.0" radiusY="10.0" stroke="#eb0d4c" strokeLineJoin="ROUND" strokeMiterLimit="0.0" type="ROUND" />
         </children>

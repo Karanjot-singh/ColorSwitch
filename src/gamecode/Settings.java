@@ -11,10 +11,10 @@ public class Settings {
 //	static Color [] currentTheme = new Color[4];
 
     static Color[] currentTheme = new Color[]{
-            Color.web("#f6df0e"),
-            Color.web("#8c13fb"),
-            Color.web("#ff0080"),
-            Color.web("#35e2f2")};
+            Color.web("#f6df0e"), //yellow
+            Color.web("#8c13fb"), //purple
+            Color.web("#ff0080"), //pink
+            Color.web("#35e2f2")}; //blue
 
     Settings() {
 //        currentTheme = new Color[]{Color.web("#9711ae"),
