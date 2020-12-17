@@ -386,26 +386,28 @@ public class Game{
         Database d = new Database();
         saveState(d);
         Database.serialize(d);
+        SavedGames.addToSavedGames(d);
     }
 
     public void saveState(Database d) {
+        d.setScore(this.score);
         boolean except = false;
         Obstacle savedObstacle = null;
         int i = 0, j = 0;
-        while (j < getList().size()) {
+        while (j < getList().size() && i<getObjects().size()) {
             if (getList().get(j).getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 Node element = getList().get(j);
                 StackPane tempPane = (StackPane) element;
-                try{
+//                try{
                     savedObstacle = getObjects().get(i);
                     savedObstacle.setPosX(tempPane.getTranslateX());
                     savedObstacle.setPosY(tempPane.getTranslateY());
                     saveAnimation(savedObstacle, d);
-                }
-                catch (IndexOutOfBoundsException e){
-                    except = true;
-                    break;
-                }
+//                }
+//                catch (IndexOutOfBoundsException e){
+//                    except = true;
+//                    break;
+//                }
                 i++;
             } else {
                 j++;

@@ -6,12 +6,14 @@ import java.util.ArrayList;
 public class Database implements Serializable {
     public static final long serialVersionUID = 1L;
     private int savedGameID;
+    private int score;
     private static int count =1;
     private ArrayList<Obstacle> onScreenObstacles;
 
     public Database() {
         this.onScreenObstacles= new ArrayList<>();
         this.savedGameID= count++;
+        this.score=0;
     }
 
     public static void serialize(Database s1) throws IOException, FileNotFoundException {
@@ -43,6 +45,8 @@ public class Database implements Serializable {
 
         System.out.println(serialVersionUID);
         System.out.println(savedGameID);
+        System.out.println(score);
+
         for(Obstacle node : onScreenObstacles) {
             System.out.println(node.getName());
             System.out.println(node.getPosX());
@@ -51,6 +55,15 @@ public class Database implements Serializable {
             System.out.println(node.getAnimationTime());
         }
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public int getSavedGameID() {
         return savedGameID;
     }
