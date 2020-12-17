@@ -128,7 +128,8 @@ public class Orb extends Elements implements GameAnimation {
         timeline.play();
         rotateTransition.play();
     }
-    public RotateTransition getRotation(){
+
+    public RotateTransition getRotation() {
         return rotateTransition;
     }
 }

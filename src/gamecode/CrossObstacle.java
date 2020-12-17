@@ -24,7 +24,7 @@ public class CrossObstacle extends Obstacle {
 //      </Group>
         crossGroup = new Group();
         //y
-        Line line = new Line(-54, 39,-17,-2);
+        Line line = new Line(-54, 39, -17, -2);
         line.setStroke(Settings.currentTheme[0]);
         line.setLayoutX(159);
         line.setLayoutY(64);
@@ -32,7 +32,7 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
 //        pu
-        line = new Line(-142,42,-105, -2);
+        line = new Line(-142, 42, -105, -2);
         line.setStroke(Settings.currentTheme[1]);
         line.setLayoutX(204);
         line.setLayoutY(115);
@@ -40,7 +40,7 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
         //p
-        line = new Line(-54, 39, -100,-2);
+        line = new Line(-54, 39, -100, -2);
         line.setStroke(Settings.currentTheme[2]);
         line.setLayoutX(147);
         line.setLayoutY(63);
@@ -48,7 +48,7 @@ public class CrossObstacle extends Obstacle {
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         crossGroup.getChildren().add(line);
         //y
-        line = new Line(-54, 39, -100,-2);
+        line = new Line(-54, 39, -100, -2);
         line.setStroke(Settings.currentTheme[3]);
         line.setLayoutX(205);
         line.setLayoutY(115);
@@ -62,8 +62,9 @@ public class CrossObstacle extends Obstacle {
     public void saveObstacle() {
 
     }
+
     @Override
-    public boolean checkCross(){
+    public boolean checkCross() {
         return true;
     }
 
@@ -87,7 +88,8 @@ public class CrossObstacle extends Obstacle {
     public void scaleSize(int scale) {
 
     }
-    public RotateTransition getRotation(){
+
+    public RotateTransition getRotation() {
         return rotateTransition;
     }
 }

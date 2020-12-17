@@ -18,28 +18,28 @@ public class DiamondObstacle extends Obstacle {
         super(0, 0, 0, 1, 1);
 
         triangleGroup = new Group();
-        Line line = new Line(-98, -57, -157,25);
+        Line line = new Line(-98, -57, -157, 25);
         line.setStroke(Settings.currentTheme[0]);
         line.setLayoutX(197);
         line.setLayoutY(46);
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         triangleGroup.getChildren().add(line);
-        line = new Line(-98, -57, -34,25);
+        line = new Line(-98, -57, -34, 25);
         line.setStroke(Settings.currentTheme[1]);
         line.setLayoutX(197);
         line.setLayoutY(46);
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         triangleGroup.getChildren().add(line);
-        line = new Line(-98, 97, -157,25);
+        line = new Line(-98, 97, -157, 25);
         line.setStroke(Settings.currentTheme[2]);
         line.setLayoutX(197);
         line.setLayoutY(46);
         line.setStrokeWidth(12);
         line.setStrokeLineCap(StrokeLineCap.ROUND);
         triangleGroup.getChildren().add(line);
-        line = new Line(-98, 97, -34,25);
+        line = new Line(-98, 97, -34, 25);
         line.setStroke(Settings.currentTheme[3]);
         line.setLayoutX(197);
         line.setLayoutY(46);
@@ -49,10 +49,10 @@ public class DiamondObstacle extends Obstacle {
 
         Random ran = new Random();
         int no = ran.nextInt(2);
-        int dir = no==0?-1:1;
+        int dir = no == 0 ? -1 : 1;
         rotateTransition = GameAnimation.rotate(triangleGroup, 0, dir);
-        if(scaleAnimate) {
-            SequentialTransition transition = GameAnimation.scaleTransition(triangleGroup,0,0);
+        if (scaleAnimate) {
+            SequentialTransition transition = GameAnimation.scaleTransition(triangleGroup, 0, 0);
         }
 //        GameAnimation.Ytranslation(triangleGroup,0,1);
     }
@@ -79,7 +79,8 @@ public class DiamondObstacle extends Obstacle {
     public void scaleSize(int scale) {
 
     }
-    public RotateTransition getRotation(){
+
+    public RotateTransition getRotation() {
         return rotateTransition;
     }
 }

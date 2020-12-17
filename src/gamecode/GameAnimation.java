@@ -21,8 +21,9 @@ public interface GameAnimation {
 //        rotation.playFrom();
         return rotation;
     }
-    static TranslateTransition Xtranslation(Group g, double delay,int speed){
-        Duration duration = Duration.millis(3000/speed);
+
+    static TranslateTransition Xtranslation(Group g, double delay, int speed) {
+        Duration duration = Duration.millis(3000 / speed);
         TranslateTransition transition = new TranslateTransition(duration, g);
         transition.setByX(30);
         transition.setDelay(Duration.millis(delay));
@@ -32,8 +33,9 @@ public interface GameAnimation {
         transition.play();
         return transition;
     }
-    static TranslateTransition Ytranslation(Group g, double delay,int speed){
-        Duration duration = Duration.millis(3000/speed);
+
+    static TranslateTransition Ytranslation(Group g, double delay, int speed) {
+        Duration duration = Duration.millis(3000 / speed);
         TranslateTransition transition = new TranslateTransition(duration, g);
         transition.setDelay(Duration.millis(delay));
         transition.setByY(-30);
@@ -43,7 +45,8 @@ public interface GameAnimation {
         transition.play();
         return transition;
     }
-    static SequentialTransition scaleTransition(Group g, double delay,int scale){
+
+    static SequentialTransition scaleTransition(Group g, double delay, int scale) {
         Duration duration = Duration.millis(2500);
         ScaleTransition increase = new ScaleTransition(duration, g);
         increase.setByX(0.5);

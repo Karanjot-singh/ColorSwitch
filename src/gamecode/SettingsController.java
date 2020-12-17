@@ -27,7 +27,7 @@ public class SettingsController implements Initializable {
     public static void display() {
         window = new Stage();
         try {
-            colorScene = new Scene (FXMLLoader.load(SettingsController.class.getResource("settingsTheme.fxml")));
+            colorScene = new Scene(FXMLLoader.load(SettingsController.class.getResource("settingsTheme.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,11 +55,10 @@ public class SettingsController implements Initializable {
     @FXML
     void testClicked(MouseEvent mouseEvent) {
 
-        if(!Game.isTestMode()) {
+        if (!Game.isTestMode()) {
             Game.setTestMode(true);
             System.out.println("Test ON");
-        }
-        else{
+        } else {
             Game.setTestMode(false);
             System.out.println("Test OFF");
         }
@@ -67,11 +66,10 @@ public class SettingsController implements Initializable {
 
     @FXML
     void musicClicked(MouseEvent mouseEvent) {
-        if(Music.getInstance().isPlaying()){
+        if (Music.getInstance().isPlaying()) {
             Main.pauseMusic();
             musicButton.setText("Play music");
-        }
-        else {
+        } else {
             Main.playMusic();
             musicButton.setText("Pause music");
         }

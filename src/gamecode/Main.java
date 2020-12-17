@@ -176,6 +176,19 @@ public class Main extends Application {
         Main.fxmlLoader = fxmlLoader;
     }
 
+    public static void initialiseMusic() {
+        Thread t1 = new Thread();
+        Music.getInstance();
+        t1.start();
+    }
+
+    public static void playMusic() {
+        Music.getInstance().startMusic();
+    }
+
+    public static void pauseMusic() {
+        Music.getInstance().stopMusic();
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -209,27 +222,13 @@ public class Main extends Application {
         getWindow().show();
         initialiseMusic();
     }
-
-    public static void initialiseMusic() {
-        Thread t1 = new Thread();
-        Music.getInstance();
-        t1.start();
-    }
-
-    public static void playMusic() {
-        Music.getInstance().startMusic();
-    }
-
-    public static void pauseMusic() {
-        Music.getInstance().stopMusic();
-    }
 }
 
 class Music implements Runnable {
 
-    private static Music music = null;
     static MediaPlayer mediaPlayer;
     static boolean playing;
+    private static Music music = null;
 
     private Music() {
         Media backgroundMusic = new Media(getClass().getResource("/assets/music.wav").toString());
@@ -242,8 +241,8 @@ class Music implements Runnable {
     }
 
     //Design pattern: SINGLETON
-    public static Music getInstance(){
-        if(music==null){
+    public static Music getInstance() {
+        if (music == null) {
             music = new Music();
         }
         return music;

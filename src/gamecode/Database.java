@@ -5,18 +5,18 @@ import java.util.ArrayList;
 
 public class Database implements Serializable {
     public static final long serialVersionUID = 1L;
+    private static int count = 1;
     private int savedGameID;
     private int score;
-    private static int count =1;
     private ArrayList<Obstacle> onScreenObstacles;
 
     public Database() {
-        this.onScreenObstacles= new ArrayList<>();
-        this.savedGameID= count++;
-        this.score=0;
+        this.onScreenObstacles = new ArrayList<>();
+        this.savedGameID = count++;
+        this.score = 0;
     }
 
-    public static void serialize(Database s1) throws IOException, FileNotFoundException {
+    public static void serialize(Database s1) throws IOException {
         s1.printValue();
         ObjectOutputStream out;
         out = null;
@@ -28,12 +28,13 @@ public class Database implements Serializable {
             out.close();
         }
     }
+
     public static void deserialize()
             throws IOException, ClassNotFoundException {
         ObjectInputStream in = null;
         try {
             System.out.println("DESerialise");
-            in = new ObjectInputStream (
+            in = new ObjectInputStream(
                     new FileInputStream("out.txt"));
             Database s1 = (Database) in.readObject();
             s1.printValue();
@@ -43,15 +44,14 @@ public class Database implements Serializable {
         }
     }
 
-    public void printValue(){
+    public void printValue() {
 
         System.out.println(serialVersionUID);
         System.out.println(savedGameID);
         System.out.println(score);
 
-        for(Obstacle node : onScreenObstacles) {
+        for (Obstacle node : onScreenObstacles) {
             System.out.println(node.getName());
-            System.out.println(node.getPosX());
             System.out.println(node.getPosY());
             System.out.println(node.getAnimationDuration());
             System.out.println(node.getAnimationTime());

@@ -20,12 +20,14 @@ import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Game{
+public class Game {
     static ObstacleFactory factory;
+    private transient static boolean testMode = false;
+    final transient double switcherX = 85;
+    final transient double elementX = 20;
     private transient final double spacing = 70;
     private transient GridPane gameGrid;
     private transient Pane obstacleColumn;
@@ -43,12 +45,10 @@ public class Game{
     private transient boolean revived = false;
     private transient boolean orbDead = false;
     private transient boolean paused = false;
-    private transient static boolean testMode = false;
     private transient int elementCount = 2;
     private transient int levelCount = 0;
     private transient int levelAuxiliary = 0;
-    final transient double switcherX = 85;
-    final transient double elementX = 20;
+
     Game(FXMLLoader fxmlLoader) {
 
         setGameGrid(fxmlLoader.getRoot());
@@ -114,7 +114,7 @@ public class Game{
                 Main.getCurrentGame().otherCollisions();
 //                Main.getCurrentGame().saveState();
 
-                if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()  ) {
+                if ((Main.getCurrentGame().isOrbDead() || Main.getCurrentGame().isGameStop()) && !Main.getCurrentGame().isPaused()) {
                     System.out.println("GAME OVER");
                     gameTimeline.stop();
                     Main.getCurrentGame().gameOver();
@@ -125,6 +125,14 @@ public class Game{
         gameTimeline.getKeyFrames().addAll(gameFrame);
         gameTimeline.play();
 
+    }
+
+    public static boolean isTestMode() {
+        return testMode;
+    }
+
+    public static void setTestMode(boolean testMode) {
+        Game.testMode = testMode;
     }
 
     public int getLevelCount() {
@@ -169,7 +177,7 @@ public class Game{
         } else {
             levelAuxiliary++;
         }
-        System.out.println("LA=" + levelAuxiliary + " LC=" + levelCount);
+//        System.out.println("LA=" + levelAuxiliary + " LC=" + levelCount);
         e1.relocate(PosX, PosY);
     }
 
@@ -207,10 +215,10 @@ public class Game{
 
         Random ran = new Random();
         Star star = new Star(0, 0);
-        Obstacle obstacle = factory.createObstacle(0, this.getLevelCount()>=2);
+        Obstacle obstacle = factory.createObstacle(0, this.getLevelCount() >= 2);
 
         if (isGameStart()) {
-            obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
+            obstacle = factory.createObstacle(ran.nextInt(4), this.getLevelCount() >= 2);
         }
 
 //        getObstacles().add(obstacle.getGroup());
@@ -359,14 +367,6 @@ public class Game{
         }
     }
 
-    public static boolean isTestMode() {
-        return testMode;
-    }
-
-    public static void setTestMode(boolean testMode) {
-        Game.testMode = testMode;
-    }
-
     public void obstacleCollision() {
         boolean collisionSafe = false;
         Shape orb = (Shape) getPlayerOrb().getOrbGroup().getChildren().get(0);
@@ -382,9 +382,9 @@ public class Game{
                     Shape intersect = Shape.intersect(orb, shape);
                     if ((!collisionSafe) && intersect.getBoundsInLocal().getWidth() != -1) {
 //                        System.out.println("Collision ");
-                     if(!isTestMode()) {
-                         setGameStop(true);
-                     }
+                        if (!isTestMode()) {
+                            setGameStop(true);
+                        }
                     }
                 }
             }
@@ -402,15 +402,15 @@ public class Game{
         boolean except = false;
         Obstacle savedObstacle = null;
         int i = 0, j = 0;
-        while (j < getList().size() && i<getObjects().size()) {
+        while (j < getList().size() && i < getObjects().size()) {
             if (getList().get(j).getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 Node element = getList().get(j);
                 StackPane tempPane = (StackPane) element;
 //                try{
-                    savedObstacle = getObjects().get(i);
-                    savedObstacle.setPosX(tempPane.getTranslateX());
-                    savedObstacle.setPosY(tempPane.getTranslateY());
-                    saveAnimation(savedObstacle, d);
+                savedObstacle = getObjects().get(i);
+                savedObstacle.setPosX(tempPane.getTranslateX());
+                savedObstacle.setPosY(tempPane.getTranslateY());
+                saveAnimation(savedObstacle, d);
 //                }
 //                catch (IndexOutOfBoundsException e){
 //                    except = true;
@@ -422,13 +422,13 @@ public class Game{
             }
 
         }
-        if(except){
+        if (except) {
             saveAnimation(savedObstacle, d);
         }
     }
 
     private void saveAnimation(Obstacle savedObstacle, Database d) {
-        RotateTransition saveTransition=savedObstacle.getRotation();
+        RotateTransition saveTransition = savedObstacle.getRotation();
         savedObstacle.setAnimationTime(saveTransition.getCurrentTime().toSeconds());
         savedObstacle.setAnimationDuration(saveTransition.getDuration().toSeconds());
         savedObstacle.setName(savedObstacle.getClass().getName());

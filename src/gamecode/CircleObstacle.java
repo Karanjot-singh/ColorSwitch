@@ -12,12 +12,12 @@ import java.util.Random;
 
 public class CircleObstacle extends Obstacle {
     private final transient RotateTransition rotateTransition;
-    transient Group arcGroup;
+    private transient Group arcGroup;
 
     public CircleObstacle(double posX, double posY, double animationTime, int cycleCount, int scale, boolean scaleAnimate) {
         super(0, 0, 0, 1, 1);
 
-        arcGroup = new Group();
+        setArcGroup(new Group());
 //        Arc( double centerX, double centerY, double radiusX, double radiusY, double startAngle, double length)
         for (int i = 1; i <= 4; i++) {
             Arc arc = new Arc(150, 150, 75, 75, 90 * i, 90);
@@ -25,40 +25,54 @@ public class CircleObstacle extends Obstacle {
             arc.setStroke(Settings.currentTheme[i - 1]);
             arc.setType(ArcType.OPEN);
             arc.setStrokeWidth(12);
-            arcGroup.getChildren().add(arc);
+            getArcGroup().getChildren().add(arc);
         }
         Random ran = new Random();
         int no = ran.nextInt(2);
-        int dir = no==0?-1:1;
-        rotateTransition = GameAnimation.rotate(arcGroup, 0, dir);
-        if(scaleAnimate) {
-            SequentialTransition transition = GameAnimation.scaleTransition(arcGroup,0,0);
+        int dir = no == 0 ? -1 : 1;
+        rotateTransition = GameAnimation.rotate(getArcGroup(), 0, dir);
+        if (scaleAnimate) {
+            SequentialTransition transition = GameAnimation.scaleTransition(getArcGroup(), 0, 0);
         }
     }
+
     @Override
     public void saveObstacle() {
 //        rotateTransition.get
-        double a= rotateTransition.getDuration().toSeconds();
-        double b =rotateTransition.getCurrentTime().toSeconds();
+        double a = getRotateTransition().getDuration().toSeconds();
+        double b = getRotateTransition().getCurrentTime().toSeconds();
     }
-    public RotateTransition getRotation(){
-        return rotateTransition;
+
+    public RotateTransition getRotation() {
+        return getRotateTransition();
     }
 
     @Override
 
     public void pauseAnimation() {
-        rotateTransition.pause();
+        getRotateTransition().pause();
     }
 
     @Override
 
     public void playAnimation() {
-        rotateTransition.play();
+        getRotateTransition().play();
     }
 
     @Override
     public Group getGroup() {
+        return getArcGroup();
+    }
+
+    public RotateTransition getRotateTransition() {
+        return rotateTransition;
+    }
+
+    public Group getArcGroup() {
         return arcGroup;
+    }
+
+    public void setArcGroup(Group arcGroup) {
+        this.arcGroup = arcGroup;
     }
 }

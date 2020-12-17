@@ -13,8 +13,8 @@ public class Player {
     }
 
     //Design pattern: SINGLETON
-    public static Player getInstance(){
-        if(player==null){
+    public static Player getInstance() {
+        if (player == null) {
             player = new Player();
         }
         return player;

@@ -8,15 +8,15 @@ import java.io.Serializable;
 
 public abstract class Obstacle extends Elements implements Serializable {
     public static final long serialVersionUID = 1L;
-    double posX,posY,animationTime,animationDuration;
-    private String name;
+    double posX, posY, animationTime, animationDuration;
     int scale;
+    private String name;
 
     public Obstacle(double posX, double posY, double animationTime, double animationDuration, int scale) {
-        super(posX,posY);
-        this.animationTime=animationTime;
-        this.animationDuration= animationDuration;
-        this.scale= scale;
+        super(posX, posY);
+        this.animationTime = animationTime;
+        this.animationDuration = animationDuration;
+        this.scale = scale;
     }
 
     public abstract void saveObstacle();
@@ -30,7 +30,8 @@ public abstract class Obstacle extends Elements implements Serializable {
     public void scaleSize(int scale) {
 
     }
-    public RotateTransition getRotation(){
+
+    public RotateTransition getRotation() {
         return new RotateTransition();
     }
 
@@ -63,6 +64,7 @@ public abstract class Obstacle extends Elements implements Serializable {
     public void setAnimationTime(double animationTime) {
         this.animationTime = animationTime;
     }
+
     public int getScale() {
         return scale;
     }

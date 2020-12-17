@@ -25,7 +25,10 @@ import java.util.Random;
 
 public class LoadedGame {
     static ObstacleFactory factory;
+    final transient double switcherX = 85;
+    final transient double elementX = 20;
     private transient final double spacing = 70;
+    Database savedGame;
     private transient GridPane gameGrid;
     private transient Pane obstacleColumn;
     private transient StackPane gameColumn;
@@ -45,22 +48,10 @@ public class LoadedGame {
     private transient int elementCount = 2;
     private transient int levelCount = 0;
     private transient int levelAuxiliary = 0;
-    final transient double switcherX = 85;
-    final transient double elementX = 20;
-
-    Database savedGame;
-    public double computeAnimationTime(Obstacle o){
-        if(o.getAnimationTime()< o.getAnimationDuration()){
-            return o.getAnimationTime();
-        }
-        else{
-            return (o.getAnimationTime()/o.getAnimationDuration());
-        }
-    }
 
     LoadedGame(FXMLLoader fxmlLoader) {
 
-        savedGame= SavedGames.getDatabase();
+        savedGame = SavedGames.getDatabase();
 
         setGameGrid(fxmlLoader.getRoot());
         setGameColumn(new StackPane());
@@ -140,6 +131,14 @@ public class LoadedGame {
 
     }
 
+    public double computeAnimationTime(Obstacle o) {
+        if (o.getAnimationTime() < o.getAnimationDuration()) {
+            return o.getAnimationTime();
+        } else {
+            return (o.getAnimationTime() / o.getAnimationDuration());
+        }
+    }
+
     public int getLevelCount() {
         return levelCount;
     }
@@ -162,7 +161,7 @@ public class LoadedGame {
     }
 
     void initialiseObstacles() {
-        double posy =  600;
+        double posy = 600;
 //        //TODO Generalise using spacing variable
 //        createElement(elementX, 290);
 //
@@ -178,7 +177,7 @@ public class LoadedGame {
         this.setScore(savedGame.getScore());
         Label score = (Label) getGameGrid().getChildren().get(0);
         score.setText("" + savedGame.getScore());
-        for(Obstacle node : savedGame.getOnScreenObstacles()) {
+        for (Obstacle node : savedGame.getOnScreenObstacles()) {
             double posX = node.getPosX();
             double posY = node.getPosY();
 
@@ -199,7 +198,7 @@ public class LoadedGame {
 
             createElement(type, elementX, posy);
 //            getList().get(getList().size()-1).relocate(posX,posY);
-            posy-=270;
+            posy -= 270;
         }
     }
 
@@ -212,7 +211,7 @@ public class LoadedGame {
         } else {
             levelAuxiliary++;
         }
-        System.out.println("LA=" + levelAuxiliary + " LC=" + levelCount);
+//        System.out.println("LA=" + levelAuxiliary + " LC=" + levelCount);
         e1.relocate(PosX, PosY);
     }
 
@@ -250,7 +249,7 @@ public class LoadedGame {
 
         Random ran = new Random();
         Star star = new Star(0, 0);
-        Obstacle obstacle = factory.createObstacle(type, this.getLevelCount()>=2);
+        Obstacle obstacle = factory.createObstacle(type, this.getLevelCount() >= 2);
 
 //        if (isGameStart()) {
 //            obstacle = factory.createObstacle(ran.nextInt(4),this.getLevelCount()>=2);
@@ -436,15 +435,15 @@ public class LoadedGame {
         boolean except = false;
         Obstacle savedObstacle = null;
         int i = 0, j = 0;
-        while (j < getList().size() && i<getObjects().size()) {
+        while (j < getList().size() && i < getObjects().size()) {
             if (getList().get(j).getClass().getName().equals("javafx.scene.layout.StackPane")) {
                 Node element = getList().get(j);
                 StackPane tempPane = (StackPane) element;
 //                try{
-                    savedObstacle = getObjects().get(i);
-                    savedObstacle.setPosX(tempPane.getTranslateX());
-                    savedObstacle.setPosY(tempPane.getTranslateY());
-                    saveAnimation(savedObstacle, d);
+                savedObstacle = getObjects().get(i);
+                savedObstacle.setPosX(tempPane.getTranslateX());
+                savedObstacle.setPosY(tempPane.getTranslateY());
+                saveAnimation(savedObstacle, d);
 //                }
 //                catch (IndexOutOfBoundsException e){
 //                    except = true;
@@ -456,13 +455,13 @@ public class LoadedGame {
             }
 
         }
-        if(except){
+        if (except) {
             saveAnimation(savedObstacle, d);
         }
     }
 
     private void saveAnimation(Obstacle savedObstacle, Database d) {
-        RotateTransition saveTransition=savedObstacle.getRotation();
+        RotateTransition saveTransition = savedObstacle.getRotation();
         savedObstacle.setAnimationTime(saveTransition.getCurrentTime().toSeconds());
         savedObstacle.setAnimationDuration(saveTransition.getDuration().toSeconds());
         savedObstacle.setName(savedObstacle.getClass().getName());
