@@ -22,8 +22,10 @@ public class HomeController {
     }
 
     @FXML
-    void loadGameClicked() {
+    void loadGameClicked() throws IOException, ClassNotFoundException {
 //        LoadGameController.display();
+        Database.deserialize();
+
         Main.getWindow().setScene(Main.getLoadGameScene());
     }
 

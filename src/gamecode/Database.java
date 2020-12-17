@@ -15,6 +15,7 @@ public class Database implements Serializable {
     }
 
     public static void serialize(Database s1) throws IOException, FileNotFoundException {
+        s1.printValue();
         ObjectOutputStream out;
         out = null;
         try {
@@ -32,11 +33,24 @@ public class Database implements Serializable {
             in = new ObjectInputStream (
                     new FileInputStream("out.txt"));
             Database s1 = (Database) in.readObject();
+            s1.printValue();
         } finally {
             in.close();
         }
     }
 
+    public void printValue(){
+
+        System.out.println(serialVersionUID);
+        System.out.println(savedGameID);
+        for(Obstacle node : onScreenObstacles) {
+            System.out.println(node.getName());
+            System.out.println(node.getPosX());
+            System.out.println(node.getPosY());
+            System.out.println(node.getAnimationDuration());
+            System.out.println(node.getAnimationTime());
+        }
+    }
     public int getSavedGameID() {
         return savedGameID;
     }
