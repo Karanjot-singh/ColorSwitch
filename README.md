@@ -25,5 +25,5 @@ To install Java 13 on Debian / Ubuntu:
 <img src="screenshots/main_menu.png" width="370" height="520"> <img src="screenshots/game1.png" width="370" height="520">
 <img src="screenshots/game3.png" width="370" height="520"> <img src="screenshots/game_over.png" width="370" height="520">
 <img src="screenshots/save-game.png" width="370" height="520"> <img src="screenshots/revive_screen.png" width="370" height="520">
-<img src="screenshots/settings.png" width="450" height="300"> <img src="screenshots/theme_screen.png" width="450" height="300">
-<img src="screenshots/instructions.png" width="450" height="300"> <img src="screenshots/player-info.png" width="450" height="300">
+<img src="screenshots/settings.png" width="400" height="260"> <img src="screenshots/theme_screen.png" width="400" height="260">
+<img src="screenshots/instructions.png" width="400" height="260"> <img src="screenshots/player-info.png" width="400" height="260">
