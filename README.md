@@ -21,6 +21,13 @@ To install Java 13 on Debian / Ubuntu:
 ### Run the game
 ```Run Main.java using an IDE```
 
+To setup on IntelliJ, follow this link:
+https://www.jetbrains.com/help/idea/javafx.html
+
+In VM options, add the following line after replacing :
+```
+--module-path <javafx lib path> --add-modules javafx.controls,javafx.fxml,javafx.media
+```
 ## Screenshots
 <img src="screenshots/main_menu.png" width="370" height="520"> <img src="screenshots/game1.png" width="370" height="520">
 <img src="screenshots/game3.png" width="370" height="520"> <img src="screenshots/game_over.png" width="370" height="520">
